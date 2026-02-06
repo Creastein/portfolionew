@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
                         className="h-2 w-2 bg-primary rounded-full hidden md:block"
                     />
                     <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                        <span className="text-xl font-bold tracking-tight font-display text-[#e0e0e0]">VELOCITY</span>
+                        <span className="text-xl font-bold tracking-tight font-display text-[#e0e0e0]">WELLI</span>
                     </motion.div>
                 </motion.div>
             </div>
@@ -243,7 +243,7 @@ const Navbar: React.FC = () => {
                         {/* FOOTER METADATA */}
                         <div className="px-8 py-6 md:px-12 border-t border-white/10 bg-[#0A0A0A]">
                              <div className="flex flex-col gap-1 text-xs text-white/30 text-center md:text-left">
-                                <p>© 2024 Velocity Studio.</p>
+                                <p>© 2025 WELLI. All rights reserved.</p>
                                 <p>Designed & Developed in Jakarta.</p>
                              </div>
                         </div>
