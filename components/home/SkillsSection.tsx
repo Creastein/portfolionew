@@ -1,48 +1,154 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { skills } from '../data/skills.tsx';
+import { skillsWithLogos, SkillItem } from '../data/skillsWithLogos';
+import { useGSAP } from '../../hooks/useGSAP';
+import gsap from 'gsap';
 
-const SkillCard: React.FC<{ category: string, icon: React.ReactNode, items: string[] }> = ({ category, icon, items }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-6 transition-all hover:border-primary/50 hover:shadow-[0_0_30px_rgba(19,91,236,0.15)]"
-    >
-        <div className="flex items-center gap-3 mb-4">
-            <div className="text-primary">{icon}</div>
-            <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors font-display">{category}</h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-            {items.map(item => (
-                <span key={item} className="px-3 py-1.5 rounded-full bg-white/5 text-sm text-gray-300 border border-white/10 hover:border-primary/50 hover:text-primary transition-colors">
-                    {item}
+const SkillLogo: React.FC<{ item: SkillItem, index: number }> = ({ item, index }) => {
+    const itemRef = React.useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!itemRef.current) return;
+        const { left, top, width, height } = itemRef.current.getBoundingClientRect();
+        // Magnetic calculation: Move element towards cursor relative to its center
+        const x = (e.clientX - left - width / 2) * 0.3; // Strength of attraction
+        const y = (e.clientY - top - height / 2) * 0.3;
+
+        gsap.to(itemRef.current, {
+            x: x,
+            y: y,
+            duration: 0.3,
+            ease: 'power2.out'
+        });
+    };
+
+    const handleMouseLeave = () => {
+        if (!itemRef.current) return;
+        // Spring back to center
+        gsap.to(itemRef.current, {
+            x: 0,
+            y: 0,
+            duration: 0.6,
+            ease: 'elastic.out(1, 0.4)'
+        });
+    };
+
+    return (
+        <div
+            ref={itemRef}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="skill-logo-item relative group flex items-center justify-center p-4 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-white/10 hover:z-50 transition-colors duration-300"
+        >
+            {/* Icon */}
+            <div
+                className="text-3xl md:text-4xl transition-colors duration-300"
+                style={{ color: item.color }}
+            >
+                <item.icon />
+            </div>
+
+            {/* Tooltip Name Reveal */}
+            <div className="absolute -bottom-2 translate-y-full opacity-0 group-hover:opacity-100 group-hover:-bottom-[-8px] transition-all duration-300 z-20 whitespace-nowrap pointer-events-none">
+                <span className="text-sm font-medium text-white bg-surface border border-white/10 px-2 py-1 rounded shadow-lg">
+                    {item.name}
                 </span>
+            </div>
+        </div>
+    );
+};
+
+const SkillCategoryCard: React.FC<{ category: string, icon: React.ElementType, items: SkillItem[], index: number }> = ({ category, icon: Icon, items, index }) => (
+    <div className="skill-category-card p-6 md:p-8 rounded-2xl bg-surface border border-white/5 hover:border-white/10 transition-colors">
+        <div className="flex items-center gap-3 mb-6">
+            <div className="p-2 rounded-lg bg-primary/10 text-primary">
+                <Icon size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-white font-display">{category}</h3>
+        </div>
+
+        <div className="grid grid-cols-4 sm:grid-cols-5 gap-3 md:gap-4">
+            {items.map((item, idx) => (
+                <SkillLogo key={item.name} item={item} index={idx} />
             ))}
         </div>
-    </motion.div>
+    </div>
 );
 
 const SkillsSection: React.FC = () => {
+    const containerRef = useGSAP<HTMLElement>(() => {
+        // Animate header
+        gsap.fromTo('.skills-header',
+            { y: 30, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.skills-header',
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            }
+        );
+
+        // Stagger animate category cards
+        gsap.fromTo('.skill-category-card',
+            { y: 50, opacity: 0 },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 0.8,
+                stagger: 0.2,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '.skills-grid',
+                    start: 'top 75%',
+                    toggleActions: 'play none none reverse'
+                }
+            }
+        );
+
+        // Pop-In Entrance for Logos
+        gsap.fromTo('.skill-logo-item',
+            { scale: 0, opacity: 0 },
+            {
+                scale: 1,
+                opacity: 1,
+                duration: 0.5,
+                stagger: {
+                    amount: 1,
+                    grid: 'auto',
+                    from: 'start'
+                },
+                ease: 'back.out(1.5)',
+                scrollTrigger: {
+                    trigger: '.skills-grid',
+                    start: 'top 70%',
+                    toggleActions: 'play none none reverse'
+                }
+            }
+        );
+    }, []);
+
     return (
-        <section id="skills" className="relative z-10 container mx-auto max-w-[1400px] px-6 sm:px-12 py-24 md:py-32">
-            <div className="flex items-center justify-between mb-16 border-b border-white/10 pb-6">
-                <motion.h2
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-2xl font-medium tracking-tight font-display"
-                >
-                    Skills & Expertise
-                </motion.h2>
+        <section ref={containerRef} id="skills" className="relative z-10 container mx-auto max-w-[1400px] px-6 sm:px-12 py-24 md:py-32">
+            <div className="skills-header flex items-center justify-between mb-16 border-b border-white/10 pb-6">
+                <h2 className="text-2xl font-medium tracking-tight font-display">
+                    Skills & Technologies
+                </h2>
                 <span className="text-sm text-secondary">(04)</span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {skills.map((skill, index) => (
-                    <SkillCard key={index} category={skill.category} icon={skill.icon} items={skill.items} />
+            <div className="skills-grid flex flex-col gap-8">
+                {skillsWithLogos.map((skill, index) => (
+                    <SkillCategoryCard
+                        key={skill.category}
+                        category={skill.category}
+                        icon={skill.icon}
+                        items={skill.items}
+                        index={index}
+                    />
                 ))}
             </div>
         </section>

@@ -18,18 +18,19 @@ const ScrollToTop: React.FC = () => {
 
 // Extracted routes for cleaner AnimatePresence handling
 const AnimatedRoutes: React.FC = () => {
-    const location = useLocation();
-    
-    return (
-        <AnimatePresence mode="wait">
-            <Routes location={location} key={location.pathname}>
-                <Route path="/" element={<Home />} />
-                <Route path="/work" element={<Home />} />
-                <Route path="/case-study/:id" element={<CaseStudy />} />
-                <Route path="*" element={<Home />} />
-            </Routes>
-        </AnimatePresence>
-    );
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location}>
+        <Route path="/" element={<Home />} />
+        <Route path="/work" element={<Home />} />
+        <Route path="/projects" element={<CaseStudy />} />
+        <Route path="/case-study/:id" element={<CaseStudy />} />
+        <Route path="*" element={<Home />} />
+      </Routes>
+    </AnimatePresence>
+  );
 };
 
 const App: React.FC = () => {

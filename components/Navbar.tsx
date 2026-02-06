@@ -68,8 +68,10 @@ const Navbar: React.FC = () => {
 
   const navItems = [
     { id: 'home', label: 'HOME' },
-    { id: 'work', label: 'WORKS' },
     { id: 'about', label: 'ABOUT' },
+    { id: 'skills', label: 'SKILLS' },
+    { id: 'services', label: 'SERVICES' },
+    { id: 'work', label: 'WORKS' },
     { id: 'contact', label: 'CONTACT' },
   ];
 
@@ -111,8 +113,13 @@ const Navbar: React.FC = () => {
                         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                         className="h-2 w-2 bg-primary rounded-full hidden md:block"
                     />
-                    <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
-                        <span className="text-xl font-bold tracking-tight font-display text-[#e0e0e0]">WELLI</span>
+                     <motion.div whileHover={{ scale: 1.02 }} transition={{ duration: 0.2 }}>
+                        <span 
+                            className="text-xl tracking-tight text-[#e0e0e0]"
+                            style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
+                        >
+                            WELLI
+                        </span>
                     </motion.div>
                 </motion.div>
             </div>
@@ -172,7 +179,10 @@ const Navbar: React.FC = () => {
                     >
                         {/* HEADER: CLOSE BUTTON */}
                         <div className="px-8 py-8 md:px-12 md:py-10 flex justify-between items-center border-b border-white/5 bg-[#0A0A0A] z-10">
-                             <div className="flex items-center gap-3 text-xs font-bold tracking-widest text-[#e0e0e0] uppercase">
+                             <div 
+                                className="flex items-center gap-3 text-xs tracking-widest text-[#e0e0e0] uppercase"
+                                style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
+                            >
                                 <span className="w-2 h-2 bg-[#FF3300]"></span>
                                 Navigation
                             </div>
@@ -205,7 +215,10 @@ const Navbar: React.FC = () => {
                                             <span className="text-xs font-mono text-white/30 group-hover:text-[#FF3300] transition-colors">
                                                 0{index + 1}
                                             </span>
-                                            <span className="text-4xl md:text-5xl font-bold font-display tracking-tight text-[#888] group-hover:text-white transition-colors duration-300">
+                                         <span 
+                                                className="text-4xl md:text-5xl tracking-tight text-[#888] group-hover:text-white transition-colors duration-300"
+                                                style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
+                                            >
                                                 {item.label}
                                             </span>
                                         </div>
@@ -218,7 +231,12 @@ const Navbar: React.FC = () => {
 
                             {/* SOCIAL MEDIA GRID */}
                             <div className="flex flex-col gap-6">
-                                <h4 className="text-xs font-bold tracking-widest text-white/50 uppercase">Connect</h4>
+                                <h4 
+                                className="text-xs tracking-widest text-white/50 uppercase"
+                                style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
+                            >
+                                Connect
+                            </h4>
                                 <div className="grid grid-cols-2 gap-3">
                                     {socialLinks.map((social) => (
                                         <a 
