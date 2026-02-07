@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Home from '@/pages/Home';
 import CaseStudy from '@/pages/CaseStudy';
+import LoadingScreen from '@/components/LoadingScreen';
 import { AnimatePresence } from 'framer-motion';
 import { useTheme, useAnalytics } from '@/hooks';
 
@@ -36,8 +37,13 @@ const AnimatedRoutes: React.FC = () => {
 
 const AppContent: React.FC = () => {
   const { mounted } = useTheme();
+  const [isLoading, setIsLoading] = useState(true);
   useAnalytics(); // Initialize Google Analytics
-  
+
+  const handleLoadingComplete = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
   // Prevent hydration mismatch
   if (!mounted) {
     return (
@@ -49,10 +55,21 @@ const AppContent: React.FC = () => {
 
   return (
     <>
-      <ScrollToTop />
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white transition-colors duration-300">
-        <Navbar />
-        <AnimatedRoutes />
+      {/* Loading Screen - Curtain Effect */}
+      {isLoading && (
+        <LoadingScreen 
+          onLoadingComplete={handleLoadingComplete}
+          minimumLoadTime={2800}
+        />
+      )}
+
+      {/* Main Content - Always visible, revealed by curtain */}
+      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
+        <ScrollToTop />
+        <div className="transition-colors duration-300">
+          <Navbar />
+          <AnimatedRoutes />
+        </div>
       </div>
     </>
   );

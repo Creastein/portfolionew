@@ -6,3 +6,4 @@ export * from './useReducedMotion';
 export * from './useTheme';
 export * from './usePWA';
 export * from './useAnalytics';
+export * from './usePreloadImage';

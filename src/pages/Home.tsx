@@ -1,16 +1,98 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowDown } from 'lucide-react';
+import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import AboutSection from '@/components/home/AboutSection';
 import SkillsSection from '@/components/home/SkillsSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import WorkSection from '@/components/home/WorkSection';
 import ContactSection from '@/components/home/ContactSection';
 
+// Staggered animation variants
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
+    }
+  }
+};
+
+const fadeUpVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 60,
+    filter: 'blur(10px)'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1] // Custom cubic-bezier for smooth ease
+    }
+  }
+};
+
+const fadeInVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.95,
+    filter: 'blur(20px)'
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 1.2,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+const slideInRightVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: 100,
+    filter: 'blur(10px)'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.9,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+const slideInLeftVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    x: -50,
+    filter: 'blur(10px)'
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.8,
+      ease: [0.25, 0.1, 0.25, 1],
+      delay: 0.2
+    }
+  }
+};
+
 export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   // Hero parallax
   const { scrollYProgress: heroProgress } = useScroll({
@@ -22,12 +104,8 @@ export default function Home() {
   const imageY = useTransform(heroProgress, [0, 1], ["0%", "30%"]);
   const floatingTextY = useTransform(heroProgress, [0, 1], ["0%", "-20%"]);
 
-  // Logo animation (Nakula-style)
-  // [0, 50] -> Stay at 7x (Large)
-  // [50, 400] -> Shrink to 1x (Navbar size)
-  const logoScale = useTransform(scrollY, [0, 50, 400], [7, 7, 1]);
-
-  const [isScrolled, setIsScrolled] = useState(false);
+  // Logo animation
+  const logoScale = useTransform(heroProgress, [0, 0.2, 0.8, 1], [7, 1, 1, 1.3]);
 
   useEffect(() => {
     return scrollY.on("change", (latest) => {
@@ -35,10 +113,16 @@ export default function Home() {
     });
   }, [scrollY]);
 
+  // Preload hero image
+  useEffect(() => {
+    const img = new Image();
+    img.src = "/images/hero-potrait.png";
+    img.onload = () => setImageLoaded(true);
+  }, []);
+
   return (
     <main ref={containerRef} className="relative w-full overflow-x-hidden pb-32 bg-black">
-
-      {/* TRANSFORMING LOGO (NAKULA STYLE) */}
+      {/* TRANSFORMING LOGO */}
       <motion.div
         style={{
           scale: logoScale,
@@ -50,24 +134,32 @@ export default function Home() {
         }}
         className="flex items-center gap-3 mix-blend-difference pointer-events-none"
       >
-        <span
+        <motion.span
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-xl font-bold tracking-tight text-[#e0e0e0] whitespace-nowrap"
           style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
         >
           WELLI
-        </span>
+        </motion.span>
       </motion.div>
 
       {/* --- SECTION 1: HERO --- */}
-      <section ref={heroRef} id="home" className="sticky top-0 min-h-screen w-full flex flex-col px-6 md:px-12 pt-8 pb-12 overflow-hidden">
-
+      <motion.section
+        ref={heroRef}
+        id="home"
+        className="sticky top-0 min-h-screen w-full flex flex-col px-6 md:px-12 pt-8 pb-12 overflow-hidden"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         {/* Background Gradients with Parallax */}
+
+
         <motion.div
           style={{ y: gradientY }}
-          className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/10 blur-[120px] rounded-full pointer-events-none will-change-transform"
-        />
-        <motion.div
-          style={{ y: gradientY }}
+          variants={fadeInVariants}
           className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-900/10 blur-[120px] rounded-full pointer-events-none will-change-transform"
         />
 
@@ -76,25 +168,27 @@ export default function Home() {
           <div className="absolute bottom-0 w-full h-2/3 bg-gradient-to-t from-background via-background/80 to-transparent z-20"></div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            variants={fadeInVariants}
             style={{ y: imageY }}
             className="relative w-[90%] md:w-[500px] lg:w-[600px] h-[70vh] mb-10 md:mb-32 will-change-transform"
           >
             <div className="relative w-full h-full">
-
-
-              <img
+              <motion.img
                 src="/images/hero-potrait.png"
                 alt="WELLI - Business Analyst and Web Developer"
                 className="w-full h-full object-cover object-top"
                 loading="eager"
                 decoding="async"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{
+                  opacity: imageLoaded ? 1 : 0,
+                  scale: imageLoaded ? 1 : 1.1
+                }}
+                transition={{ duration: 1, ease: [0.25, 0.1, 0.25, 1] }}
                 style={{
                   maskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
                   WebkitMaskImage: 'linear-gradient(to bottom, black 40%, transparent 100%)',
-                  filter: 'grayscale(100%) contrast(1.1) brightness(0.9) sepia(0.2)'
+                  filter: 'contrast(1.1) brightness(0.9)'
                 }}
               />
             </div>
@@ -104,15 +198,16 @@ export default function Home() {
         {/* Floating Text: Right with Parallax */}
         <motion.div
           style={{ y: floatingTextY }}
+          variants={slideInRightVariants}
           className="absolute top-[35%] right-6 md:right-12 z-20 text-right hidden md:block will-change-transform"
         >
           <motion.h2
-            initial={{ opacity: 0, x: 100 }}
             animate={{
               opacity: isScrolled ? 0 : 1,
-              x: isScrolled ? 100 : 0
+              x: isScrolled ? 100 : 0,
+              filter: isScrolled ? 'blur(10px)' : 'blur(0px)'
             }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-4xl lg:text-6xl font-bold text-white/90 leading-[0.9] tracking-tight mix-blend-overlay"
             style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
           >
@@ -124,29 +219,28 @@ export default function Home() {
         {/* Description & Scroll Indicator */}
         <div className="mt-auto relative z-30 flex flex-col md:flex-row justify-between items-end w-full">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            variants={slideInLeftVariants}
             animate={{
               opacity: isScrolled ? 0 : 1,
-              x: isScrolled ? -50 : 0
+              x: isScrolled ? -50 : 0,
+              filter: isScrolled ? 'blur(10px)' : 'blur(0px)'
             }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
             className="max-w-xl"
           >
-            <h3 className="text-2xl md:text-3xl text-white font-medium leading-tight tracking-tight" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>
+            <motion.h3
+              className="text-2xl md:text-3xl text-white font-medium leading-tight tracking-tight"
+              style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
+              variants={fadeUpVariants}
+            >
               I help turn business ideas into<br className="hidden md:block" />
               <span className="text-white/40">simple and useful web experiences.</span>
-            </h3>
+            </motion.h3>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 1 }}
-            className="hidden md:flex flex-col items-center gap-2 text-white/30 text-xs uppercase tracking-widest"
-          >
-          </motion.div>
+
         </div>
-      </section>
+      </motion.section>
 
       {/* --- EXTRACTED SECTIONS --- */}
       <AboutSection />

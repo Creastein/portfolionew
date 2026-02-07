@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useMemo } from 'react';
+import React, { useRef, Suspense, useMemo, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
 import ServiceCardSkeleton from './ServiceCardSkeleton';
@@ -14,6 +14,14 @@ const ServicesSection: React.FC = () => {
 
   const prefersReducedMotion = useReducedMotion();
   const isGridInView = useInView(gridRef, { threshold: 0.1 });
+
+  // Preload service images for faster loading
+  useEffect(() => {
+    servicesData.forEach((service) => {
+      const img = new Image();
+      img.src = service.image;
+    });
+  }, []);
 
   const containerVariants = useMemo(() => ({
     hidden: { opacity: 0 },

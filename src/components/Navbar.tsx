@@ -101,26 +101,26 @@ const Navbar: React.FC = () => {
                 <div className="pointer-events-none"></div>
 
                 {/* RIGHT SIDE GROUP */}
-                <div className="flex flex-col md:flex-row items-end md:items-start gap-8 md:gap-12 pointer-events-auto">
+                <div className="flex flex-row items-center gap-4 md:gap-12 pointer-events-auto">
                     <motion.div
                         animate={{ opacity: isMenuOpen ? 0 : 1 }}
-                        className="hidden md:flex gap-12 text-xs font-medium tracking-wide uppercase text-[#e0e0e0]"
+                        className="flex gap-4 md:gap-12 text-xs font-medium tracking-wide uppercase text-[#e0e0e0]"
                     >
                         <div>
                             <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                Available for project
+                                <span className="hidden md:inline">Available for project</span>
                             </div>
                         </div>
                         <div>
                             <div>{time}</div>
-                            <div className="text-white/50 mt-0.5 text-right">(GMT+7)</div>
+                            <div className="hidden md:block text-white/50 mt-0.5 text-right">(GMT+7)</div>
                         </div>
                     </motion.div>
 
                     <div className="flex items-center gap-4">
                         <ThemeToggle />
-                        
+
                         {/* MENU TRIGGER */}
                         <motion.button
                             animate={{ opacity: isMenuOpen ? 0 : 1 }}
@@ -159,10 +159,10 @@ const Navbar: React.FC = () => {
                             initial="closed"
                             animate="open"
                             exit="closed"
-                            className="fixed top-0 right-0 h-full w-full md:w-[30vw] min-w-[320px] bg-[#0A0A0A] z-50 flex flex-col border-l border-white/10 shadow-2xl"
+                            className="fixed top-0 right-0 h-full w-full md:w-[30vw] min-w-[320px] bg-black z-50 flex flex-col border-l border-white/10 shadow-2xl"
                         >
                             {/* HEADER: CLOSE BUTTON */}
-                            <div className="px-8 py-8 md:px-12 md:py-10 flex justify-between items-center border-b border-white/5 bg-[#0A0A0A] z-10">
+                            <div className="px-8 py-8 md:px-12 md:py-10 flex justify-between items-center border-b border-white/5 bg-black z-10">
                                 <div
                                     className="flex items-center gap-3 text-xs tracking-widest text-[#e0e0e0] uppercase"
                                     style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
@@ -244,7 +244,7 @@ const Navbar: React.FC = () => {
                             </div>
 
                             {/* FOOTER METADATA */}
-                            <div className="px-8 py-6 md:px-12 border-t border-white/10 bg-[#0A0A0A]">
+                            <div className="px-8 py-6 md:px-12 border-t border-white/10 bg-black">
                                 <div className="flex flex-col gap-1 text-xs text-white/30 text-center md:text-left">
                                     <p>© 2025 WELLI. All rights reserved.</p>
                                     <p>Designed & Developed in Jakarta.</p>

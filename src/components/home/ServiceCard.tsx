@@ -222,16 +222,20 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
           {/* Image with lazy loading and scale animation */}
           {shouldLoad && (
             <motion.div 
-              className="w-full h-full bg-cover bg-center"
-              style={{ 
-                backgroundImage: `url('${service.image}')`,
-                willChange: 'transform, filter'
-              }}
+              className="w-full h-full relative"
               variants={prefersReducedMotion ? undefined : imageVariants}
-              onLoad={handleImageLoad}
               role="img"
               aria-label={`Illustration for ${service.title}`}
-            />
+            >
+              <img
+                src={service.image}
+                alt={`${service.title} illustration`}
+                className="w-full h-full object-cover"
+                onLoad={handleImageLoad}
+                loading="lazy"
+                decoding="async"
+              />
+            </motion.div>
           )}
         </figure>
 
