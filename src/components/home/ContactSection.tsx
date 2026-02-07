@@ -5,6 +5,7 @@ import { useGSAP } from '@/hooks/useGSAP';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
+import SectionHeader from '../ui/SectionHeader';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -427,131 +428,8 @@ const ContactSection: React.FC = () => {
                 </div>
 
                 {/* Creative Header with GSAP Text Scramble & 3D Effect */}
-                <div className="relative border-y border-white/10 py-6 md:py-8 overflow-hidden">
-                    {/* Animated Background Grid */}
-                    <div className="absolute inset-0 opacity-20">
-                        <div className="absolute inset-0" style={{
-                            backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(19, 91, 236, 0.3) 1px, transparent 0)',
-                            backgroundSize: '40px 40px'
-                        }} />
-                    </div>
-
-                    {/* Floating Particles */}
-                    <div className="absolute inset-0 overflow-hidden">
-                        {[...Array(15)].map((_, i) => (
-                            <motion.div
-                                key={i}
-                                className="absolute w-1 h-1 bg-primary/40 rounded-full"
-                                initial={{
-                                    x: Math.random() * 100 + '%',
-                                    y: Math.random() * 100 + '%',
-                                    opacity: 0
-                                }}
-                                animate={{
-                                    y: [null, '-100%'],
-                                    opacity: [0, 1, 0]
-                                }}
-                                transition={{
-                                    duration: Math.random() * 10 + 10,
-                                    repeat: Infinity,
-                                    delay: Math.random() * 5,
-                                    ease: "linear"
-                                }}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Main Header Content */}
-                    <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 relative z-10">
-                        <div className="flex flex-col items-center">
-                            {/* Section Number */}
-                            <motion.div
-                                className="text-primary font-mono text-xs mb-3 tracking-widest"
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.6 }}
-                            >
-                            </motion.div>
-
-                            {/* Main Scramble Text */}
-                            <div className="relative perspective-1000">
-                                <h2
-                                    className="scramble-text text-4xl sm:text-5xl md:text-6xl tracking-tighter text-center"
-                                    style={{
-                                        fontFamily: '"Mohave", sans-serif',
-                                        fontWeight: 300,
-                                        perspective: '1000px',
-                                        lineHeight: 1.1
-                                    }}
-                                >
-                                    <span className="scramble-char">C</span>
-                                    <span className="scramble-char">O</span>
-                                    <span className="scramble-char">N</span>
-                                    <span className="scramble-char">T</span>
-                                    <span className="scramble-char">A</span>
-                                    <span className="scramble-char">C</span>
-                                    <span className="scramble-char">T</span>
-                                </h2>
-
-                                {/* Gradient Stroke Text Behind */}
-                                <h2
-                                    className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl tracking-tighter text-center opacity-30 blur-sm"
-                                    style={{
-                                        fontFamily: '"Mohave", sans-serif',
-                                        fontWeight: 300,
-                                        WebkitTextStroke: '2px rgba(19, 91, 236, 0.5)',
-                                        WebkitTextFillColor: 'transparent',
-                                        lineHeight: 1.1
-                                    }}
-                                >
-                                    CONTACT
-                                </h2>
-                            </div>
-
-                            {/* Subtitle with Typewriter Effect */}
-                            <motion.div
-                                className="mt-3 text-center"
-                                initial={{ opacity: 0 }}
-                                whileInView={{ opacity: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 1.5, duration: 0.8 }}
-                            >
-                                <span
-                                    className="text-sm md:text-base text-primary"
-                                    style={{ fontFamily: '"Rock Salt", cursive' }}
-                                >
-                                    Get in Touch
-                                </span>
-                            </motion.div>
-
-                            {/* Floating Decorative Elements */}
-                            <motion.div
-                                className="absolute left-10 top-1/2 -translate-y-1/2 hidden lg:block"
-                                animate={{
-                                    y: [0, -20, 0],
-                                    rotate: [0, 5, 0]
-                                }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                                <div className="w-20 h-20 border border-primary/20 rounded-full flex items-center justify-center">
-                                    <div className="w-12 h-12 border border-primary/40 rounded-full" />
-                                </div>
-                            </motion.div>
-
-                            <motion.div
-                                className="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:block"
-                                animate={{
-                                    y: [0, 20, 0],
-                                    rotate: [0, -5, 0]
-                                }}
-                                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                            >
-                                <div className="w-24 h-24 border border-white/10 rotate-45" />
-                            </motion.div>
-                        </div>
-                    </div>
-                </div>
+                {/* Creative Header with GSAP Text Scramble & 3D Effect */}
+                <SectionHeader title="CONTACT" subtitle="Get in Touch" />
 
                 {/* Main Contact Content */}
                 <div ref={containerRef} className="container mx-auto max-w-[1400px] px-6 sm:px-12 py-24">
