@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Home from '@/pages/Home';
 import CaseStudy from '@/pages/CaseStudy';
 import { AnimatePresence } from 'framer-motion';
-import { useTheme } from '@/hooks/useTheme';
+import { useTheme, useAnalytics } from '@/hooks';
 
 // ScrollToTop component to handle route changes
 const ScrollToTop: React.FC = () => {
@@ -36,6 +36,7 @@ const AnimatedRoutes: React.FC = () => {
 
 const AppContent: React.FC = () => {
   const { mounted } = useTheme();
+  useAnalytics(); // Initialize Google Analytics
   
   // Prevent hydration mismatch
   if (!mounted) {
