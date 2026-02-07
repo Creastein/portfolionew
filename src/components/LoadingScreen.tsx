@@ -138,7 +138,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
 
       {/* Logo - Centered (hanya satu kali) */}
       <div className="absolute inset-0 flex items-center justify-center z-10">
-        <div ref={logoRef} className="relative">
+        <div ref={logoRef} className="relative text-center">
           <h1
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white whitespace-nowrap"
             style={{
