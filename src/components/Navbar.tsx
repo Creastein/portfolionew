@@ -95,13 +95,13 @@ const Navbar: React.FC = () => {
     return (
         <>
             {/* TOP BAR */}
-            <nav className="fixed top-0 left-0 w-full z-40 px-6 md:px-12 py-8 flex justify-between items-start mix-blend-difference text-white pointer-events-none">
+            <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-12 py-8 flex justify-between items-start text-white pointer-events-none">
 
                 {/* SPACER (Logo is now in Home.tsx) */}
                 <div className="pointer-events-none"></div>
 
                 {/* RIGHT SIDE GROUP */}
-                <div className="flex flex-row items-center gap-4 md:gap-12 pointer-events-auto">
+                <div className="flex flex-row items-center gap-4 md:gap-8 pointer-events-auto bg-black/20 backdrop-blur-md border border-white/10 rounded-full px-6 py-3 shadow-lg">
                     <motion.div
                         animate={{ opacity: isMenuOpen ? 0 : 1 }}
                         className="flex gap-4 md:gap-12 text-xs font-medium tracking-wide uppercase text-[#e0e0e0]"

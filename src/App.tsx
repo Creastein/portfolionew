@@ -35,13 +35,16 @@ const AnimatedRoutes: React.FC = () => {
   );
 };
 
+let hasShownLoadingScreen = false;
+
 const AppContent: React.FC = () => {
   const { mounted } = useTheme();
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(() => !hasShownLoadingScreen);
   useAnalytics(); // Initialize Google Analytics
 
   const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
+    hasShownLoadingScreen = true;
   }, []);
 
   // Prevent hydration mismatch
@@ -57,14 +60,18 @@ const AppContent: React.FC = () => {
     <>
       {/* Loading Screen - Curtain Effect */}
       {isLoading && (
-        <LoadingScreen 
+        <LoadingScreen
           onLoadingComplete={handleLoadingComplete}
           minimumLoadTime={2800}
         />
       )}
 
       {/* Main Content - Always visible, revealed by curtain */}
-      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white">
+      <div
+        className={`min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white transition-opacity duration-300 ${
+          isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        }`}
+      >
         <ScrollToTop />
         <div className="transition-colors duration-300">
           <Navbar />

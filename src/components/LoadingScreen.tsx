@@ -6,16 +6,32 @@ interface LoadingScreenProps {
   minimumLoadTime?: number;
 }
 
-const LoadingScreen: React.FC<LoadingScreenProps> = ({ 
-  onLoadingComplete, 
-  minimumLoadTime = 2500 
+const LoadingScreen: React.FC<LoadingScreenProps> = ({
+  onLoadingComplete,
+  minimumLoadTime = 2500
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const curtainRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
-  const startTimeRef = useRef<number>(Date.now());
   const hasAnimatedRef = useRef<boolean>(false);
   const [canExit, setCanExit] = useState(false);
+
+  useEffect(() => {
+    const safetyTimer = setTimeout(() => {
+      console.warn("Loading screen animation took too long, forcing exit...");
+      onLoadingComplete();
+    }, minimumLoadTime + 4000);
+    return () => clearTimeout(safetyTimer);
+  }, [minimumLoadTime, onLoadingComplete]);
+
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCanExit(true);
+    }, minimumLoadTime);
+
+    return () => clearTimeout(timer);
+  }, [minimumLoadTime]);
 
   useEffect(() => {
     // Prevent double animation in React StrictMode
@@ -23,10 +39,12 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
     hasAnimatedRef.current = true;
 
     const tl = gsap.timeline();
-    
+
     // Initial state - logo hidden
     gsap.set(logoRef.current, { opacity: 0, scale: 0.9 });
-    
+    gsap.set(curtainRef.current, { yPercent: 0, skewY: 0 });
+    gsap.set(containerRef.current, { display: 'block' });
+
     // Logo entrance animation - fade in with scale (hanya sekali)
     tl.to(logoRef.current, {
       opacity: 1,
@@ -35,14 +53,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
       ease: "power2.out",
       delay: 0.2
     });
-
-    // Wait for minimum load time
-    const timer = setTimeout(() => {
-      setCanExit(true);
-    }, minimumLoadTime);
-
-    return () => clearTimeout(timer);
-  }, [minimumLoadTime]);
+  }, []);
 
   useEffect(() => {
     if (canExit && containerRef.current && curtainRef.current && logoRef.current) {
@@ -93,17 +104,17 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
       {/* Curtain/Fabric Layer */}
       <div
         ref={curtainRef}
-        className="absolute inset-0 bg-black will-change-transform"
+        className="absolute inset-0 bg-primary will-change-transform"
         style={{ transformOrigin: 'bottom center' }}
       >
         {/* Subtle texture overlay for fabric feel */}
-        <div 
+        <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
           }}
         />
-        
+
         {/* Gradient overlay for depth */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-50" />
       </div>
@@ -113,15 +124,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
         <div ref={logoRef} className="relative">
           <h1
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight text-white whitespace-nowrap"
-            style={{ 
-              fontFamily: '"Mohave", sans-serif', 
+            style={{
+              fontFamily: '"Mohave", sans-serif',
               fontWeight: 600,
               textShadow: '0 0 60px rgba(19, 91, 236, 0.3)'
             }}
           >
             WELLI
           </h1>
-          
+
           {/* Subtle glow effect */}
           <div className="absolute -inset-10 bg-primary/20 blur-[80px] rounded-full -z-10" />
         </div>

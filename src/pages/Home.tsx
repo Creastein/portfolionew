@@ -127,12 +127,9 @@ export default function Home() {
         style={{
           scale: logoScale,
           transformOrigin: "top left",
-          position: 'fixed',
-          top: '2rem',
-          left: '1.5rem',
           zIndex: 50
         }}
-        className="flex items-center gap-3 mix-blend-difference pointer-events-none"
+        className="fixed top-32 left-6 md:top-8 md:left-6 flex items-center gap-3 mix-blend-difference pointer-events-none"
       >
         <motion.span
           initial={{ opacity: 0, y: -20 }}
