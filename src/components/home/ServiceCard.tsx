@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, KeyboardEvent, useMemo } from 'react';
-import { motion, useAnimation, Variants } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ServiceCardProps } from '@/types/components/service-card';
 import { useLazyImage } from '@/hooks/useLazyImage';
 
@@ -12,7 +12,6 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const cardRef = useRef<HTMLElement>(null);
-  const controls = useAnimation();
   const { imgRef, shouldLoad, isLoaded, handleLoad } = useLazyImage({
     rootMargin: '100px',
     threshold: 0.1
@@ -44,6 +43,8 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   const cardId = `service-card-${service.id}`;
   const titleId = `service-title-${service.id}`;
   const descId = `service-desc-${service.id}`;
+  const shouldAnimate = isInView && !prefersReducedMotion;
+  const shouldHover = !prefersReducedMotion;
 
   // Memoized animation variants for better performance
   const cardVariants = useMemo<Variants>(() => ({
@@ -73,12 +74,10 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
 
   const imageVariants = useMemo<Variants>(() => ({
     rest: { 
-      scale: 1,
-      filter: 'brightness(0.8)'
+      scale: 1
     },
     hover: { 
-      scale: 1.1,
-      filter: 'brightness(1)',
+      scale: 1.06,
       transition: {
         duration: 0.6,
         ease: [0.25, 0.46, 0.45, 0.94]
@@ -169,12 +168,12 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       ref={cardRef}
       id={cardId}
       className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-1 cursor-pointer"
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      whileHover={prefersReducedMotion ? undefined : "hover"}
-      variants={prefersReducedMotion ? undefined : cardVariants}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      initial={shouldAnimate ? "hidden" : false}
+      animate={shouldAnimate ? "visible" : undefined}
+      whileHover={shouldHover ? "hover" : undefined}
+      variants={shouldAnimate ? cardVariants : undefined}
+      onMouseEnter={() => shouldHover && setIsHovered(true)}
+      onMouseLeave={() => shouldHover && setIsHovered(false)}
       onFocus={handleFocus}
       onBlur={handleBlur}
       onKeyDown={handleKeyDown}
@@ -188,7 +187,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       }}
     >
       {/* Animated border glow effect */}
-      {!prefersReducedMotion && (
+      {shouldHover && (
         <motion.div
           className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30 pointer-events-none"
           initial="rest"
@@ -197,11 +196,11 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
         />
       )}
 
-      <motion.div 
-        className="relative flex flex-col md:flex-row h-full rounded-lg overflow-hidden bg-[#151b26]"
-        initial="rest"
-        animate={isHovered || isFocused ? "hover" : "rest"}
-      >
+        <motion.div 
+          className="relative flex flex-col md:flex-row h-full rounded-lg overflow-hidden bg-[#151b26]"
+          initial="rest"
+          animate={shouldHover && (isHovered || isFocused) ? "hover" : "rest"}
+        >
         {/* Image Section with Lazy Loading */}
         <figure 
           ref={imgRef}
@@ -220,13 +219,13 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
           )}
           
           {/* Image with lazy loading and scale animation */}
-          {shouldLoad && (
-            <motion.div 
-              className="w-full h-full relative"
-              variants={prefersReducedMotion ? undefined : imageVariants}
-              role="img"
-              aria-label={`Illustration for ${service.title}`}
-            >
+            {shouldLoad && (
+              <motion.div 
+                className="w-full h-full relative"
+                variants={shouldHover ? imageVariants : undefined}
+                role="img"
+                aria-label={`Illustration for ${service.title}`}
+              >
               <img
                 src={service.image}
                 alt={`${service.title} illustration`}
@@ -240,15 +239,15 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
         </figure>
 
         {/* Content Section */}
-        <motion.div 
-          className="flex flex-1 flex-col justify-between p-6 md:p-8"
-          variants={prefersReducedMotion ? undefined : contentVariants}
-        >
+          <motion.div 
+            className="flex flex-1 flex-col justify-between p-6 md:p-8"
+            variants={shouldHover ? contentVariants : undefined}
+          >
           <header className="flex flex-col gap-4">
             {/* Icon with rotation animation */}
             <motion.div 
               className="text-primary mb-2"
-              variants={prefersReducedMotion ? undefined : iconVariants}
+              variants={shouldHover ? iconVariants : undefined}
               style={{ willChange: 'transform' }}
               aria-hidden="true"
             >
@@ -260,7 +259,6 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               id={titleId}
               className="text-2xl font-bold text-white group-hover:text-primary group-focus-within:text-primary transition-colors duration-300 font-display"
               style={{ willChange: 'color' }}
-              layout
             >
               {service.title}
             </motion.h3>
@@ -280,15 +278,15 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               className="flex flex-wrap gap-2 list-none p-0 m-0"
               role="list"
               aria-label={`Technologies and skills for ${service.title}`}
-              variants={prefersReducedMotion ? undefined : tagContainerVariants}
-              initial="hidden"
-              animate={isInView ? "visible" : "hidden"}
+              variants={shouldAnimate ? tagContainerVariants : undefined}
+              initial={shouldAnimate ? "hidden" : false}
+              animate={shouldAnimate ? "visible" : undefined}
             >
               {service.tags.map((tag) => (
                 <motion.li
                   key={tag}
-                  variants={prefersReducedMotion ? undefined : tagVariants}
-                  whileHover={prefersReducedMotion ? undefined : { scale: 1.05 }}
+                  variants={shouldHover ? tagVariants : undefined}
+                  whileHover={shouldHover ? { scale: 1.05 } : undefined}
                 >
                   <span
                     className="inline-block px-3 py-1 rounded-full bg-white/5 text-xs font-medium text-gray-300 border border-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:border-primary/30 group-hover:text-white group-focus-within:bg-white/10 group-focus-within:border-primary/30 group-focus-within:text-white"
