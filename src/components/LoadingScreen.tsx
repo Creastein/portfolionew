@@ -13,6 +13,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const curtainRef = useRef<HTMLDivElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
+  const taglineRef = useRef<HTMLParagraphElement>(null);
   const hasAnimatedRef = useRef<boolean>(false);
   const [canExit, setCanExit] = useState(false);
 
@@ -42,6 +43,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
 
     // Initial state - logo hidden
     gsap.set(logoRef.current, { opacity: 0, scale: 0.9 });
+    gsap.set(taglineRef.current, { opacity: 0, y: 10 });
     gsap.set(curtainRef.current, { yPercent: 0, skewY: 0 });
     gsap.set(containerRef.current, { display: 'block' });
 
@@ -53,6 +55,14 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
       ease: "power2.out",
       delay: 0.2
     });
+
+    // Text in after logo appears
+    tl.to(taglineRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.2");
   }, []);
 
   useEffect(() => {
@@ -73,6 +83,13 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
         duration: 0.4,
         ease: "power2.in"
       });
+
+      exitTl.to(taglineRef.current, {
+        opacity: 0,
+        y: 6,
+        duration: 0.3,
+        ease: "power2.in"
+      }, "-=0.3");
 
       // Curtain lifts up like fabric - smooth ease
       exitTl.to(curtainRef.current, {
@@ -104,7 +121,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
       {/* Curtain/Fabric Layer */}
       <div
         ref={curtainRef}
-        className="absolute inset-0 bg-primary will-change-transform"
+        className="absolute inset-0 bg-[#003152] will-change-transform"
         style={{ transformOrigin: 'bottom center' }}
       >
         {/* Subtle texture overlay for fabric feel */}
@@ -127,14 +144,22 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
             style={{
               fontFamily: '"Mohave", sans-serif',
               fontWeight: 600,
-              textShadow: '0 0 60px rgba(19, 91, 236, 0.3)'
+              textShadow: '0 0 60px rgba(0, 49, 82, 0.4)'
             }}
           >
             WELLI
           </h1>
 
+          <p
+            ref={taglineRef}
+            className="mt-3 text-center text-sm md:text-base tracking-[0.28em] text-white/80"
+            style={{ fontFamily: '"Mohave", sans-serif' }}
+          >
+            LOADING EXPERIENCE
+          </p>
+
           {/* Subtle glow effect */}
-          <div className="absolute -inset-10 bg-primary/20 blur-[80px] rounded-full -z-10" />
+          <div className="absolute -inset-10 bg-[#003152]/30 blur-[80px] rounded-full -z-10" />
         </div>
       </div>
     </div>

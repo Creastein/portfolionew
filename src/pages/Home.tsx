@@ -87,7 +87,39 @@ const slideInLeftVariants: Variants = {
   }
 };
 
-export default function Home() {
+const textContainerVariants: Variants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.2,
+    }
+  }
+};
+
+const textLineVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 14,
+    filter: 'blur(4px)'
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.6,
+      ease: [0.25, 0.1, 0.25, 1]
+    }
+  }
+};
+
+interface HomeProps {
+  isLoading: boolean;
+}
+
+export default function Home({ isLoading }: HomeProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
@@ -148,7 +180,7 @@ export default function Home() {
         id="home"
         className="sticky top-0 min-h-screen w-full flex flex-col px-6 md:px-12 pt-8 pb-12 overflow-hidden"
         initial="hidden"
-        animate="visible"
+        animate={isLoading ? 'hidden' : 'visible'}
         variants={containerVariants}
       >
         {/* Background Gradients with Parallax */}
@@ -198,19 +230,29 @@ export default function Home() {
           variants={slideInRightVariants}
           className="absolute top-[35%] right-6 md:right-12 z-20 text-right hidden md:block will-change-transform"
         >
-          <motion.h2
+          <motion.div
             animate={{
               opacity: isScrolled ? 0 : 1,
               x: isScrolled ? 100 : 0,
               filter: isScrolled ? 'blur(10px)' : 'blur(0px)'
             }}
             transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
-            className="text-4xl lg:text-6xl font-bold text-white/90 leading-[0.9] tracking-tight mix-blend-overlay"
-            style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
           >
-            Business Analyst<br />
-            Web Developer
-          </motion.h2>
+            <motion.h2
+              variants={textContainerVariants}
+              initial="hidden"
+              animate={isLoading ? 'hidden' : 'visible'}
+              className="text-4xl lg:text-6xl font-bold text-white/90 leading-[0.9] tracking-tight mix-blend-overlay"
+              style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
+            >
+              <motion.span variants={textLineVariants} className="block">
+                Business Analyst
+              </motion.span>
+              <motion.span variants={textLineVariants} className="block">
+                Web Developer
+              </motion.span>
+            </motion.h2>
+          </motion.div>
         </motion.div>
 
         {/* Description & Scroll Indicator */}
@@ -226,12 +268,18 @@ export default function Home() {
             className="max-w-xl"
           >
             <motion.h3
+              variants={textContainerVariants}
               className="text-2xl md:text-3xl text-white font-medium leading-tight tracking-tight"
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
-              variants={fadeUpVariants}
+              initial="hidden"
+              animate={isLoading ? 'hidden' : 'visible'}
             >
-              I help turn business ideas into<br className="hidden md:block" />
-              <span className="text-white/40">simple and useful web experiences.</span>
+              <motion.span variants={textLineVariants} className="block">
+                I help turn business ideas into
+              </motion.span>
+              <motion.span variants={textLineVariants} className="block text-white/40">
+                simple and useful web experiences.
+              </motion.span>
             </motion.h3>
           </motion.div>
 

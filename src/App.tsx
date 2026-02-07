@@ -19,17 +19,21 @@ const ScrollToTop: React.FC = () => {
 };
 
 // Extracted routes for cleaner AnimatePresence handling
-const AnimatedRoutes: React.FC = () => {
+interface AnimatedRoutesProps {
+  isLoading: boolean;
+}
+
+const AnimatedRoutes: React.FC<AnimatedRoutesProps> = ({ isLoading }) => {
   const location = useLocation();
 
   return (
     <AnimatePresence mode="wait">
       <Routes location={location}>
-        <Route path="/" element={<Home />} />
-        <Route path="/work" element={<Home />} />
+        <Route path="/" element={<Home isLoading={isLoading} />} />
+        <Route path="/work" element={<Home isLoading={isLoading} />} />
         <Route path="/projects" element={<CaseStudy />} />
         <Route path="/case-study/:id" element={<CaseStudy />} />
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Home isLoading={isLoading} />} />
       </Routes>
     </AnimatePresence>
   );
@@ -75,7 +79,7 @@ const AppContent: React.FC = () => {
         <ScrollToTop />
         <div className="transition-colors duration-300">
           <Navbar />
-          <AnimatedRoutes />
+          <AnimatedRoutes isLoading={isLoading} />
         </div>
       </div>
     </>
