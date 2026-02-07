@@ -73,18 +73,20 @@ const ServicesSection: React.FC = () => {
           animate={isGridInView ? "visible" : "hidden"}
         >
           {servicesData.map((service, index) => (
-            <ServiceCardErrorBoundary
-              fallback={<ServiceCardSkeleton index={index} />}
-            >
-              <Suspense fallback={<ServiceCardSkeleton index={index} />}>
-                <ServiceCard
-                  service={service}
-                  index={index}
-                  isInView={isGridInView}
-                  prefersReducedMotion={prefersReducedMotion}
-                />
-              </Suspense>
-            </ServiceCardErrorBoundary>
+            <React.Fragment key={service.id}>
+              <ServiceCardErrorBoundary
+                fallback={<ServiceCardSkeleton index={index} />}
+              >
+                <Suspense fallback={<ServiceCardSkeleton index={index} />}>
+                  <ServiceCard
+                    service={service}
+                    index={index}
+                    isInView={isGridInView}
+                    prefersReducedMotion={prefersReducedMotion}
+                  />
+                </Suspense>
+              </ServiceCardErrorBoundary>
+            </React.Fragment>
           ))}
         </motion.div>
 

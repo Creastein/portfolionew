@@ -43,12 +43,17 @@ let hasShownLoadingScreen = false;
 
 const AppContent: React.FC = () => {
   const { mounted } = useTheme();
-  const [isLoading, setIsLoading] = useState(() => !hasShownLoadingScreen);
+  const [isLoading, setIsLoading] = useState(() => {
+    const shouldShow = !hasShownLoadingScreen;
+    if (shouldShow) {
+      hasShownLoadingScreen = true;
+    }
+    return shouldShow;
+  });
   useAnalytics(); // Initialize Google Analytics
 
   const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
-    hasShownLoadingScreen = true;
   }, []);
 
   // Prevent hydration mismatch

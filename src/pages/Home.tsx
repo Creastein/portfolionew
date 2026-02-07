@@ -141,9 +141,19 @@ export default function Home({ isLoading }: HomeProps) {
 
   useEffect(() => {
     return scrollY.on("change", (latest) => {
+      if (isLoading) {
+        setIsScrolled(false);
+        return;
+      }
       setIsScrolled(latest > 100);
     });
-  }, [scrollY]);
+  }, [scrollY, isLoading]);
+
+  useEffect(() => {
+    if (!isLoading) {
+      setIsScrolled(scrollY.get() > 100);
+    }
+  }, [isLoading, scrollY]);
 
   // Preload hero image
   useEffect(() => {
@@ -158,10 +168,9 @@ export default function Home({ isLoading }: HomeProps) {
       <motion.div
         style={{
           scale: logoScale,
-          transformOrigin: "top left",
-          zIndex: 50
+          transformOrigin: "top left"
         }}
-        className="fixed top-32 left-6 md:top-8 md:left-6 flex items-center gap-3 mix-blend-difference pointer-events-none"
+        className="fixed top-32 left-6 md:top-8 md:left-6 z-0 md:z-50 flex items-center gap-3 mix-blend-difference pointer-events-none"
       >
         <motion.span
           initial={{ opacity: 0, y: -20 }}
@@ -259,20 +268,14 @@ export default function Home({ isLoading }: HomeProps) {
         <div className="mt-auto relative z-30 flex flex-col md:flex-row justify-between items-end w-full">
           <motion.div
             variants={slideInLeftVariants}
-            animate={{
-              opacity: isScrolled ? 0 : 1,
-              x: isScrolled ? -50 : 0,
-              filter: isScrolled ? 'blur(10px)' : 'blur(0px)'
-            }}
-            transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
+            initial="hidden"
+            animate={isLoading || isScrolled ? 'hidden' : 'visible'}
             className="max-w-xl"
           >
             <motion.h3
               variants={textContainerVariants}
               className="text-2xl md:text-3xl text-white font-medium leading-tight tracking-tight"
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
-              initial="hidden"
-              animate={isLoading ? 'hidden' : 'visible'}
             >
               <motion.span variants={textLineVariants} className="block">
                 I help turn business ideas into
