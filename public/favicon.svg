@@ -1,4 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="100" fill="#135bec"/>
-  <path d="M149.1 143.4h48.6l37.2 138.8 38.8-138.8h46.6l38.8 138.8 37.2-138.8h46.6L378.8 368.6h-54.4l-40.4-142-40.4 142h-54.4L149.1 143.4z" fill="#ffffff"/>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220" />
+      <stop offset="1" stop-color="#003152" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1f6feb" />
+      <stop offset="1" stop-color="#7aa7ff" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)" />
+  <circle cx="256" cy="256" r="190" fill="none" stroke="url(#accent)" stroke-width="18" opacity="0.35" />
+  <path
+    d="M132 156 L182 356 L256 206 L330 356 L380 156"
+    fill="none"
+    stroke="url(#accent)"
+    stroke-width="34"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="378" cy="152" r="12" fill="#7aa7ff" />
 </svg>
