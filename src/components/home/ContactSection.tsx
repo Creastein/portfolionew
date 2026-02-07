@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { ArrowUpRight, Send, Copy, Check, Mail, MapPin, Clock } from 'lucide-react';
-import { useGSAP } from '../../hooks/useGSAP';
+import { useGSAP } from '@/hooks/useGSAP';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import emailjs from '@emailjs/browser';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,7 +33,7 @@ const MagneticButton: React.FC<{
     const ref = useRef<HTMLButtonElement>(null);
     const x = useMotionValue(0);
     const y = useMotionValue(0);
-    
+
     const springConfig = { damping: 15, stiffness: 150 };
     const springX = useSpring(x, springConfig);
     const springY = useSpring(y, springConfig);
@@ -69,10 +70,10 @@ const MagneticButton: React.FC<{
 };
 
 // Toast Notification Component
-const Toast: React.FC<{ message: string; type: 'success' | 'error'; onClose: () => void }> = ({ 
-    message, 
-    type, 
-    onClose 
+const Toast: React.FC<{ message: string; type: 'success' | 'error'; onClose: () => void }> = ({
+    message,
+    type,
+    onClose
 }) => {
     useEffect(() => {
         const timer = setTimeout(onClose, 3000);
@@ -84,11 +85,13 @@ const Toast: React.FC<{ message: string; type: 'success' | 'error'; onClose: () 
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.9 }}
-            className={`fixed bottom-8 right-8 px-6 py-4 rounded-xl shadow-2xl z-50 flex items-center gap-3 ${
-                type === 'success' ? 'bg-green-500/90' : 'bg-red-500/90'
-            } backdrop-blur-sm`}
+            role="alert"
+            aria-live="polite"
+            aria-atomic="true"
+            className={`fixed bottom-8 right-8 px-6 py-4 rounded-xl shadow-2xl z-50 flex items-center gap-3 ${type === 'success' ? 'bg-green-500/90' : 'bg-red-500/90'
+                } backdrop-blur-sm`}
         >
-            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center" aria-hidden="true">
                 {type === 'success' ? <Check className="w-4 h-4" /> : <span className="text-lg">!</span>}
             </div>
             <span className="font-medium">{message}</span>
@@ -133,9 +136,8 @@ const FloatingInput: React.FC<{
                 onChange={onChange}
                 onFocus={() => setIsFocused(true)}
                 onBlur={() => setIsFocused(false)}
-                className={`w-full bg-white/5 border ${
-                    error ? 'border-red-500' : 'border-white/10'
-                } rounded-xl px-4 ${isTextarea ? 'pt-6 pb-4 min-h-[150px] resize-none' : 'py-4'} text-white placeholder-transparent focus:outline-none focus:border-primary transition-colors duration-300`}
+                className={`w-full bg-white/5 border ${error ? 'border-red-500' : 'border-white/10'
+                    } rounded-xl px-4 ${isTextarea ? 'pt-6 pb-4 min-h-[150px] resize-none' : 'py-4'} text-white placeholder-transparent focus:outline-none focus:border-primary transition-colors duration-300`}
             />
             {error && (
                 <motion.span
@@ -200,7 +202,7 @@ const ContactSection: React.FC = () => {
     useEffect(() => {
         if (titleRef.current) {
             const text = "LET'S TALK";
-            const chars = text.split('').map((char, i) => 
+            const chars = text.split('').map((char, i) =>
                 `<span class="char inline-block" style="opacity: 0; transform: translateY(50px);">${char === ' ' ? '&nbsp;' : char}</span>`
             ).join('');
             titleRef.current.innerHTML = chars;
@@ -213,15 +215,15 @@ const ContactSection: React.FC = () => {
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
         const scrambleChars = document.querySelectorAll('.scramble-char');
         const finalText = 'CONTACT';
-        
+
         scrambleChars.forEach((char, index) => {
             const finalChar = finalText[index];
             let iterations = 0;
             const maxIterations = 15;
-            
-            gsap.fromTo(char, 
-                { 
-                    opacity: 0, 
+
+            gsap.fromTo(char,
+                {
+                    opacity: 0,
                     rotateX: 90,
                     y: 50,
                     scale: 0.5
@@ -322,21 +324,21 @@ const ContactSection: React.FC = () => {
 
     const validateForm = (): boolean => {
         const newErrors: FormErrors = {};
-        
+
         if (!formData.name.trim()) {
             newErrors.name = 'Name is required';
         }
-        
+
         if (!formData.email.trim()) {
             newErrors.email = 'Email is required';
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = 'Please enter a valid email';
         }
-        
+
         if (!formData.subject.trim()) {
             newErrors.subject = 'Subject is required';
         }
-        
+
         if (!formData.message.trim()) {
             newErrors.message = 'Message is required';
         } else if (formData.message.length < 10) {
@@ -349,17 +351,39 @@ const ContactSection: React.FC = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!validateForm()) return;
 
         setIsSubmitting(true);
-        
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        setIsSubmitting(false);
-        setToast({ message: 'Message sent successfully!', type: 'success' });
-        setFormData({ name: '', email: '', subject: '', message: '' });
+
+        try {
+            // EmailJS Configuration from environment variables
+            const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+            const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+            const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+            // Validate environment variables
+            if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+                throw new Error('EmailJS configuration is missing. Please set up your environment variables.');
+            }
+
+            const templateParams = {
+                from_name: formData.name,
+                from_email: formData.email,
+                subject: formData.subject,
+                message: formData.message,
+                to_email: 'well0711200@gmail.com',
+            };
+
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+
+            setToast({ message: 'Message sent successfully!', type: 'success' });
+            setFormData({ name: '', email: '', subject: '', message: '' });
+        } catch (error) {
+            setToast({ message: 'Failed to send message. Please try again.', type: 'error' });
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -391,10 +415,10 @@ const ContactSection: React.FC = () => {
 
     return (
         <>
-            <footer 
-                ref={sectionRef} 
-                id="contact" 
-                className="relative z-10 bg-black"
+            <footer
+                ref={sectionRef}
+                id="contact"
+                className="relative z-40 bg-black"
             >
                 {/* Animated Background */}
                 <div className="absolute inset-0 overflow-hidden">
@@ -411,23 +435,23 @@ const ContactSection: React.FC = () => {
                             backgroundSize: '40px 40px'
                         }} />
                     </div>
-                    
+
                     {/* Floating Particles */}
                     <div className="absolute inset-0 overflow-hidden">
                         {[...Array(15)].map((_, i) => (
                             <motion.div
                                 key={i}
                                 className="absolute w-1 h-1 bg-primary/40 rounded-full"
-                                initial={{ 
-                                    x: Math.random() * 100 + '%', 
+                                initial={{
+                                    x: Math.random() * 100 + '%',
                                     y: Math.random() * 100 + '%',
-                                    opacity: 0 
+                                    opacity: 0
                                 }}
-                                animate={{ 
+                                animate={{
                                     y: [null, '-100%'],
                                     opacity: [0, 1, 0]
                                 }}
-                                transition={{ 
+                                transition={{
                                     duration: Math.random() * 10 + 10,
                                     repeat: Infinity,
                                     delay: Math.random() * 5,
@@ -441,20 +465,20 @@ const ContactSection: React.FC = () => {
                     <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 relative z-10">
                         <div className="flex flex-col items-center">
                             {/* Section Number */}
-                            <motion.div 
+                            <motion.div
                                 className="text-primary font-mono text-xs mb-3 tracking-widest"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.6 }}
                             >
-                           </motion.div>
+                            </motion.div>
 
                             {/* Main Scramble Text */}
                             <div className="relative perspective-1000">
-                                <h2 
+                                <h2
                                     className="scramble-text text-4xl sm:text-5xl md:text-6xl tracking-tighter text-center"
-                                    style={{ 
+                                    style={{
                                         fontFamily: '"Mohave", sans-serif',
                                         fontWeight: 300,
                                         perspective: '1000px',
@@ -469,11 +493,11 @@ const ContactSection: React.FC = () => {
                                     <span className="scramble-char">C</span>
                                     <span className="scramble-char">T</span>
                                 </h2>
-                                
+
                                 {/* Gradient Stroke Text Behind */}
-                                <h2 
+                                <h2
                                     className="absolute inset-0 text-4xl sm:text-5xl md:text-6xl tracking-tighter text-center opacity-30 blur-sm"
-                                    style={{ 
+                                    style={{
                                         fontFamily: '"Mohave", sans-serif',
                                         fontWeight: 300,
                                         WebkitTextStroke: '2px rgba(19, 91, 236, 0.5)',
@@ -486,14 +510,14 @@ const ContactSection: React.FC = () => {
                             </div>
 
                             {/* Subtitle with Typewriter Effect */}
-                            <motion.div 
+                            <motion.div
                                 className="mt-3 text-center"
                                 initial={{ opacity: 0 }}
                                 whileInView={{ opacity: 1 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 1.5, duration: 0.8 }}
                             >
-                                <span 
+                                <span
                                     className="text-sm md:text-base text-primary"
                                     style={{ fontFamily: '"Rock Salt", cursive' }}
                                 >
@@ -504,7 +528,7 @@ const ContactSection: React.FC = () => {
                             {/* Floating Decorative Elements */}
                             <motion.div
                                 className="absolute left-10 top-1/2 -translate-y-1/2 hidden lg:block"
-                                animate={{ 
+                                animate={{
                                     y: [0, -20, 0],
                                     rotate: [0, 5, 0]
                                 }}
@@ -517,7 +541,7 @@ const ContactSection: React.FC = () => {
 
                             <motion.div
                                 className="absolute right-10 top-1/2 -translate-y-1/2 hidden lg:block"
-                                animate={{ 
+                                animate={{
                                     y: [0, 20, 0],
                                     rotate: [0, -5, 0]
                                 }}
@@ -532,12 +556,12 @@ const ContactSection: React.FC = () => {
                 {/* Main Contact Content */}
                 <div ref={containerRef} className="container mx-auto max-w-[1400px] px-6 sm:px-12 py-24">
                     <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
-                        
+
                         {/* Left Column - Contact Info */}
                         <div className="contact-info-container space-y-12">
                             {/* Animated Heading */}
                             <div>
-                                <h2 
+                                <h2
                                     ref={titleRef}
                                     className="text-5xl md:text-7xl tracking-tighter text-white mb-8"
                                     style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
@@ -551,7 +575,7 @@ const ContactSection: React.FC = () => {
 
                             {/* Contact Info Cards */}
                             <div className="space-y-4">
-                                <motion.div 
+                                <motion.div
                                     className="contact-info-card group flex items-center gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 cursor-pointer"
                                     onClick={copyEmail}
                                     whileHover={{ scale: 1.02 }}
@@ -603,7 +627,7 @@ const ContactSection: React.FC = () => {
                                 </h3>
                                 <div className="flex flex-wrap gap-6">
                                     {socialLinks.map((link, index) => (
-                                        <SocialLink 
+                                        <SocialLink
                                             key={link.label}
                                             href={link.href}
                                             label={link.label}
@@ -615,7 +639,7 @@ const ContactSection: React.FC = () => {
                         </div>
 
                         {/* Right Column - Contact Form */}
-                        <motion.div 
+                        <motion.div
                             className="contact-form-container"
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -719,7 +743,7 @@ const ContactSection: React.FC = () => {
                                     transition={{ repeat: Infinity, duration: 1.5 }}
                                     className="text-red-400"
                                 >
-                                    ♥
+
                                 </motion.span>
                                 <span>in Jakarta</span>
                             </div>
@@ -730,10 +754,10 @@ const ContactSection: React.FC = () => {
 
             {/* Toast Notification */}
             {toast && (
-                <Toast 
-                    message={toast.message} 
-                    type={toast.type} 
-                    onClose={() => setToast(null)} 
+                <Toast
+                    message={toast.message}
+                    type={toast.type}
+                    onClose={() => setToast(null)}
                 />
             )}
         </>

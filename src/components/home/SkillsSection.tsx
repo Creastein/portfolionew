@@ -1,6 +1,7 @@
 import React from 'react';
-import { skillsWithLogos, SkillItem } from '../data/skillsWithLogos';
-import { useGSAP } from '../../hooks/useGSAP';
+import { skillsWithLogos, SkillItem } from '@/components/data/skillsWithLogos';
+import { useGSAP } from '@/hooks/useGSAP';
+import SectionHeader from '@/components/ui/SectionHeader';
 import gsap from 'gsap';
 
 const SkillLogo: React.FC<{ item: SkillItem, index: number }> = ({ item, index }) => {
@@ -76,22 +77,6 @@ const SkillCategoryCard: React.FC<{ category: string, icon: React.ElementType, i
 
 const SkillsSection: React.FC = () => {
     const containerRef = useGSAP<HTMLElement>(() => {
-        // Animate header
-        gsap.fromTo('.skills-header',
-            { y: 30, opacity: 0 },
-            {
-                y: 0,
-                opacity: 1,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.skills-header',
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
-                }
-            }
-        );
-
         // Stagger animate category cards
         gsap.fromTo('.skill-category-card',
             { y: 50, opacity: 0 },
@@ -132,15 +117,10 @@ const SkillsSection: React.FC = () => {
     }, []);
 
     return (
-        <section ref={containerRef} id="skills" className="relative z-10 container mx-auto max-w-[1400px] px-6 sm:px-12 py-24 md:py-32">
-            <div className="skills-header flex items-center justify-between mb-16 border-b border-white/10 pb-6">
-                <h2 className="text-2xl font-medium tracking-tight font-display">
-                    Skills & Technologies
-                </h2>
-                <span className="text-sm text-secondary">(04)</span>
-            </div>
+        <section ref={containerRef} id="skills" className="relative z-40 pb-24 md:pb-32 pt-0">
+            <SectionHeader title="SKILLS" subtitle="My Tech Stack" className="mb-12" />
 
-            <div className="skills-grid flex flex-col gap-8">
+            <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 skills-grid flex flex-col gap-8">
                 {skillsWithLogos.map((skill, index) => (
                     <SkillCategoryCard
                         key={skill.category}

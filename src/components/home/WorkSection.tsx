@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
-import { projects } from '../data/projects';
-import { useGSAP } from '../../hooks/useGSAP';
+import { projects } from '@/components/data/projects';
+import { useGSAP } from '@/hooks/useGSAP';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -40,23 +40,17 @@ const WorkSection: React.FC = () => {
                 start: 'top center',
                 end: 'bottom center',
                 onEnter: () => {
-                    console.log(`Entering project ${index}: ${project.title}`);
                     setActiveProject(index);
                 },
                 onEnterBack: () => {
-                    console.log(`Entering back project ${index}: ${project.title}`);
                     setActiveProject(index);
                 },
             });
         });
-
-        return () => {
-            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-        };
     }, [topPickProjects]);
 
     return (
-        <section ref={containerRef} id="work" className="relative z-10 bg-background">
+        <section ref={containerRef} id="work" className="relative z-40 bg-background">
             {/* Marquee Header */}
             <div className="w-full border-y border-white/10 py-6 overflow-hidden">
                 <div className="work-marquee-container flex whitespace-nowrap">
@@ -85,16 +79,16 @@ const WorkSection: React.FC = () => {
                                         Top Pick
                                     </span>
                                 </div>
-                            </div>
+                            </div >
                         ))}
-                    </div>
-                </div>
-            </div>
+                    </div >
+                </div >
+            </div >
 
             {/* Split Screen Layout */}
-            <div className="flex flex-col lg:grid lg:grid-cols-2 min-h-screen lg:h-screen lg:overflow-hidden">
+            < div className="flex flex-col lg:grid lg:grid-cols-2 min-h-screen lg:h-screen lg:overflow-hidden" >
                 {/* Left Panel - Project Details (Fixed) */}
-                <div className="relative bg-background lg:border-r border-white/5">
+                < div className="relative bg-background lg:border-r border-white/5" >
                     <div className="lg:h-full flex flex-col justify-between p-6 md:p-8 lg:p-12 xl:p-16">
                         {/* Header */}
                         <div className="space-y-8">
@@ -159,42 +153,46 @@ const WorkSection: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
 
                 {/* Right Panel - Full Screen Project Mockups (Scroll Snap) */}
-                <div
+                < div
                     ref={scrollContainerRef}
                     className="relative bg-surface h-screen overflow-y-scroll snap-y snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
-                    {topPickProjects.map((project, index) => (
-                        <div
-                            key={project.id}
-                            className={`project-item-${index} h-screen w-full snap-start snap-always relative`}
-                        >
-                            {/* Full Screen Project Image */}
-                            <img
-                                src={project.image}
-                                alt={project.title}
-                                className="absolute inset-0 w-full h-full object-cover"
-                                onError={(e) => {
-                                    // Fallback to gradient if image fails to load
-                                    e.currentTarget.style.display = 'none';
-                                    const parent = e.currentTarget.parentElement;
-                                    if (parent) {
-                                        parent.style.background = 'linear-gradient(135deg, rgba(19, 91, 236, 0.1) 0%, rgba(19, 91, 236, 0.05) 100%)';
-                                    }
-                                }}
-                            />
+                    {
+                        topPickProjects.map((project, index) => (
+                            <div
+                                key={project.id}
+                                className={`project-item-${index} h-screen w-full snap-start snap-always relative`}
+                            >
+                                {/* Full Screen Project Image - Optimized with lazy loading */}
+                                <img
+                                    src={project.image}
+                                    alt={`${project.title} - Project Preview`}
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                    loading="lazy"
+                                    decoding="async"
+                                    onError={(e) => {
+                                        // Fallback to gradient if image fails to load
+                                        e.currentTarget.style.display = 'none';
+                                        const parent = e.currentTarget.parentElement;
+                                        if (parent) {
+                                            parent.style.background = 'linear-gradient(135deg, rgba(19, 91, 236, 0.1) 0%, rgba(19, 91, 236, 0.05) 100%)';
+                                        }
+                                    }}
+                                />
 
-                            {/* Floating Project Number */}
-                            <div className="absolute top-8 left-8 w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold shadow-lg z-10">
-                                {(index + 1).toString().padStart(2, '0')}
+                                {/* Floating Project Number */}
+                                <div className="absolute top-8 left-8 w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold shadow-lg z-10">
+                                    {(index + 1).toString().padStart(2, '0')}
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
+                        ))
+                    }
+                </div >
+            </div >
+        </section >
     );
 };
 

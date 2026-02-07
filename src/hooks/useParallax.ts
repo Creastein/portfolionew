@@ -9,10 +9,7 @@ interface ParallaxOptions {
 }
 
 /**
- * Custom hook for creating parallax scroll effects
- * @param ref - Reference to the target element
- * @param options - Configuration options for the parallax effect
- * @returns Object containing motion values for y, opacity, and scale
+ * Creates parallax scroll effects using Framer Motion
  */
 export const useParallax = (
   ref: RefObject<HTMLElement>,
@@ -41,9 +38,7 @@ export const useParallax = (
   return { y, opacity, scale };
 };
 
-/**
- * Hook for creating a simple vertical parallax effect
- */
+/** Simple vertical parallax effect */
 export const useVerticalParallax = (
   ref: RefObject<HTMLElement>,
   distance: number = 100
@@ -56,9 +51,7 @@ export const useVerticalParallax = (
   return useTransform(scrollYProgress, [0, 1], [distance, -distance]);
 };
 
-/**
- * Hook for creating a fade-in effect on scroll
- */
+/** Fade-in effect on scroll */
 export const useFadeInOnScroll = (
   ref: RefObject<HTMLElement>
 ): MotionValue<number> => {

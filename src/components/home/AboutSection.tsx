@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useGSAP } from '../../hooks/useGSAP';
+import { useGSAP } from '@/hooks/useGSAP';
 import gsap from 'gsap';
 
 const AboutSection: React.FC = () => {
@@ -88,7 +88,7 @@ const AboutSection: React.FC = () => {
                 stagger: 0.02,
                 ease: 'power3.out',
                 scrollTrigger: {
-                    trigger: '.about-desc',                  start: 'top 75%',
+                    trigger: '.about-desc', start: 'top 75%',
                     toggleActions: 'play none none reverse'
                 }
             }
@@ -96,7 +96,7 @@ const AboutSection: React.FC = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} id="about" className="relative z-10 bg-black py-24 md:py-32 border-t border-white/5 overflow-hidden">
+        <section ref={sectionRef} id="about" className="relative z-40 bg-black py-24 md:py-32 border-t border-white/5 overflow-hidden">
             <div ref={containerRef} className="container mx-auto max-w-[1400px] px-6 sm:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-end">
                     {/* Title Section - Left Column */}

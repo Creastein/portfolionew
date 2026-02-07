@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef, KeyboardEvent, useMemo } from 'react';
 import { motion, useAnimation, Variants } from 'framer-motion';
-import { ServiceCardProps } from '../../types/services';
-import { useLazyImage } from '../../hooks/useLazyImage';
+import { ServiceCardProps } from '@/types/components/service-card';
+import { useLazyImage } from '@/hooks/useLazyImage';
 
 const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   service,

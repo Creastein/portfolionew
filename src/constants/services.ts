@@ -1,5 +1,5 @@
 import { Cpu, Code, Layers } from 'lucide-react';
-import { Service } from '../types/services';
+import { Service } from '@/types/domain/services';
 
 export const servicesData: Service[] = [
   {

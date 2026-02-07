@@ -1,9 +1,10 @@
 import React from 'react';
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import CaseStudy from './pages/CaseStudy';
+import Navbar from '@/components/Navbar';
+import Home from '@/pages/Home';
+import CaseStudy from '@/pages/CaseStudy';
 import { AnimatePresence } from 'framer-motion';
+import { useTheme } from '@/hooks/useTheme';
 
 // ScrollToTop component to handle route changes
 const ScrollToTop: React.FC = () => {
@@ -33,14 +34,33 @@ const AnimatedRoutes: React.FC = () => {
   );
 };
 
-const App: React.FC = () => {
+const AppContent: React.FC = () => {
+  const { mounted } = useTheme();
+  
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
   return (
-    <HashRouter>
+    <>
       <ScrollToTop />
-      <div className="min-h-screen bg-background text-white font-sans selection:bg-primary selection:text-white">
+      <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white transition-colors duration-300">
         <Navbar />
         <AnimatedRoutes />
       </div>
+    </>
+  );
+};
+
+const App: React.FC = () => {
+  return (
+    <HashRouter>
+      <AppContent />
     </HashRouter>
   );
 };

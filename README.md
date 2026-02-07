@@ -1,20 +1,57 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# WELLI Portfolio
 
-# Run and deploy your AI Studio app
+Personal portfolio website showcasing business analysis and web development work.
 
-This contains everything you need to run your app locally.
+## Tech Stack
 
-View your app in AI Studio: https://ai.studio/apps/drive/1T14r806HTNQAMj-E7BJIZasHXClrO1fh
+- **Framework:** React 19 + TypeScript
+- **Build Tool:** Vite 6
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion + GSAP
+- **Icons:** Lucide React
 
-## Run Locally
+## Getting Started
 
-**Prerequisites:**  Node.js
+```bash
+# Install dependencies
+npm install
 
+# Set up environment
+cp .env.example .env.local
+# Add your GEMINI_API_KEY to .env.local
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+```
+
+## Project Structure
+
+```
+src/
+├── components/      # React components
+│   ├── home/       # Home page sections
+│   ├── ui/         # Reusable UI components
+│   └── data/       # Component data
+├── pages/          # Route pages
+├── hooks/          # Custom React hooks
+├── types/          # TypeScript types
+│   ├── components/ # Component prop types
+│   └── domain/     # Business domain types
+├── constants/      # Constants and static data
+└── utils/          # Utility functions
+```
+
+## Features
+
+- Responsive design
+- Smooth scroll animations
+- Interactive project showcase
+- Contact form with validation
+- Optimized performance
+
+## License
+
+© 2025 WELLI. All rights reserved.

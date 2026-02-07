@@ -7,12 +7,7 @@ if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-/**
- * Custom hook for GSAP animations with automatic cleanup
- * @param callback - Function containing GSAP animations
- * @param deps - Dependencies array (like useEffect)
- * @returns ref - Reference to attach to the container element
- */
+/** GSAP animations with automatic cleanup */
 export const useGSAP = <T extends HTMLElement = HTMLDivElement>(
     callback: (ctx: gsap.Context) => void,
     deps: any[] = []
@@ -29,9 +24,7 @@ export const useGSAP = <T extends HTMLElement = HTMLDivElement>(
     return ref;
 };
 
-/**
- * Utility function to create reveal animation
- */
+/** Creates reveal animation */
 export const createRevealAnimation = (
     selector: string,
     options: {
@@ -67,9 +60,7 @@ export const createRevealAnimation = (
     });
 };
 
-/**
- * Utility function to create parallax animation
- */
+/** Creates parallax animation */
 export const createParallaxAnimation = (
     selector: string,
     options: {

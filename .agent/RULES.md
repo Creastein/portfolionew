@@ -7,14 +7,156 @@
 
 ## 📋 Table of Contents
 
-1. [Code Style & Formatting](#code-style--formatting)
-2. [Component Guidelines](#component-guidelines)
-3. [TypeScript Rules](#typescript-rules)
-4. [Styling Guidelines](#styling-guidelines)
-5. [File Organization](#file-organization)
-6. [Git Workflow](#git-workflow)
-7. [Testing Requirements](#testing-requirements)
-8. [Performance Standards](#performance-standards)
+1. [AI Agent Behavior - Anti Hallucination](#-ai-agent-behavior---anti-hallucination)
+2. [Code Style & Formatting](#code-style--formatting)
+3. [Component Guidelines](#component-guidelines)
+4. [TypeScript Rules](#typescript-rules)
+5. [Styling Guidelines](#styling-guidelines)
+6. [File Organization](#file-organization)
+7. [Git Workflow](#git-workflow)
+8. [Testing Requirements](#testing-requirements)
+9. [Performance Standards](#performance-standards)
+
+---
+
+## 🤖 AI Agent Behavior - Anti Hallucination
+
+> **PENTING**: Bagian ini adalah aturan MUTLAK yang HARUS diikuti AI agent.
+
+### 1. JANGAN BUAT ASUMSI - TANYA DULU
+
+```
+❌ SALAH:
+"Saya akan menambahkan validasi form yang komprehensif..."
+"Biar saya tambahkan error handling..."
+"Saya rasa Anda mau pakai library X..."
+
+✅ BENAR:
+"Apakah Anda mau saya tambahkan validasi?"
+"Mohon konfirmasi: mau pakai library X atau Y?"
+"Bagian ini butuh clarifikasi - mau saya buat A atau B?"
+```
+
+**Aturan Mutlak:**
+- Kalau user nggak request, jangan tambah fitur sendiri
+- Kalau ada yang ambigu, TANYA dulu jangan asumsi
+- Kalau ada opsi teknis, kasih pilihan ke user
+- Prioritaskan konfirmasi daripada "halu"
+
+### 2. IMPLEMENTASI PERSIS SESUAI REQUEST
+
+```
+❌ SALAH:
+User: "Ganti warna button jadi biru"
+AI: "Saya ganti warna button + tambahkan hover effect + tambahkan transition + ganti ukuran juga..."
+
+✅ BENAR:
+User: "Ganti warna button jadi biru"
+AI: "Saya ganti warna button jadi biru. Done."
+```
+
+**Aturan Mutlak:**
+- Lakukan PERSIS yang diminta, TIDAK LEBIH
+- Jangan "improve" code tanpa diminta
+- Jangan refactor struktur tanpa izin
+- Kalau ada bug/ masalah lain, laporkan tapi jangan fix tanpa izin
+
+### 3. TANYA UNTUK HAL YANG TIDAK JELAS
+
+**Wajib bertanya untuk:**
+- Spesifikasi teknis (library, framework version)
+- Design/bahasa yang berbeda dengan codebase existing
+- Perubahan arsitektur
+- Fitur baru yang kompleks
+- Integrasi dengan sistem eksternal
+
+**Contoh format tanya:**
+```
+"Untuk fitur ini, saya perlu konfirmasi:
+1. Mau pakai library A atau B?
+2. Design-nya mengikuti style guide existing atau ada mockup baru?
+3. Butuh responsive untuk mobile/tablet juga?"
+```
+
+### 4. PERILAKU PROGRAMMER PROFESIONAL
+
+**Komunikasi:**
+- ✅ Singkat, jelas, to the point
+- ✅ Laporan progress yang konkret
+- ✅ Error message yang helpful
+- ❌ Panjang lebar menjelaskan teori
+- ❌ Bas-basi yang tidak perlu
+
+**Code:**
+- ✅ Kode minimal, readable, maintainable
+- ✅ TypeScript strict, no any
+- ✅ Test dulu sebelum bilang selesai
+- ❌ Over-engineering
+- ❌ Code yang terlalu "clever"
+- ❌ Comment yang berlebihan
+
+**Professional Mindset:**
+- Fokus pada problem yang sedang dikerjakan
+- Prioritaskan deadline dan deliverables
+- Kalau stuck >15 menit, lapor user
+- Tidak defensive kalau ada feedback
+
+### 5. CEK KONDISI REALISTIS
+
+**Sebelum coding:**
+```
+✅ Baca file yang relevan dulu
+✅ Cek existing patterns di codebase
+✅ Pastikan library yang dipakai sudah ada di project
+✅ Verifikasi path dan struktur folder
+```
+
+**Setelah coding:**
+```
+✅ Test build (npm run build)
+✅ Cek TypeScript errors (tsc --noEmit)
+✅ Verifikasi tidak ada import yang broken
+✅ Pastikan tidak ada console errors
+```
+
+### 6. GAK BOLEH LAKU INI
+
+```
+❌ Tidak boleh:
+- Generate mock data tanpa izin
+- Tambah dependencies baru tanpa izin
+- Ubah konfigurasi project (tsconfig, vite, etc) tanpa izin
+- Hapus code existing tanpa izin
+- Commit/push tanpa explicit permission
+- Deploy tanpa izin
+- Share code/screenshot ke luar tanpa izin
+```
+
+### 7. RESPONSE YANG BAIK
+
+**Template response ideal:**
+```
+1. Konfirmasi apa yang akan dikerjakan
+2. Hasil/ deliverable
+3. (Opsional) Blocker atau yang perlu decision user
+4. (Opsional) Pertanyaan untuk hal yang belum jelas
+```
+
+**Contoh:**
+```
+User: "Buat fitur login"
+
+AI: "Baik, saya akan buat fitur login dengan spesifikasi:
+- Form email + password
+- Validasi basic (required, email format)
+- State management pakai React useState
+- Error handling untuk wrong credentials
+
+Pertanyaan:
+1. Backend API endpoint-nya apa?
+2. Setelah login sukses, redirect ke mana?
+3. Butuh 'remember me' checkbox?"
+```
 
 ---
 
@@ -242,6 +384,14 @@ refactor/component-structure
 docs/update-readme
 ```
 
+**IMPORTANT - Git Restrictions:**
+- ❌ **JANGAN COMMIT tanpa explicit permission dari user**
+- ❌ **JANGAN PUSH ke remote tanpa diminta**
+- ❌ **JANGAN FORCE PUSH**
+- ✅ Jika user minta commit: `git add <specific-files>` (jangan `git add .`)
+- ✅ Verifikasi staged files sebelum commit
+- ✅ Commit message harus deskriptif dan mengikuti format
+
 ---
 
 ## 🧪 Testing Requirements
@@ -422,8 +572,8 @@ Lihat existing components sebagai referensi:
 
 ## 🔄 Updates
 
-**Last Updated**: 2026-02-06  
-**Version**: 1.0.0
+**Last Updated**: 2026-02-07  
+**Version**: 1.1.0
 
 Aturan ini akan di-update seiring berkembangnya project. Jika ada saran atau perubahan, silakan diskusikan dengan tim.
 

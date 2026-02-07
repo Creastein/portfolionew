@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Calendar, Clock } from 'lucide-react';
-import { projects } from '../components/data/projects';
+import { projects } from '@/components/data/projects';
 
 const CaseStudy: React.FC = () => {
   const navigate = useNavigate();
