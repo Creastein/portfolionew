@@ -1,8 +1,7 @@
-import { useEffect, useRef, MutableRefObject } from 'react';
+import { useEffect, useRef, MutableRefObject, DependencyList } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
@@ -10,7 +9,7 @@ if (typeof window !== 'undefined') {
 /** GSAP animations with automatic cleanup */
 export const useGSAP = <T extends HTMLElement = HTMLDivElement>(
     callback: (ctx: gsap.Context) => void,
-    deps: any[] = []
+    deps: DependencyList = []
 ): MutableRefObject<T | null> => {
     const ref = useRef<T>(null);
 
@@ -79,7 +78,7 @@ export const createParallaxAnimation = (
         scrub = true
     } = options;
 
-    const animationProps: any = { y, ease: 'none' };
+    const animationProps: gsap.TweenVars = { y, ease: 'none' };
     if (scale) animationProps.scale = scale;
 
     return gsap.to(selector, {

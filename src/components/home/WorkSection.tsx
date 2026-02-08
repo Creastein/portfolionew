@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { projects } from '@/components/data/projects';
 import { useGSAP } from '@/hooks/useGSAP';
+import { trackProjectClick, trackCTAClick } from '@/hooks/useAnalytics';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -95,7 +96,10 @@ const WorkSection: React.FC = () => {
                             <div className="flex items-center justify-between">
                                 <h3 className="text-xs md:text-sm uppercase tracking-widest text-secondary font-medium" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>Top Pick Projects</h3>
                                 <button
-                                    onClick={() => navigate('/projects')}
+                                    onClick={() => {
+                                        trackCTAClick('all_projects', 'work_section');
+                                        navigate('/projects');
+                                    }}
                                     className="flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 text-xs md:text-sm font-medium"
                                 >
                                     All Projects <ArrowRight className="w-4 h-4" />
@@ -107,6 +111,10 @@ const WorkSection: React.FC = () => {
                                 {topPickProjects.map((project, index) => (
                                     <div
                                         key={project.id}
+                                        onClick={() => {
+                                            trackProjectClick(project.title, project.id);
+                                            setActiveProject(index);
+                                        }}
                                         className={`text-lg md:text-xl lg:text-2xl transition-all duration-300 cursor-pointer ${activeProject === index
                                             ? 'text-white opacity-100 translate-x-2'
                                             : 'text-white/30 opacity-50 hover:text-white/60 hover:opacity-75'

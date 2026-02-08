@@ -1,11 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { ArrowUpRight, Send, Copy, Check, Mail, MapPin, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Send, Copy, Check, Mail, MapPin, Clock } from 'lucide-react';
 import { useGSAP } from '@/hooks/useGSAP';
+import { trackFormSubmit, trackEmailCopy } from '@/hooks/useAnalytics';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import emailjs from '@emailjs/browser';
 import SectionHeader from '../ui/SectionHeader';
+import MagneticButton from '../ui/MagneticButton';
+import Toast from '../ui/Toast';
+import FloatingInput from '../ui/FloatingInput';
+import SocialLink from '../ui/SocialLink';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,168 +27,6 @@ interface FormErrors {
     subject?: string;
     message?: string;
 }
-
-// Magnetic Button Component
-const MagneticButton: React.FC<{
-    children: React.ReactNode;
-    className?: string;
-    onClick?: () => void;
-    type?: 'button' | 'submit' | 'reset';
-    disabled?: boolean;
-}> = ({ children, className = '', onClick, type = 'button', disabled = false }) => {
-    const ref = useRef<HTMLButtonElement>(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const springConfig = { damping: 15, stiffness: 150 };
-    const springX = useSpring(x, springConfig);
-    const springY = useSpring(y, springConfig);
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current || disabled) return;
-        const rect = ref.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        x.set((e.clientX - centerX) * 0.3);
-        y.set((e.clientY - centerY) * 0.3);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    return (
-        <motion.button
-            ref={ref}
-            type={type}
-            onClick={onClick}
-            disabled={disabled}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ x: springX, y: springY }}
-            className={className}
-            whileTap={{ scale: 0.95 }}
-        >
-            {children}
-        </motion.button>
-    );
-};
-
-// Toast Notification Component
-const Toast: React.FC<{ message: string; type: 'success' | 'error'; onClose: () => void }> = ({
-    message,
-    type,
-    onClose
-}) => {
-    useEffect(() => {
-        const timer = setTimeout(onClose, 3000);
-        return () => clearTimeout(timer);
-    }, [onClose]);
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -20, scale: 0.9 }}
-            role="alert"
-            aria-live="polite"
-            aria-atomic="true"
-            className={`fixed bottom-8 right-8 px-6 py-4 rounded-xl shadow-2xl z-50 flex items-center gap-3 ${type === 'success' ? 'bg-green-500/90' : 'bg-red-500/90'
-                } backdrop-blur-sm`}
-        >
-            <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center" aria-hidden="true">
-                {type === 'success' ? <Check className="w-4 h-4" /> : <span className="text-lg">!</span>}
-            </div>
-            <span className="font-medium">{message}</span>
-        </motion.div>
-    );
-};
-
-// Floating Label Input Component
-const FloatingInput: React.FC<{
-    label: string;
-    name: string;
-    type?: string;
-    value: string;
-    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    error?: string;
-    required?: boolean;
-    isTextarea?: boolean;
-}> = ({ label, name, type = 'text', value, onChange, error, required, isTextarea }) => {
-    const [isFocused, setIsFocused] = useState(false);
-    const isActive = isFocused || value.length > 0;
-
-    const InputComponent = isTextarea ? 'textarea' : 'input';
-
-    return (
-        <div className="relative">
-            <motion.label
-                animate={{
-                    y: isActive ? -28 : 12,
-                    scale: isActive ? 0.85 : 1,
-                    color: isActive ? '#135BEC' : 'rgba(255,255,255,0.5)'
-                }}
-                transition={{ duration: 0.2 }}
-                className="absolute left-4 pointer-events-none origin-left font-medium"
-            >
-                {label}
-                {required && <span className="text-primary ml-1">*</span>}
-            </motion.label>
-            <InputComponent
-                type={isTextarea ? undefined : type}
-                name={name}
-                value={value}
-                onChange={onChange}
-                onFocus={() => setIsFocused(true)}
-                onBlur={() => setIsFocused(false)}
-                className={`w-full bg-white/5 border ${error ? 'border-red-500' : 'border-white/10'
-                    } rounded-xl px-4 ${isTextarea ? 'pt-6 pb-4 min-h-[150px] resize-none' : 'py-4'} text-white placeholder-transparent focus:outline-none focus:border-primary transition-colors duration-300`}
-            />
-            {error && (
-                <motion.span
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-red-400 text-sm mt-1 block"
-                >
-                    {error}
-                </motion.span>
-            )}
-        </div>
-    );
-};
-
-// Social Link Component with hover effect
-const SocialLink: React.FC<{
-    href: string;
-    label: string;
-    index: number;
-}> = ({ href, label, index }) => {
-    return (
-        <motion.a
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-            whileHover={{ scale: 1.05, x: 5 }}
-            className="group relative flex items-center gap-3 uppercase tracking-widest text-xs font-bold text-white/60 hover:text-primary transition-all duration-300"
-        >
-            <span className="relative overflow-hidden">
-                <span className="block transition-transform duration-300 group-hover:-translate-y-full">
-                    {label}
-                </span>
-                <span className="absolute top-full left-0 text-primary transition-transform duration-300 group-hover:-translate-y-full">
-                    {label}
-                </span>
-            </span>
-            <ArrowUpRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
-        </motion.a>
-    );
-};
 
 const ContactSection: React.FC = () => {
     const sectionRef = useRef<HTMLElement>(null);
@@ -378,9 +221,11 @@ const ContactSection: React.FC = () => {
 
             await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
+            trackFormSubmit('contact_form', true);
             setToast({ message: 'Message sent successfully!', type: 'success' });
             setFormData({ name: '', email: '', subject: '', message: '' });
         } catch (error) {
+            trackFormSubmit('contact_form', false);
             setToast({ message: 'Failed to send message. Please try again.', type: 'error' });
         } finally {
             setIsSubmitting(false);
@@ -399,6 +244,7 @@ const ContactSection: React.FC = () => {
     const copyEmail = async () => {
         try {
             await navigator.clipboard.writeText('contact@welli.my.id');
+            trackEmailCopy('contact@welli.my.id');
             setCopied(true);
             setToast({ message: 'Email copied to clipboard!', type: 'success' });
             setTimeout(() => setCopied(false), 2000);
