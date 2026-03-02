@@ -49,14 +49,26 @@ export const projects: Project[] = [
         featured: true
     },
     {
+        id: 'pt-bkn',
+        title: 'PT BKN',
+        category: 'Corporate Website · Lead Generation',
+        year: '2024',
+        description: 'A professional corporate website designed with lead generation strategy, delivering a clean and trustworthy digital presence.',
+        timeline: '2 Weeks',
+        services: ['UI/UX Design', 'Frontend Dev', 'Lead Generation Strategy'],
+        image: '/images/pt-bkn.png',
+        link: 'https://pt-bkn.vercel.app/',
+        featured: true
+    },
+    {
         id: 'best1trans',
         title: 'Best1Trans',
         category: 'Transportation Booking Platform',
-        year: '2026',
-        description: 'A high-conversion transportation and tour booking platform optimized for mobile users and rapid reservation workflows.',
-        timeline: '3 weeks',
-        services: ['Web Development', 'Booking System', 'UI/UX'],
-        image: '/images/best1trans.png',
+        year: '2025',
+        description: 'A high-conversion transportation and tour booking platform with interactive UI/UX, optimized for mobile users and conversion rate.',
+        timeline: '3 Weeks',
+        services: ['Platform Architecture', 'Interactive UI/UX', 'Frontend Development', 'Conversion Rate Optimization (CRO)'],
+        image: '/images/lux-drive.png',
         link: 'https://best1-trans.vercel.app/',
         featured: true
     },
@@ -70,6 +82,42 @@ export const projects: Project[] = [
         services: ['Website Branding', 'UI/UX', 'Motion Design'],
         image: '/images/dancingmountainvilla.png',
         link: 'https://dancing-mountain-villa.vercel.app/',
+        featured: true
+    },
+    {
+        id: 'website-builder',
+        title: 'Website Builder',
+        category: 'SaaS · Fullstack Engineering',
+        year: '2026',
+        description: 'An enterprise-grade SaaS application engineered to empower non-technical users to visually construct and deploy high-performance websites. Built with complex state management and a seamless drag-and-drop interface.',
+        timeline: '2 Weeks',
+        services: ['SaaS Architecture', 'Complex State Management', 'Drag-and-Drop UX', 'Fullstack Engineering'],
+        image: '/images/wb.png',
+        link: 'https://website-builder-tau-livid.vercel.app/',
+        featured: true
+    },
+    {
+        id: 'harga-check',
+        title: 'HargaCheck',
+        category: 'Data Aggregation · E-Commerce',
+        year: '2026',
+        description: 'A high-performance data aggregator platform engineered to synchronize, process, and analyze real-time product pricing across major e-commerce marketplaces. Built with advanced search capabilities and automated price-drop alerts.',
+        timeline: '3 Weeks',
+        services: ['Data Aggregation Architecture', 'API Integration & Web Scraping', 'Real-time Search Engine', 'High-Performance UI/UX'],
+        image: '/images/hargaCheck.png',
+        link: 'https://harga-check.vercel.app/',
+        featured: true
+    },
+    {
+        id: 'la-beaute-luxury-spa',
+        title: 'La Beauté Luxury Spa',
+        category: 'Luxury Wellness · Booking Platform',
+        year: '2026',
+        description: 'A luxury digital wellness platform designed to mirror the tranquility and premium service of a high-end spa. Functions as a 24/7 digital concierge with an integrated reservation system.',
+        timeline: '4 Weeks',
+        services: ['Premium Brand Identity', 'UX/UI Design', 'Booking System Integration', 'Mobile-First Development'],
+        image: '/images/Salon-Spa.png',
+        link: 'https://la-beaut-luxury-spa.vercel.app/',
         featured: true
     },
     {

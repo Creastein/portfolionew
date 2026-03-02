@@ -114,6 +114,11 @@ const WorkSection: React.FC = () => {
                                         onClick={() => {
                                             trackProjectClick(project.title, project.id);
                                             setActiveProject(index);
+                                            // Scroll right panel to the corresponding project
+                                            const target = scrollContainerRef.current?.querySelector(`.project-item-${index}`);
+                                            if (target) {
+                                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                            }
                                         }}
                                         className={`text-lg md:text-xl lg:text-2xl transition-all duration-300 cursor-pointer ${activeProject === index
                                             ? 'text-white opacity-100 translate-x-2'
@@ -170,9 +175,13 @@ const WorkSection: React.FC = () => {
                 >
                     {
                         topPickProjects.map((project, index) => (
-                            <div
+                            <a
                                 key={project.id}
-                                className={`project-item-${index} h-screen w-full snap-start snap-always relative`}
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`project-item-${index} h-screen w-full snap-start snap-always relative block group`}
+                                onClick={() => trackProjectClick(project.title, project.id)}
                             >
                                 {/* Full Screen Project Image - Optimized with lazy loading */}
                                 <img
@@ -182,7 +191,6 @@ const WorkSection: React.FC = () => {
                                     loading="lazy"
                                     decoding="async"
                                     onError={(e) => {
-                                        // Fallback to gradient if image fails to load
                                         e.currentTarget.style.display = 'none';
                                         const parent = e.currentTarget.parentElement;
                                         if (parent) {
@@ -191,11 +199,18 @@ const WorkSection: React.FC = () => {
                                     }}
                                 />
 
+                                {/* Hover Overlay */}
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
+                                    <div className="flex items-center gap-2 text-white text-lg font-medium px-6 py-3 border border-white/40 rounded-full backdrop-blur-sm">
+                                        View Project <ArrowUpRight className="w-5 h-5" />
+                                    </div>
+                                </div>
+
                                 {/* Floating Project Number */}
                                 <div className="absolute top-8 left-8 w-16 h-16 rounded-full bg-primary flex items-center justify-center text-2xl font-bold shadow-lg z-10">
                                     {(index + 1).toString().padStart(2, '0')}
                                 </div>
-                            </div>
+                            </a>
                         ))
                     }
                 </div >
