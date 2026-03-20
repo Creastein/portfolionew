@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "services": "Layanan",
+    "work": "Karya",
+    "contact": "Kontak",
+    "language": "ID"
+  },
+  "hero": {
+    "available": "Tersedia untuk proyek",
+    "title1": "Business Analyst",
+    "title2": "Web Developer",
+    "subtitle1": "Saya membantu mewujudkan ide bisnis menjadi",
+    "subtitle2": "pengalaman web yang simpel dan bermanfaat."
+  },
+  "about": {
+    "label": "Tentang Saya",
+    "title": "Business Analyst & Web Developer",
+    "description": "Saya seorang Business Analyst dengan latar belakang Sistem Informasi. Fokus saya adalah menerjemahkan kebutuhan bisnis menjadi solusi yang terstruktur. Dengan pengalaman di frontend, saya dapat memvalidasi ide dengan cepat, berkomunikasi secara efektif dengan developer, dan memastikan solusi sejalan dengan tujuan teknis dan bisnis."
+  },
+  "services": {
+    "header": {
+      "title": "LAYANAN",
+      "subtitle": "Apa yang Saya Tawarkan"
+    },
+    "items": {
+      "business-analysis": {
+        "title": "Analisis Bisnis & Sistem",
+        "description": "Menganalisis proses bisnis, mengidentifikasi masalah, dan menerjemahkan kebutuhan menjadi definisi sistem dan fitur yang jelas.",
+        "tags": ["Analisis Kebutuhan", "Desain Sistem", "Pemetaan Proses"]
+      },
+      "frontend-development": {
+        "title": "Frontend Web Development",
+        "description": "Membangun antarmuka web yang bersih, responsif, dan mudah digunakan menggunakan teknologi frontend modern seperti React dan Next.js.",
+        "tags": ["React", "Next.js", "Tailwind CSS"]
+      },
+      "ui-implementation": {
+        "title": "Implementasi UI dari Kebutuhan",
+        "description": "Mengubah kebutuhan bisnis dan pengguna menjadi antarmuka pengguna yang praktis, intuitif, dan fungsional yang sejalan dengan tujuan bisnis.",
+        "tags": ["UI/UX", "Figma ke Code", "Desain Berbasis Pengguna"]
+      }
+    }
+  },
+  "work": {
+    "title": "KARYA",
+    "topPick": "Pilihan Teratas",
+    "topPickProjects": "Proyek Pilihan Teratas",
+    "allProjects": "Semua Proyek",
+    "year": "Tahun",
+    "timeline": "Waktu",
+    "servicesLabel": "Layanan",
+    "viewProject": "Lihat Proyek"
+  },
+  "skills": {
+    "title": "KEAHLIAN",
+    "subtitle": "Tech Stack Saya"
+  },
+  "contact": {
+    "title": "KONTAK",
+    "subtitle": "Hubungi Saya",
+    "letsTalk": "MARI BICARA",
+    "description": "Punya proyek atau ingin berkolaborasi? Saya senang mendengarnya dari Anda.",
+    "info": {
+      "location": "Lokasi",
+      "jakarta": "Jakarta, Indonesia",
+      "availability": "Ketersediaan",
+      "open": "Terbuka untuk peluang",
+      "followMe": "Ikuti Saya"
+    },
+    "form": {
+      "title": "Kirim Pesan",
+      "description": "Isi formulir di bawah ini dan saya akan segera membalasnya.",
+      "name": "Nama Anda",
+      "email": "Email Anda",
+      "subject": "Subjek",
+      "message": "Pesan Anda",
+      "submit": "Kirim Pesan",
+      "sending": "Mengirim...",
+      "success": "Pesan berhasil dikirim!",
+      "error": "Gagal mengirim pesan. Silakan coba lagi."
+    },
+    "errors": {
+      "nameReq": "Nama wajib diisi",
+      "emailReq": "Email wajib diisi",
+      "emailInv": "Mohon masukkan email yang valid",
+      "subjectReq": "Subjek wajib diisi",
+      "messageReq": "Pesan wajib diisi",
+      "messageLen": "Pesan harus minimal 10 karakter"
+    },
+    "copy": {
+      "success": "Email disalin ke clipboard!",
+      "error": "Gagal menyalin email"
+    },
+    "footer": {
+      "rights": "© 2025 WELLI. Hak cipta dilindungi.",
+      "madeWith": "Dibuat dengan",
+      "in": "di Jakarta"
+    }
+  },
+  "caseStudy": {
+    "backHome": "Kembali ke Beranda",
+    "title": "Semua Proyek",
+    "description": "Koleksi proyek pengembangan web mulai dari analisis bisnis hingga aplikasi full-stack.",
+    "allProjectsTab": "Semua Proyek",
+    "featuredTab": "Unggulan",
+    "featuredBadge": "Unggulan",
+    "viewLive": "Lihat Proyek Langsung",
+    "noProjects": "Tidak ada proyek ditemukan."
+  }
+}

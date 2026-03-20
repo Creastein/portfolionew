@@ -3,8 +3,11 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Calendar, Clock } from 'lucide-react';
 import { projects } from '@/components/data/projects';
+import { useTranslation } from 'react-i18next';
+import SEOHead from '@/components/SEOHead';
 
 const CaseStudy: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [filter, setFilter] = useState<'all' | 'featured'>('all');
 
@@ -14,6 +17,12 @@ const CaseStudy: React.FC = () => {
 
   return (
     <main className="bg-background min-h-screen text-white pb-32">
+      <SEOHead 
+        title="Case Studies — Portfolio Welli | Web & Business Analysis"
+        description="Studi kasus proyek web development dan business analysis yang dikerjakan Welli untuk klien startup dan UMKM Indonesia."
+        canonical="https://welli.my.id/case-study"
+        keywords="portfolio web developer, case study business analyst, proyek react typescript"
+      />
       {/* Header */}
       <header className="relative w-full pt-32 pb-16 px-6 md:px-12 overflow-hidden">
         {/* Background Gradient */}
@@ -32,7 +41,7 @@ const CaseStudy: React.FC = () => {
             className="group flex items-center gap-2 text-secondary hover:text-white transition-colors mb-12"
           >
             <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-            <span style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>Back to Home</span>
+            <span style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{t('caseStudy.backHome')}</span>
           </motion.button>
 
           {/* Title */}
@@ -46,13 +55,13 @@ const CaseStudy: React.FC = () => {
               className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight"
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
             >
-              All Projects
+              {t('caseStudy.title')}
             </h1>
             <p
               className="text-lg md:text-xl text-secondary max-w-2xl"
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
             >
-              A collection of web development projects ranging from business analysis to full-stack applications.
+              {t('caseStudy.description')}
             </p>
           </motion.div>
 
@@ -71,7 +80,7 @@ const CaseStudy: React.FC = () => {
                 }`}
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
             >
-              All Projects ({projects.length})
+              {t('caseStudy.allProjectsTab')} ({projects.length})
             </button>
             <button
               onClick={() => setFilter('featured')}
@@ -81,7 +90,7 @@ const CaseStudy: React.FC = () => {
                 }`}
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
             >
-              Featured ({projects.filter(p => p.featured).length})
+              {t('caseStudy.featuredTab')} ({projects.filter(p => p.featured).length})
             </button>
           </motion.div>
         </div>
@@ -118,6 +127,9 @@ const CaseStudy: React.FC = () => {
                     src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                    width={800}
+                    height={500}
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                       const parent = e.currentTarget.parentElement;
@@ -130,7 +142,7 @@ const CaseStudy: React.FC = () => {
                   {/* Featured Badge */}
                   {project.featured && (
                     <div className="absolute top-4 right-4 bg-primary px-3 py-1 rounded-full text-xs font-medium">
-                      Featured
+                      {t('caseStudy.featuredBadge')}
                     </div>
                   )}
                 </div>
@@ -202,7 +214,7 @@ const CaseStudy: React.FC = () => {
                     className="group/link inline-flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 text-sm font-medium mt-4"
                     style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
                   >
-                    View Live Project
+                    {t('caseStudy.viewLive')}
                     <ArrowUpRight className="w-4 h-4 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5 transition-transform" />
                   </a>
                 </div>
@@ -221,7 +233,7 @@ const CaseStudy: React.FC = () => {
                 className="text-secondary text-lg"
                 style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
               >
-                No projects found.
+                {t('caseStudy.noProjects')}
               </p>
             </motion.div>
           )}

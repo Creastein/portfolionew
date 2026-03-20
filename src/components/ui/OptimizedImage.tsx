@@ -83,6 +83,8 @@ export const OptimizedImage: React.FC<OptimizedImageProps> = ({
           decoding={priority ? 'sync' : 'async'}
           onLoad={handleLoad}
           onError={handleError}
+          width={800}
+          height={600}
         />
       </picture>
 

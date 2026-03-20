@@ -11,6 +11,7 @@ import MagneticButton from '../ui/MagneticButton';
 import Toast from '../ui/Toast';
 import FloatingInput from '../ui/FloatingInput';
 import SocialLink from '../ui/SocialLink';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,6 +30,7 @@ interface FormErrors {
 }
 
 const ContactSection: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const [formData, setFormData] = useState<FormData>({
@@ -45,20 +47,20 @@ const ContactSection: React.FC = () => {
     // Split text animation for heading
     useEffect(() => {
         if (titleRef.current) {
-            const text = "LET'S TALK";
+            const text = t('contact.letsTalk');
             const chars = text.split('').map((char, i) =>
                 `<span class="char inline-block" style="opacity: 0; transform: translateY(50px);">${char === ' ' ? '&nbsp;' : char}</span>`
             ).join('');
             titleRef.current.innerHTML = chars;
         }
-    }, []);
+    }, [t]);
 
     // GSAP Animations
     const containerRef = useGSAP<HTMLElement>(() => {
         // Text Scramble Animation
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
         const scrambleChars = document.querySelectorAll('.scramble-char');
-        const finalText = 'CONTACT';
+        const finalText = t('contact.title');
 
         scrambleChars.forEach((char, index) => {
             const finalChar = finalText[index];
@@ -170,23 +172,23 @@ const ContactSection: React.FC = () => {
         const newErrors: FormErrors = {};
 
         if (!formData.name.trim()) {
-            newErrors.name = 'Name is required';
+            newErrors.name = t('contact.errors.nameReq');
         }
 
         if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
+            newErrors.email = t('contact.errors.emailReq');
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            newErrors.email = 'Please enter a valid email';
+            newErrors.email = t('contact.errors.emailInv');
         }
 
         if (!formData.subject.trim()) {
-            newErrors.subject = 'Subject is required';
+            newErrors.subject = t('contact.errors.subjectReq');
         }
 
         if (!formData.message.trim()) {
-            newErrors.message = 'Message is required';
+            newErrors.message = t('contact.errors.messageReq');
         } else if (formData.message.length < 10) {
-            newErrors.message = 'Message must be at least 10 characters';
+            newErrors.message = t('contact.errors.messageLen');
         }
 
         setErrors(newErrors);
@@ -222,11 +224,11 @@ const ContactSection: React.FC = () => {
             await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
 
             trackFormSubmit('contact_form', true);
-            setToast({ message: 'Message sent successfully!', type: 'success' });
+            setToast({ message: t('contact.form.success'), type: 'success' });
             setFormData({ name: '', email: '', subject: '', message: '' });
         } catch (error) {
             trackFormSubmit('contact_form', false);
-            setToast({ message: 'Failed to send message. Please try again.', type: 'error' });
+            setToast({ message: t('contact.form.error'), type: 'error' });
         } finally {
             setIsSubmitting(false);
         }
@@ -246,10 +248,10 @@ const ContactSection: React.FC = () => {
             await navigator.clipboard.writeText('contact@welli.my.id');
             trackEmailCopy('contact@welli.my.id');
             setCopied(true);
-            setToast({ message: 'Email copied to clipboard!', type: 'success' });
+            setToast({ message: t('contact.copy.success'), type: 'success' });
             setTimeout(() => setCopied(false), 2000);
         } catch {
-            setToast({ message: 'Failed to copy email', type: 'error' });
+            setToast({ message: t('contact.copy.error'), type: 'error' });
         }
     };
 
@@ -263,6 +265,7 @@ const ContactSection: React.FC = () => {
     return (
         <>
             <footer
+                key={i18n.language}
                 ref={sectionRef}
                 id="contact"
                 className="relative z-40 bg-black"
@@ -275,7 +278,7 @@ const ContactSection: React.FC = () => {
 
                 {/* Creative Header with GSAP Text Scramble & 3D Effect */}
                 {/* Creative Header with GSAP Text Scramble & 3D Effect */}
-                <SectionHeader title="CONTACT" subtitle="Get in Touch" />
+                <SectionHeader title={t('contact.title')} subtitle={t('contact.subtitle')} />
 
                 {/* Main Contact Content */}
                 <div ref={containerRef} className="container mx-auto max-w-[1400px] px-6 sm:px-12 py-24">
@@ -290,10 +293,10 @@ const ContactSection: React.FC = () => {
                                     className="text-5xl md:text-7xl tracking-tighter text-white mb-8"
                                     style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
                                 >
-                                    LET'S TALK
+                                    {t('contact.letsTalk')}
                                 </h2>
                                 <p className="text-xl text-secondary leading-relaxed max-w-md">
-                                    Have a project in mind or want to collaborate? I'd love to hear from you.
+                                    {t('contact.description')}
                                 </p>
                             </div>
 
@@ -328,8 +331,8 @@ const ContactSection: React.FC = () => {
                                         <MapPin className="w-5 h-5 text-primary" />
                                     </div>
                                     <div>
-                                        <div className="text-sm text-secondary mb-1">Location</div>
-                                        <div className="text-lg font-medium text-white">Jakarta, Indonesia</div>
+                                        <div className="text-sm text-secondary mb-1">{t('contact.info.location')}</div>
+                                        <div className="text-lg font-medium text-white">{t('contact.info.jakarta')}</div>
                                     </div>
                                 </div>
 
@@ -338,8 +341,8 @@ const ContactSection: React.FC = () => {
                                         <Clock className="w-5 h-5 text-primary" />
                                     </div>
                                     <div>
-                                        <div className="text-sm text-secondary mb-1">Availability</div>
-                                        <div className="text-lg font-medium text-white">Open for opportunities</div>
+                                        <div className="text-sm text-secondary mb-1">{t('contact.info.availability')}</div>
+                                        <div className="text-lg font-medium text-white">{t('contact.info.open')}</div>
                                     </div>
                                 </div>
                             </div>
@@ -347,7 +350,7 @@ const ContactSection: React.FC = () => {
                             {/* Social Links */}
                             <div>
                                 <h3 className="text-sm uppercase tracking-widest text-secondary font-medium mb-6">
-                                    Follow Me
+                                    {t('contact.info.followMe')}
                                 </h3>
                                 <div className="flex flex-wrap gap-6">
                                     {socialLinks.map((link, index) => (
@@ -371,13 +374,13 @@ const ContactSection: React.FC = () => {
                             transition={{ duration: 0.8, ease: 'easeOut' }}
                         >
                             <div className="bg-white/5 border border-white/10 rounded-2xl p-8 md:p-10 backdrop-blur-sm">
-                                <h3 className="text-2xl font-bold mb-2">Send a Message</h3>
-                                <p className="text-secondary mb-8">Fill out the form below and I'll get back to you soon.</p>
+                                <h3 className="text-2xl font-bold mb-2">{t('contact.form.title')}</h3>
+                                <p className="text-secondary mb-8">{t('contact.form.description')}</p>
 
                                 <form onSubmit={handleSubmit} className="space-y-6">
                                     <div className="grid md:grid-cols-2 gap-6">
                                         <FloatingInput
-                                            label="Your Name"
+                                            label={t('contact.form.name')}
                                             name="name"
                                             value={formData.name}
                                             onChange={handleChange}
@@ -385,7 +388,7 @@ const ContactSection: React.FC = () => {
                                             required
                                         />
                                         <FloatingInput
-                                            label="Your Email"
+                                            label={t('contact.form.email')}
                                             name="email"
                                             type="email"
                                             value={formData.email}
@@ -396,7 +399,7 @@ const ContactSection: React.FC = () => {
                                     </div>
 
                                     <FloatingInput
-                                        label="Subject"
+                                        label={t('contact.form.subject')}
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
@@ -405,7 +408,7 @@ const ContactSection: React.FC = () => {
                                     />
 
                                     <FloatingInput
-                                        label="Your Message"
+                                        label={t('contact.form.message')}
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
@@ -427,11 +430,11 @@ const ContactSection: React.FC = () => {
                                                         animate={{ rotate: 360 }}
                                                         transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
                                                     />
-                                                    Sending...
+                                                    {t('contact.form.sending')}
                                                 </>
                                             ) : (
                                                 <>
-                                                    Send Message
+                                                    {t('contact.form.submit')}
                                                     <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                                 </>
                                             )}
@@ -443,7 +446,7 @@ const ContactSection: React.FC = () => {
                                             transition={{ duration: 0.3 }}
                                         />
                                         <span className="absolute inset-0 flex items-center justify-center gap-2 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                            Send Message
+                                            {t('contact.form.submit')}
                                             <Send className="w-5 h-5" />
                                         </span>
                                     </MagneticButton>
@@ -458,18 +461,18 @@ const ContactSection: React.FC = () => {
                     <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 py-8">
                         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                             <p className="footer-element text-sm text-white/40">
-                                © 2025 WELLI. All rights reserved.
+                                {t('contact.footer.rights')}
                             </p>
                             <div className="footer-element flex items-center gap-2 text-sm text-white/40">
-                                <span>Made with</span>
+                                <span>{t('contact.footer.madeWith')}</span>
                                 <motion.span
                                     animate={{ scale: [1, 1.2, 1] }}
                                     transition={{ repeat: Infinity, duration: 1.5 }}
                                     className="text-red-400"
                                 >
-
+                                    
                                 </motion.span>
-                                <span>in Jakarta</span>
+                                <span>{t('contact.footer.in')}</span>
                             </div>
                         </div>
                     </div>

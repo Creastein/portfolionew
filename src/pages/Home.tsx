@@ -5,6 +5,8 @@ import SkillsSection from '@/components/home/SkillsSection';
 import ServicesSection from '@/components/home/ServicesSection';
 import WorkSection from '@/components/home/WorkSection';
 import ContactSection from '@/components/home/ContactSection';
+import SEOHead from '@/components/SEOHead';
+import { useTranslation } from 'react-i18next';
 
 // Staggered animation variants
 const containerVariants: Variants = {
@@ -120,6 +122,7 @@ interface HomeProps {
 }
 
 export default function Home({ isLoading }: HomeProps) {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const { scrollY } = useScroll();
@@ -164,6 +167,27 @@ export default function Home({ isLoading }: HomeProps) {
 
   return (
     <main ref={containerRef} className="relative w-full overflow-x-hidden pb-32 bg-black">
+      <SEOHead 
+        title="Welli — Freelance Business Analyst & Web Developer Indonesia"
+        description="Jasa freelance Business Analyst dan Web Developer. Spesialis React, TypeScript untuk startup dan UMKM Indonesia."
+        canonical="https://welli.my.id"
+        keywords="freelance web developer indonesia, jasa business analyst, react developer freelance, web developer typescript indonesia"
+      />
+      
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Welli",
+          "jobTitle": "Freelance Business Analyst & Web Developer",
+          "url": "https://welli.my.id",
+          "knowsAbout": [
+            "Web Development", "Business Analysis", 
+            "React", "TypeScript", "Vite"
+          ]
+        })}
+      </script>
+
       {/* TRANSFORMING LOGO */}
       <motion.div
         style={{
@@ -255,10 +279,10 @@ export default function Home({ isLoading }: HomeProps) {
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
             >
               <motion.span variants={textLineVariants} className="block">
-                Business Analyst
+                {t('hero.title1')}
               </motion.span>
               <motion.span variants={textLineVariants} className="block">
-                Web Developer
+                {t('hero.title2')}
               </motion.span>
             </motion.h2>
           </motion.div>
@@ -278,10 +302,10 @@ export default function Home({ isLoading }: HomeProps) {
               style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
             >
               <motion.span variants={textLineVariants} className="block">
-                I help turn business ideas into
+                {t('hero.subtitle1')}
               </motion.span>
               <motion.span variants={textLineVariants} className="block text-white/40">
-                simple and useful web experiences.
+                {t('hero.subtitle2')}
               </motion.span>
             </motion.h3>
           </motion.div>

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, useScroll, useTransform, AnimatePresence, Variants } from 'framer-motion';
 import { X, Instagram, Github, Linkedin, MessageCircle } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import { useTranslation } from 'react-i18next';
 
 // Custom TikTok Icon since it might not be in the lucide version used
 const TikTokIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
@@ -28,6 +29,7 @@ const Navbar: React.FC = () => {
     const isHome = location.pathname === '/' || location.pathname === '/work';
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [time, setTime] = useState("");
+    const { t, i18n } = useTranslation();
 
     // Jakarta Time Logic
     useEffect(() => {
@@ -61,12 +63,12 @@ const Navbar: React.FC = () => {
     };
 
     const navItems = [
-        { id: 'home', label: 'HOME' },
-        { id: 'about', label: 'ABOUT' },
+        { id: 'home', label: t('nav.home') },
+        { id: 'about', label: t('nav.about') },
         { id: 'skills', label: 'SKILLS' },
-        { id: 'services', label: 'SERVICES' },
-        { id: 'work', label: 'WORKS' },
-        { id: 'contact', label: 'CONTACT' },
+        { id: 'services', label: t('nav.services') },
+        { id: 'work', label: t('nav.work') },
+        { id: 'contact', label: t('nav.contact') },
     ];
 
     const socialLinks = [
@@ -109,7 +111,7 @@ const Navbar: React.FC = () => {
                         <div>
                             <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                <span className="hidden md:inline">Available for project</span>
+                                <span className="hidden md:inline">{t('hero.available')}</span>
                             </div>
                         </div>
                         <div>
@@ -119,6 +121,14 @@ const Navbar: React.FC = () => {
                     </motion.div>
 
                     <div className="flex items-center gap-4">
+                        {/* LANGUAGE TOGGLE */}
+                        <button
+                            onClick={() => i18n.changeLanguage(i18n.language === 'en' ? 'id' : 'en')}
+                            className="text-sm font-bold tracking-widest uppercase hover:text-primary transition-colors text-white"
+                        >
+                            {i18n.language === 'en' ? 'ID' : 'EN'}
+                        </button>
+
                         <ThemeToggle />
 
                         {/* MENU TRIGGER */}
@@ -201,7 +211,7 @@ const Navbar: React.FC = () => {
                                                     0{index + 1}
                                                 </span>
                                                 <span
-                                                    className="text-4xl md:text-5xl tracking-tight text-[#888] group-hover:text-white transition-colors duration-300"
+                                                    className="text-4xl md:text-5xl tracking-tight text-[#888] group-hover:text-white transition-colors duration-300 uppercase"
                                                     style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}
                                                 >
                                                     {item.label}

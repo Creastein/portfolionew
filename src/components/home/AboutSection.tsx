@@ -2,8 +2,10 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useGSAP } from '@/hooks/useGSAP';
 import gsap from 'gsap';
+import { useTranslation } from 'react-i18next';
 
 const AboutSection: React.FC = () => {
+    const { t, i18n } = useTranslation();
     const sectionRef = useRef<HTMLElement>(null);
     const titleRef = useRef<HTMLHeadingElement>(null);
     const descRef = useRef<HTMLParagraphElement>(null);
@@ -96,7 +98,7 @@ const AboutSection: React.FC = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} id="about" className="relative z-40 bg-black py-24 md:py-32 border-t border-white/5 overflow-hidden">
+        <section key={i18n.language} ref={sectionRef} id="about" className="relative z-40 bg-black py-24 md:py-32 border-t border-white/5 overflow-hidden">
             <div ref={containerRef} className="container mx-auto max-w-[1400px] px-6 sm:px-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start lg:items-end">
                     {/* Title Section - Left Column */}
@@ -105,13 +107,13 @@ const AboutSection: React.FC = () => {
                         className="will-change-transform relative z-10"
                     >
                         <span className="about-label text-primary font-bold tracking-widest text-xs uppercase mb-4 block">
-                            About Me
+                            {t('about.label')}
                         </span>
                         <h2
                             ref={titleRef}
                             className="about-title text-4xl sm:text-5xl lg:text-6xl font-bold font-display leading-[1.1] mb-8 lg:mb-0 break-words"
                         >
-                            Business Analyst<br /> & Web Developer
+                            {t('about.title')}
                         </h2>
                     </motion.div>
 
@@ -124,7 +126,7 @@ const AboutSection: React.FC = () => {
                             ref={descRef}
                             className="about-desc text-lg sm:text-xl md:text-2xl text-secondary leading-relaxed font-light break-words lg:max-w-[600px]"
                         >
-                            I'm a Business Analyst with a background in Information Systems. I focus on translating business needs into clear, structured solutions. With hands-on frontend experience, I'm able to validate ideas quickly, communicate effectively with developers, and ensure solutions stay aligned with user and business goals.
+                            {t('about.description')}
                         </p>
                     </motion.div>
                 </div>

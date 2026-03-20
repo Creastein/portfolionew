@@ -1,0 +1,111 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "work": "Work",
+    "contact": "Contact",
+    "language": "EN"
+  },
+  "hero": {
+    "available": "Available for project",
+    "title1": "Business Analyst",
+    "title2": "Web Developer",
+    "subtitle1": "I help turn business ideas into",
+    "subtitle2": "simple and useful web experiences."
+  },
+  "about": {
+    "label": "About Me",
+    "title": "Business Analyst & Web Developer",
+    "description": "I'm a Business Analyst with a background in Information Systems. I focus on translating business needs into clear, structured solutions. With hands-on frontend experience, I'm able to validate ideas quickly, communicate effectively with developers, and ensure solutions stay aligned with user and business goals."
+  },
+  "services": {
+    "header": {
+      "title": "SERVICES",
+      "subtitle": "What I Offer"
+    },
+    "items": {
+      "business-analysis": {
+        "title": "Business & System Analysis",
+        "description": "Analyze business processes, identify problems, and translate requirements into clear system and feature definitions.",
+        "tags": ["Requirements Analysis", "System Design", "Process Mapping"]
+      },
+      "frontend-development": {
+        "title": "Frontend Web Development",
+        "description": "Build clean, responsive, and user-friendly web interfaces using modern frontend technologies like React and Next.js.",
+        "tags": ["React", "Next.js", "Tailwind CSS"]
+      },
+      "ui-implementation": {
+        "title": "UI Implementation from Requirements",
+        "description": "Turn business and user requirements into practical, intuitive, and functional user interfaces that align with real business goals.",
+        "tags": ["UI/UX", "Figma to Code", "User-Centered Design"]
+      }
+    }
+  },
+  "work": {
+    "title": "WORKS",
+    "topPick": "Top Pick",
+    "topPickProjects": "Top Pick Projects",
+    "allProjects": "All Projects",
+    "year": "Year",
+    "timeline": "Timeline",
+    "servicesLabel": "Services",
+    "viewProject": "View Project"
+  },
+  "skills": {
+    "title": "SKILLS",
+    "subtitle": "My Tech Stack"
+  },
+  "contact": {
+    "title": "CONTACT",
+    "subtitle": "Get in Touch",
+    "letsTalk": "LET'S TALK",
+    "description": "Have a project in mind or want to collaborate? I'd love to hear from you.",
+    "info": {
+      "location": "Location",
+      "jakarta": "Jakarta, Indonesia",
+      "availability": "Availability",
+      "open": "Open for opportunities",
+      "followMe": "Follow Me"
+    },
+    "form": {
+      "title": "Send a Message",
+      "description": "Fill out the form below and I'll get back to you soon.",
+      "name": "Your Name",
+      "email": "Your Email",
+      "subject": "Subject",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully!",
+      "error": "Failed to send message. Please try again."
+    },
+    "errors": {
+      "nameReq": "Name is required",
+      "emailReq": "Email is required",
+      "emailInv": "Please enter a valid email",
+      "subjectReq": "Subject is required",
+      "messageReq": "Message is required",
+      "messageLen": "Message must be at least 10 characters"
+    },
+    "copy": {
+      "success": "Email copied to clipboard!",
+      "error": "Failed to copy email"
+    },
+    "footer": {
+      "rights": "© 2025 WELLI. All rights reserved.",
+      "madeWith": "Made with",
+      "in": "in Jakarta"
+    }
+  },
+  "caseStudy": {
+    "backHome": "Back to Home",
+    "title": "All Projects",
+    "description": "A collection of web development projects ranging from business analysis to full-stack applications.",
+    "allProjectsTab": "All Projects",
+    "featuredTab": "Featured",
+    "featuredBadge": "Featured",
+    "viewLive": "View Live Project",
+    "noProjects": "No projects found."
+  }
+}

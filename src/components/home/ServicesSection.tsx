@@ -7,8 +7,10 @@ import { servicesData } from '@/constants/services';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { useInView } from '@/hooks/useInView';
 import SectionHeader from '@/components/ui/SectionHeader';
+import { useTranslation } from 'react-i18next';
 
 const ServicesSection: React.FC = () => {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +58,7 @@ const ServicesSection: React.FC = () => {
       </a>
 
       {/* NEW HEADER */}
-      <SectionHeader title="SERVICES" subtitle="What I Offer" className="mb-12" />
+      <SectionHeader title={t('services.header.title')} subtitle={t('services.header.subtitle')} className="mb-12" />
 
       <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 relative">
 

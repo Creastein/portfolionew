@@ -2,8 +2,10 @@ import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import Sitemap from 'vite-plugin-sitemap';
 
-export default defineConfig(({ mode }) => {
+
+export default defineConfig(({ mode, isSsrBuild }) => {
     const env = loadEnv(mode, '.', '');
     return {
       server: {
@@ -12,8 +14,19 @@ export default defineConfig(({ mode }) => {
       },
       plugins: [
         react(),
+        Sitemap({
+          hostname: 'https://welli.my.id',
+          dynamicRoutes: [
+            '/work',
+            '/projects'
+          ],
+          changefreq: 'monthly',
+          priority: 0.7
+        }),
         VitePWA({
+          disable: true,
           registerType: 'autoUpdate',
+          injectRegister: null,
           includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg', 'robots.txt', 'sitemap.xml'],
           manifest: {
             name: 'WELLI Portfolio',
@@ -129,6 +142,12 @@ export default defineConfig(({ mode }) => {
       resolve: {
         alias: {
           '@': path.resolve(__dirname, './src'),
+        }
+      },
+      ssgOptions: {
+        formatting: 'prettify',
+        includedRoutes() {
+          return ['/', '/work', '/projects'];
         }
       }
     };

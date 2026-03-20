@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
 import Home from '@/pages/Home';
 import CaseStudy from '@/pages/CaseStudy';
@@ -50,14 +51,17 @@ const AppContent: React.FC = () => {
     }
     return shouldShow;
   });
+  const isSSR = import.meta.env.SSR;
+
+  // Initialize theme from localStorage or system preference
   useAnalytics(); // Initialize Google Analytics
 
   const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
   }, []);
 
-  // Prevent hydration mismatch
-  if (!mounted) {
+  // Prevent hydration mismatch - but allow server-side rendering
+  if (!mounted && !isSSR) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
@@ -67,18 +71,18 @@ const AppContent: React.FC = () => {
 
   return (
     <>
-      {/* Loading Screen - Curtain Effect */}
-      {isLoading && (
+      {/* Loading Screen - Curtain Effect - Only on client */}
+      {!isSSR && isLoading && (
         <LoadingScreen
           onLoadingComplete={handleLoadingComplete}
           minimumLoadTime={2800}
         />
       )}
 
-      {/* Main Content - Always visible, revealed by curtain */}
+      {/* Main Content - Always visible on server, revealed by curtain on client */}
       <div
         className={`min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white transition-opacity duration-300 ${
-          isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          !isSSR && isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
       >
         <ScrollToTop />
@@ -93,9 +97,9 @@ const AppContent: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <HelmetProvider>
       <AppContent />
-    </HashRouter>
+    </HelmetProvider>
   );
 };
 

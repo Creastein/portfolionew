@@ -6,10 +6,12 @@ import { useGSAP } from '@/hooks/useGSAP';
 import { trackProjectClick, trackCTAClick } from '@/hooks/useAnalytics';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useTranslation } from 'react-i18next';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const WorkSection: React.FC = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate();
     const [activeProject, setActiveProject] = useState(0);
     const scrollContainerRef = React.useRef<HTMLDivElement>(null);
@@ -59,25 +61,25 @@ const WorkSection: React.FC = () => {
                         {[...Array(8)].map((_, i) => (
                             <div key={i} className="flex items-center gap-6 group select-none">
                                 <span className="text-base md:text-xl text-secondary font-mono self-start mt-3 md:mt-6">({projects.length.toString().padStart(2, '0')})</span>
-                                <span
-                                    className="leading-none transition-colors duration-300"
-                                    style={{
-                                        color: '#EEEEEE',
-                                        fontFamily: '"Mohave", sans-serif',
-                                        fontSize: 'clamp(60px, 15vw, 140px)',
-                                        letterSpacing: '-6px',
-                                        fontWeight: 600
-                                    }}
-                                >
-                                    WORKS
-                                </span>
+                                    <span
+                                        className="leading-none transition-colors duration-300"
+                                        style={{
+                                            color: '#EEEEEE',
+                                            fontFamily: '"Mohave", sans-serif',
+                                            fontSize: 'clamp(60px, 15vw, 140px)',
+                                            letterSpacing: '-6px',
+                                            fontWeight: 600
+                                        }}
+                                    >
+                                        {t('work.title')}
+                                    </span>
                                 <div className="flex flex-col items-start leading-none pointer-events-none translate-y-2 md:translate-y-4">
                                     <span className="text-sm font-bold text-primary tracking-widest uppercase mb-2 font-sans"></span>
                                     <span
                                         className="text-xl md:text-3xl font-bold text-primary"
                                         style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
                                     >
-                                        Top Pick
+                                        {t('work.topPick')}
                                     </span>
                                 </div>
                             </div >
@@ -94,7 +96,7 @@ const WorkSection: React.FC = () => {
                         {/* Header */}
                         <div className="space-y-8">
                             <div className="flex items-center justify-between">
-                                <h3 className="text-xs md:text-sm uppercase tracking-widest text-secondary font-medium" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>Top Pick Projects</h3>
+                                <h3 className="text-xs md:text-sm uppercase tracking-widest text-secondary font-medium" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{t('work.topPickProjects')}</h3>
                                 <button
                                     onClick={() => {
                                         trackCTAClick('all_projects', 'work_section');
@@ -102,7 +104,7 @@ const WorkSection: React.FC = () => {
                                     }}
                                     className="flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 text-xs md:text-sm font-medium"
                                 >
-                                    All Projects <ArrowRight className="w-4 h-4" />
+                                    {t('work.allProjects')} <ArrowRight className="w-4 h-4" />
                                 </button>
                             </div>
 
@@ -146,15 +148,15 @@ const WorkSection: React.FC = () => {
                             {/* Meta Info */}
                             <div className="grid grid-cols-3 gap-3 md:gap-4 lg:gap-8">
                                 <div>
-                                    <div className="text-xs uppercase tracking-widest text-secondary mb-1 md:mb-2" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>Year</div>
+                                    <div className="text-xs uppercase tracking-widest text-secondary mb-1 md:mb-2" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{t('work.year')}</div>
                                     <div className="text-base md:text-lg lg:text-xl font-medium" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{topPickProjects[activeProject]?.year}</div>
                                 </div>
                                 <div>
-                                    <div className="text-xs uppercase tracking-widest text-secondary mb-1 md:mb-2" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>Timeline</div>
+                                    <div className="text-xs uppercase tracking-widest text-secondary mb-1 md:mb-2" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{t('work.timeline')}</div>
                                     <div className="text-base md:text-lg lg:text-xl font-medium" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{topPickProjects[activeProject]?.timeline}</div>
                                 </div>
                                 <div>
-                                    <div className="text-xs uppercase tracking-widest text-secondary mb-1 md:mb-2" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>Services</div>
+                                    <div className="text-xs uppercase tracking-widest text-secondary mb-1 md:mb-2" style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 300 }}>{t('work.servicesLabel')}</div>
                                     <div className="flex flex-wrap gap-2">
                                         {topPickProjects[activeProject]?.services?.map((service, i) => (
                                             <span key={i} className="text-xs px-3 py-1 rounded-full border border-white/20 text-white">
@@ -187,9 +189,11 @@ const WorkSection: React.FC = () => {
                                 <img
                                     src={project.image}
                                     alt={`${project.title} - Project Preview`}
-                                    className="absolute inset-0 w-full h-full object-cover"
+                                    className="absolute inset-0 w-full h-full object-contain bg-[#0a0a0a]"
                                     loading="lazy"
                                     decoding="async"
+                                    width={1200}
+                                    height={800}
                                     onError={(e) => {
                                         e.currentTarget.style.display = 'none';
                                         const parent = e.currentTarget.parentElement;
@@ -202,7 +206,7 @@ const WorkSection: React.FC = () => {
                                 {/* Hover Overlay */}
                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
                                     <div className="flex items-center gap-2 text-white text-lg font-medium px-6 py-3 border border-white/40 rounded-full backdrop-blur-sm">
-                                        View Project <ArrowUpRight className="w-5 h-5" />
+                                        {t('work.viewProject')} <ArrowUpRight className="w-5 h-5" />
                                     </div>
                                 </div>
 

@@ -13,6 +13,30 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        id: 'the-secret-karimunjawa',
+        title: 'The Secret Karimunjawa',
+        category: 'Villa & Resort Website',
+        year: '2026',
+        description: 'Website promosi villa premium di Karimunjawa milik owner Jerman. Dirancang untuk menarik tamu lokal dan mancanegara dengan tampilan elegan sesuai brand Instagram klien.',
+        timeline: '3 minggu',
+        services: ['Web Design', 'Web Development', 'SEO', 'Multilingual', 'Google Analytics'],
+        image: '/images/karimunjawa.png',
+        link: 'https://thesecretkarimunjawa.com',
+        featured: true
+    },
+    {
+        id: 'floating-paradise',
+        title: 'Floating Paradise',
+        category: 'Website Redesign · Hospitality',
+        year: '2026',
+        description: 'Redesign website untuk eco-guesthouse di atas laut, Karimunjawa. Migrasi dari WordPress ke Next.js 14 dengan Sanity CMS, Tripla booking integration, dan 6 halaman baru — fokus pada direct booking dan pengalaman tamu.',
+        timeline: '14 hari kerja',
+        services: ['Next.js', 'Sanity CMS', 'Tripla', 'Vercel'],
+        image: '/images/floatingparadise.webp',
+        link: 'https://floatingparadise.id',
+        featured: true
+    },
+    {
         id: 'portfolio',
         title: 'Portfolio',
         category: 'Web Portfolio · Frontend Development',

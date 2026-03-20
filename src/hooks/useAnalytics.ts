@@ -17,26 +17,31 @@ declare global {
 
 // Type definitions for analytics events
 interface CTAClickEvent {
+  [key: string]: unknown;
   button_name: string;
   location: string;
 }
 
 interface FormSubmitEvent {
+  [key: string]: unknown;
   form_name: string;
   success: boolean;
 }
 
 interface ProjectClickEvent {
+  [key: string]: unknown;
   project_name: string;
   project_id: string;
 }
 
 interface SocialClickEvent {
+  [key: string]: unknown;
   platform: string;
   url: string;
 }
 
 interface EmailCopyEvent {
+  [key: string]: unknown;
   email: string;
 }
 

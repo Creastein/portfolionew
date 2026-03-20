@@ -2,6 +2,7 @@ import React, { useState, useCallback, useRef, KeyboardEvent, useMemo } from 're
 import { motion, Variants } from 'framer-motion';
 import { ServiceCardProps } from '@/types/components/service-card';
 import { useLazyImage } from '@/hooks/useLazyImage';
+import { useTranslation } from 'react-i18next';
 
 const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   service,
@@ -9,6 +10,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   isInView,
   prefersReducedMotion,
 }) => {
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [isFocused, setIsFocused] = useState(false);
   const cardRef = useRef<HTMLElement>(null);
@@ -233,6 +235,8 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
                 onLoad={handleImageLoad}
                 loading="lazy"
                 decoding="async"
+                width={400}
+                height={300}
               />
             </motion.div>
           )}
@@ -260,7 +264,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               className="text-2xl font-bold text-white group-hover:text-primary group-focus-within:text-primary transition-colors duration-300 font-display"
               style={{ willChange: 'color' }}
             >
-              {service.title}
+              {t(`services.items.${service.id}.title`)}
             </motion.h3>
             
             {/* Description */}
@@ -268,7 +272,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               id={descId}
               className="text-secondary leading-relaxed"
             >
-              {service.description}
+              {t(`services.items.${service.id}.description`)}
             </p>
           </header>
 
@@ -282,7 +286,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               initial={shouldAnimate ? "hidden" : false}
               animate={shouldAnimate ? "visible" : undefined}
             >
-              {service.tags.map((tag) => (
+              {(t(`services.items.${service.id}.tags`, { returnObjects: true }) as string[]).map((tag) => (
                 <motion.li
                   key={tag}
                   variants={shouldHover ? tagVariants : undefined}

@@ -3,6 +3,7 @@ import { skillsWithLogos, SkillItem } from '@/components/data/skillsWithLogos';
 import { useGSAP } from '@/hooks/useGSAP';
 import SectionHeader from '@/components/ui/SectionHeader';
 import gsap from 'gsap';
+import { useTranslation } from 'react-i18next';
 
 const SkillLogo: React.FC<{ item: SkillItem, index: number }> = ({ item, index }) => {
     const itemRef = React.useRef<HTMLDivElement>(null);
@@ -76,6 +77,7 @@ const SkillCategoryCard: React.FC<{ category: string, icon: React.ElementType, i
 );
 
 const SkillsSection: React.FC = () => {
+    const { t } = useTranslation();
     const containerRef = useGSAP<HTMLElement>(() => {
         // Stagger animate category cards
         gsap.fromTo('.skill-category-card',
@@ -118,7 +120,7 @@ const SkillsSection: React.FC = () => {
 
     return (
         <section ref={containerRef} id="skills" className="relative z-40 pb-24 md:pb-32 pt-0">
-            <SectionHeader title="SKILLS" subtitle="My Tech Stack" className="mb-12" />
+            <SectionHeader title={t('skills.title')} subtitle={t('skills.subtitle')} className="mb-12" />
 
             <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 skills-grid flex flex-col gap-8">
                 {skillsWithLogos.map((skill, index) => (
