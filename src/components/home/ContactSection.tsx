@@ -268,7 +268,7 @@ const ContactSection: React.FC = () => {
                 key={i18n.language}
                 ref={sectionRef}
                 id="contact"
-                className="relative z-40 bg-black"
+                className="relative z-40 bg-black pt-16 md:pt-24"
             >
                 {/* Animated Background */}
                 <div className="absolute inset-0 overflow-hidden">

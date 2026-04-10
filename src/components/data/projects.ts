@@ -27,11 +27,11 @@ export const projects: Project[] = [
     {
         id: 'floating-paradise',
         title: 'Floating Paradise',
-        category: 'Website Redesign · Hospitality',
+        category: 'Premium Eco-Resort Experience',
         year: '2026',
-        description: 'Redesign website untuk eco-guesthouse di atas laut, Karimunjawa. Migrasi dari WordPress ke Next.js 14 dengan Sanity CMS, Tripla booking integration, dan 6 halaman baru — fokus pada direct booking dan pengalaman tamu.',
-        timeline: '14 hari kerja',
-        services: ['Next.js', 'Sanity CMS', 'Tripla', 'Vercel'],
+        description: 'Transformasi digital dari platform legacy WordPress ke infrastruktur modern menggunakan Next.js dan Sanity CMS. Proyek ini berfokus pada meningkatkan performa website, memberikan kontrol konten penuh kepada klien, dan mengoptimalkan visibilitas di mesin pencari untuk pasar hospitality internasional.',
+        timeline: '2 weeks',
+        services: ['Next.js', 'Sanity CMS', 'SEO', 'Hospitality'],
         image: '/images/floatingparadise.webp',
         link: 'https://floatingparadise.id',
         featured: true
@@ -46,7 +46,7 @@ export const projects: Project[] = [
         services: ['Website', 'Branding', 'UI/UX'],
         image: '/images/portofolio.png',
         link: 'https://welli.my.id',
-        featured: true
+        featured: false
     },
     {
         id: 'idx-trading-assistant',
@@ -70,7 +70,7 @@ export const projects: Project[] = [
         services: ['Website', 'Branding', 'i18n'],
         image: '/images/VillaUtamaro.png',
         link: 'https://villa-utamaro-next.vercel.app/id',
-        featured: true
+        featured: false
     },
     {
         id: 'pt-bkn',
@@ -106,7 +106,7 @@ export const projects: Project[] = [
         services: ['Website Branding', 'UI/UX', 'Motion Design'],
         image: '/images/dancingmountainvilla.png',
         link: 'https://dancing-mountain-villa.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'website-builder',
@@ -118,7 +118,7 @@ export const projects: Project[] = [
         services: ['SaaS Architecture', 'Complex State Management', 'Drag-and-Drop UX', 'Fullstack Engineering'],
         image: '/images/wb.png',
         link: 'https://website-builder-tau-livid.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'harga-check',
@@ -130,7 +130,7 @@ export const projects: Project[] = [
         services: ['Data Aggregation Architecture', 'API Integration & Web Scraping', 'Real-time Search Engine', 'High-Performance UI/UX'],
         image: '/images/hargaCheck.png',
         link: 'https://harga-check.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'la-beaute-luxury-spa',
