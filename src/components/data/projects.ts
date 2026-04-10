@@ -149,7 +149,7 @@ export const projects: Project[] = [
         title: 'Luxury Villa Website',
         category: 'Real Estate · High-End UI',
         year: '2026',
-        description: 'Kemungkinan in final code untuk "The Lombok Sanctuary". High-end real estate platform for luxury villa properties.',
+        description: 'High-end real estate platform for luxury villa properties.',
         timeline: '2 Weeks',
         services: ['TypeScript', 'Website', 'Branding'],
         image: '/images/luxury_villa_website.png',
