@@ -5,7 +5,6 @@ import ServiceCardSkeleton from './ServiceCardSkeleton';
 import ServiceCardErrorBoundary from './ServiceCardErrorBoundary';
 import { servicesData } from '@/constants/services';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
-import { useInView } from '@/hooks/useInView';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { useTranslation } from 'react-i18next';
 
@@ -15,7 +14,6 @@ const ServicesSection: React.FC = () => {
   const gridRef = useRef<HTMLDivElement>(null);
 
   const prefersReducedMotion = useReducedMotion();
-  const isGridInView = useInView(gridRef, { threshold: 0.1 });
 
   // Preload service images for faster loading
   useEffect(() => {
@@ -68,11 +66,11 @@ const ServicesSection: React.FC = () => {
           id="services-grid"
           className="services-grid grid grid-cols-1 gap-6"
           role="feed"
-          aria-busy={!isGridInView}
           aria-label="Services list. Use Tab to navigate between services."
           variants={prefersReducedMotion ? undefined : containerVariants}
           initial="hidden"
-          animate={isGridInView ? "visible" : "hidden"}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.05 }}
         >
           {servicesData.map((service, index) => (
             <React.Fragment key={service.id}>
@@ -83,7 +81,7 @@ const ServicesSection: React.FC = () => {
                   <ServiceCard
                     service={service}
                     index={index}
-                    isInView={isGridInView}
+                    isInView={true}
                     prefersReducedMotion={prefersReducedMotion}
                   />
                 </Suspense>
@@ -99,7 +97,7 @@ const ServicesSection: React.FC = () => {
           aria-atomic="true"
           className="sr-only"
         >
-          {isGridInView ? `${servicesData.length} services loaded` : 'Loading services...'}
+          {`${servicesData.length} services loaded`}
         </div>
 
       </div>
