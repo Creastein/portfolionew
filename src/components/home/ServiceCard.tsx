@@ -184,8 +184,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       aria-describedby={descId}
       tabIndex={0}
       style={{ 
-        contain: 'layout style paint',
-        contentVisibility: 'auto'
+        contain: 'layout style paint'
       }}
     >
       {/* Animated border glow effect */}
