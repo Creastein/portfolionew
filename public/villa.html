@@ -35,7 +35,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mohave:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mohave:wght@400;500;600;700&family=Rock+Salt&display=swap" rel="stylesheet">
 
     <style>
         /* ============================================
@@ -193,21 +193,23 @@
 
         .section-header h2 {
             font-family: 'Mohave', sans-serif;
-            font-size: 4.5rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.03);
+            font-size: 5.5rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            color: rgba(255, 255, 255, 0.08);
             position: relative;
             z-index: 1;
             line-height: 1;
+            text-transform: uppercase;
         }
 
         .section-header .subtitle {
-            font-size: 0.78rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-top: -0.75rem;
+            font-family: 'Rock Salt', cursive;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: none;
+            color: var(--accent);
+            margin-top: -0.5rem;
             position: relative;
             z-index: 1;
         }
@@ -487,18 +489,20 @@
 
         .floating-badge {
             position: absolute;
-            bottom: 1.5rem;
-            left: -2rem;
+            bottom: 1.25rem;
+            left: auto;
+            right: -3rem;
             background: rgba(19, 91, 236, 0.12);
             border: 1px solid rgba(19, 91, 236, 0.2);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            padding: 0.75rem 1.25rem;
-            border-radius: 0.75rem;
-            font-size: 0.78rem;
+            padding: 0.6rem 1rem;
+            border-radius: 0.6rem;
+            font-size: 0.72rem;
             color: var(--text-primary);
             line-height: 1.5;
             animation: float 4s ease-in-out infinite;
+            white-space: nowrap;
         }
 
         @keyframes float {
@@ -1079,6 +1083,16 @@
 
         .pricing-card.featured .pricing-name {
             color: var(--primary-light);
+        }
+
+        .pricing-price-old {
+            font-family: 'Mohave', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--danger);
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 0.25rem;
         }
 
         .pricing-price {
@@ -1689,7 +1703,7 @@
                 <span class="status-dot"></span>
                 <span>Tersedia untuk proyek</span>
             </div>
-            <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20dengan%20website%20villa"
+            <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20tertarik%20dengan%20website%20villa"
                 class="nav-cta" target="_blank" rel="noopener" onclick="fbq('track','Lead',{content_name:'Nav CTA'})">Konsultasi Gratis ↗</a>
         </div>
     </nav>
@@ -1710,7 +1724,7 @@
                     Website yang bekerja 24 jam mendatangkan tamu dari seluruh dunia.
                 </p>
                 <div class="hero-actions fade-up delay-3">
-                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20buat%20website%20villa"
+                    <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20tertarik%20buat%20website%20villa"
                         class="btn-primary" target="_blank" rel="noopener"
                         onclick="fbq('track','Lead',{content_name:'Hero CTA'})">
                         <span>💬 Chat WhatsApp Sekarang</span>
@@ -1719,15 +1733,15 @@
                 </div>
                 <div class="hero-stats fade-up delay-4">
                     <div>
-                        <div class="hero-stat-num">2</div>
-                        <div class="hero-stat-label">Villa Live</div>
+                        <div class="hero-stat-num">3+</div>
+                        <div class="hero-stat-label">Proyek Selesai</div>
                     </div>
                     <div>
                         <div class="hero-stat-num">100</div>
                         <div class="hero-stat-label">SEO Score</div>
                     </div>
                     <div>
-                        <div class="hero-stat-num">7</div>
+                        <div class="hero-stat-num">10+</div>
                         <div class="hero-stat-label">Negara Pengunjung</div>
                     </div>
                 </div>
@@ -1743,11 +1757,11 @@
                         <div class="hero-card-meta">Karimunjawa, Jepara · thesecretkarimunjawa.com</div>
                         <div class="hero-card-stats">
                             <div class="hero-card-stat">
-                                <div class="hero-card-stat-num">69+</div>
+                                <div class="hero-card-stat-num">150+</div>
                                 <div class="hero-card-stat-lbl">Visitors / 7 hari</div>
                             </div>
                             <div class="hero-card-stat">
-                                <div class="hero-card-stat-num">7</div>
+                                <div class="hero-card-stat-num">10+</div>
                                 <div class="hero-card-stat-lbl">Negara</div>
                             </div>
                             <div class="hero-card-stat">
@@ -1769,7 +1783,7 @@
         <div class="urgency-inner">
             <span class="urgency-icon">🔥</span>
             <span class="urgency-text">Slot April 2026: <strong>Sisa 2 dari 5 klien</strong> — Harga naik bulan depan</span>
-            <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20mau%20ambil%20slot%20April"
+            <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20mau%20ambil%20slot%20April"
                 class="urgency-cta" target="_blank" rel="noopener"
                 onclick="fbq('track','Lead',{content_name:'Urgency Banner'})">Amankan Slot →</a>
         </div>
@@ -1820,13 +1834,19 @@
         <div class="container">
             <div class="section-intro reveal">
                 <div class="section-tag">Masalah yang sering terjadi</div>
-                <h2 class="section-title">Apakah villa Anda masih <span class="accent">bergantung pada OTA?</span></h2>
-                <p class="section-body">Booking.com, Airbnb, dan OTA lainnya memotong komisi besar dari setiap booking —
-                    uang yang seharusnya masuk ke kantong Anda.</p>
+                <h2 class="section-title">Punya villa tapi <span class="accent">belum punya website?</span></h2>
+                <p class="section-body">Banyak owner villa hanya mengandalkan OTA atau bahkan belum punya kehadiran online sama sekali — sementara calon tamu dari seluruh dunia mencari villa lewat Google setiap hari.</p>
             </div>
 
             <div class="problem-grid">
                 <ul class="problem-list reveal">
+                    <li>
+                        <div class="problem-icon">🚫</div>
+                        <div class="problem-text">
+                            <strong>Punya villa bagus, tapi tidak ada di internet</strong>
+                            <span>Villa Anda sudah cantik, tamu puas — tapi calon tamu baru tidak bisa menemukan Anda di Google karena tidak punya website.</span>
+                        </div>
+                    </li>
                     <li>
                         <div class="problem-icon">✂</div>
                         <div class="problem-text">
@@ -1838,21 +1858,21 @@
                         <div class="problem-icon">👁</div>
                         <div class="problem-text">
                             <strong>Villa Anda tidak terlihat di Google</strong>
-                            <span>Calon tamu yang search langsung di Google tidak bisa menemukan villa Anda.</span>
+                            <span>Tanpa website, villa Anda seperti tidak ada. Tamu internasional yang search "villa di Bali" tidak akan pernah menemukan Anda.</span>
                         </div>
                     </li>
                     <li>
                         <div class="problem-icon">📋</div>
                         <div class="problem-text">
                             <strong>Tidak punya aset digital sendiri</strong>
-                            <span>Kalau OTA tutup akun atau ubah algoritma, bisnis Anda ikut terdampak.</span>
+                            <span>Kalau OTA tutup akun atau ubah algoritma, bisnis Anda ikut terdampak. Website adalah aset yang Anda kendalikan 100%.</span>
                         </div>
                     </li>
                     <li>
                         <div class="problem-icon">💬</div>
                         <div class="problem-text">
                             <strong>Komunikasi tamu tidak langsung</strong>
-                            <span>Tamu tidak bisa booking langsung ke WhatsApp — semua harus lewat platform OTA.</span>
+                            <span>Tamu tidak bisa booking langsung ke WhatsApp — semua harus lewat platform OTA yang memperlambat respons Anda.</span>
                         </div>
                     </li>
                 </ul>
@@ -1973,7 +1993,8 @@
                     </div>
                 </a>
 
-                <div class="portfolio-card reveal" style="cursor: default;">
+                <a class="portfolio-card reveal" href="https://floatingparadise.id/" target="_blank" rel="noopener"
+                   onclick="fbq('track','ViewContent',{content_name:'Portfolio - Floating Paradise'})">
                     <div class="portfolio-img" style="background: var(--surface-light);">
                         <img src="/images/floatingparadise.webp" alt="Website Floating Paradise" loading="lazy">
                         <div class="portfolio-live-badge">Live</div>
@@ -1994,11 +2015,65 @@
                             </div>
                             <div>
                                 <div class="portfolio-metric-num">Live</div>
-                                <div class="portfolio-metric-lbl">Di Vercel</div>
+                                <div class="portfolio-metric-lbl">floatingparadise.id</div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
+
+                <a class="portfolio-card reveal" href="https://luxury-villa-website.vercel.app/" target="_blank" rel="noopener"
+                   onclick="fbq('track','ViewContent',{content_name:'Portfolio - Luxury Villa'})">
+                    <div class="portfolio-img">
+                        <img src="/images/luxury_villa_website.png" alt="Website Luxury Villa" loading="lazy">
+                        <div class="portfolio-live-badge">Demo</div>
+                    </div>
+                    <div class="portfolio-body">
+                        <div class="portfolio-tag">Real Estate · High-End UI</div>
+                        <div class="portfolio-name">Luxury Villa Website</div>
+                        <p class="portfolio-desc">High-end real estate platform untuk luxury villa properties. Desain premium dengan TypeScript dan branding eksklusif.</p>
+                        <div class="portfolio-metrics">
+                            <div>
+                                <div class="portfolio-metric-num">TypeScript</div>
+                                <div class="portfolio-metric-lbl">Modern stack</div>
+                            </div>
+                            <div>
+                                <div class="portfolio-metric-num">Premium UI</div>
+                                <div class="portfolio-metric-lbl">High-end design</div>
+                            </div>
+                            <div>
+                                <div class="portfolio-metric-num">2 Minggu</div>
+                                <div class="portfolio-metric-lbl">Development</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <a class="portfolio-card reveal" href="https://dancing-mountain-villa.vercel.app/" target="_blank" rel="noopener"
+                   onclick="fbq('track','ViewContent',{content_name:'Portfolio - Dancing Mountain'})">
+                    <div class="portfolio-img">
+                        <img src="/images/dancingmountainvilla.png" alt="Website Dancing Mountain Villa" loading="lazy">
+                        <div class="portfolio-live-badge">Demo</div>
+                    </div>
+                    <div class="portfolio-body">
+                        <div class="portfolio-tag">Resort · Motion Design</div>
+                        <div class="portfolio-name">Dancing Mountain Villa</div>
+                        <p class="portfolio-desc">Website resort immersive dengan fokus pada visual storytelling premium dan fluid motion design yang memukau.</p>
+                        <div class="portfolio-metrics">
+                            <div>
+                                <div class="portfolio-metric-num">UI/UX</div>
+                                <div class="portfolio-metric-lbl">Visual storytelling</div>
+                            </div>
+                            <div>
+                                <div class="portfolio-metric-num">Motion</div>
+                                <div class="portfolio-metric-lbl">Fluid animation</div>
+                            </div>
+                            <div>
+                                <div class="portfolio-metric-num">2 Minggu</div>
+                                <div class="portfolio-metric-lbl">Development</div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
 
                 <div class="result-highlight reveal">
                     <div class="result-icon">✦</div>
@@ -2042,6 +2117,20 @@
                     </div>
                 </div>
             </div>
+
+            <div class="testimoni-card reveal">
+                <div class="quote-mark">"</div>
+                <p class="testimoni-text">
+                    Ya, tentu saja saya akan merekomendasikan. Saya sangat puas dengan semuanya, dikerjakan dengan jelas dan penuh tanggung jawab 🙏🏽
+                </p>
+                <div class="testimoni-author" style="justify-content:center;">
+                    <div class="author-avatar">FP</div>
+                    <div style="text-align:left;">
+                        <div class="author-name">Owner Floating Paradise</div>
+                        <div class="author-villa">Owner · Floating Paradise Karimunjawa</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2076,7 +2165,7 @@
                         <li><span class="check">✓</span> SEO dasar</li>
                         <li><span class="check">✓</span> Support 30 hari</li>
                     </ul>
-                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Standard"
+                    <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Standard"
                         class="pricing-cta pricing-cta-outline" target="_blank" rel="noopener"
                         onclick="fbq('track','InitiateCheckout',{content_name:'Standard',value:2500000,currency:'IDR'})">Pilih Standard</a>
                 </div>
@@ -2084,32 +2173,37 @@
                 <div class="pricing-card featured reveal">
                     <div class="featured-badge">Paling Populer</div>
                     <div class="pricing-name">Pro Booking</div>
+                    <div class="pricing-price-old">Rp 4,5 Jt</div>
                     <div class="pricing-price">Rp 3,5 Jt</div>
                     <div class="pricing-period">sekali bayar</div>
-                    <div class="pricing-urgency">⏰ Harga promo berlaku sampai akhir April</div>
+                    <div class="pricing-urgency">⏰ Promo berakhir dalam <span id="countdown-timer"></span></div>
                     <div class="pricing-divider"></div>
                     <ul class="pricing-features">
                         <li><span class="check">✓</span> Website hingga 8 halaman</li>
                         <li><span class="check">✓</span> Form booking WhatsApp otomatis</li>
                         <li><span class="check">✓</span> Bilingual (ID + EN)</li>
+                        <li><span class="check">✓</span> Form inquiry terstruktur</li>
                         <li><span class="check">✓</span> Google Analytics</li>
                         <li><span class="check">✓</span> Domain .com 1 tahun</li>
                         <li><span class="check">✓</span> Hosting gratis selamanya</li>
                         <li><span class="check">✓</span> SEO dasar + sitemap</li>
                         <li><span class="check">✓</span> Support 30 hari</li>
                     </ul>
-                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Pro"
+                    <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Pro"
                         class="pricing-cta pricing-cta-solid" target="_blank" rel="noopener"
                         onclick="fbq('track','InitiateCheckout',{content_name:'Pro Booking',value:3500000,currency:'IDR'})">Pilih Pro Booking</a>
                 </div>
 
                 <div class="pricing-card reveal">
                     <div class="pricing-name">Premium</div>
-                    <div class="pricing-price">Rp 5 Jt</div>
+                    <div class="pricing-price">Rp 6,5 Jt</div>
                     <div class="pricing-period">sekali bayar</div>
                     <div class="pricing-divider"></div>
                     <ul class="pricing-features">
                         <li><span class="check">✓</span> Semua fitur Pro Booking</li>
+                        <li><span class="check">✓</span> Payment gateway (Midtrans/Xendit)</li>
+                        <li><span class="check">✓</span> Online booking system lengkap</li>
+                        <li><span class="check">✓</span> Tamu bayar DP langsung di website</li>
                         <li><span class="check">✓</span> Multilingual 4 bahasa</li>
                         <li><span class="check">✓</span> CMS — update konten mandiri</li>
                         <li><span class="check">✓</span> SEO lanjutan + schema markup</li>
@@ -2117,9 +2211,9 @@
                         <li><span class="check">✓</span> Google Search Console setup</li>
                         <li><span class="check">✓</span> Support 30 hari prioritas</li>
                     </ul>
-                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Premium"
+                    <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Premium"
                         class="pricing-cta pricing-cta-outline" target="_blank" rel="noopener"
-                        onclick="fbq('track','InitiateCheckout',{content_name:'Premium',value:5000000,currency:'IDR'})">Pilih Premium</a>
+                        onclick="fbq('track','InitiateCheckout',{content_name:'Premium',value:6500000,currency:'IDR'})">Pilih Premium</a>
                 </div>
             </div>
         </div>
@@ -2142,8 +2236,8 @@
             </div>
 
             <div class="faq-list">
-                <div class="faq-item open reveal">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                <div class="faq-item reveal">
+                    <div class="faq-q">
                         Berapa lama proses pengerjaannya?
                         <div class="faq-toggle">+</div>
                     </div>
@@ -2151,7 +2245,7 @@
                         50% masuk dan Anda sudah mengirimkan foto villa, teks, dan informasi yang dibutuhkan.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <div class="faq-q">
                         Apakah domain dan hosting sudah termasuk?
                         <div class="faq-toggle">+</div>
                     </div>
@@ -2159,7 +2253,7 @@
                         di Vercel. Tahun berikutnya hanya perpanjangan domain sekitar Rp 200.000/tahun.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <div class="faq-q">
                         Bisa revisi berapa kali?
                         <div class="faq-toggle">+</div>
                     </div>
@@ -2167,7 +2261,7 @@
                         harga, atau ubah nomor kontak bisa dilakukan selama 30 hari support tanpa biaya tambahan.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <div class="faq-q">
                         Setelah selesai, siapa yang kelola website-nya?
                         <div class="faq-toggle">+</div>
                     </div>
@@ -2176,7 +2270,7 @@
                         perlu developer.</div>
                 </div>
                 <div class="faq-item reveal">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                    <div class="faq-q">
                         Sistem pembayarannya bagaimana?
                         <div class="faq-toggle">+</div>
                     </div>
@@ -2252,7 +2346,7 @@
             <h2 class="section-title">Siap dapat tamu dari <span class="accent">website sendiri?</span></h2>
             <p class="section-body">Jangan tunggu sampai kompetitor Anda punya website duluan. Chat sekarang — gratis, tanpa komitmen.</p>
             <div class="final-cta-actions">
-                <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20ingin%20konsultasi%20website%20villa%20saya"
+                <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20ingin%20konsultasi%20website%20villa%20saya"
                     class="btn-primary" target="_blank" rel="noopener"
                     onclick="fbq('track','Lead',{content_name:'Final CTA'})">
                     <span>💬 Chat WhatsApp Sekarang</span>
@@ -2273,7 +2367,7 @@
             <div class="sticky-wa-title">Mau punya website villa?</div>
             <div class="sticky-wa-sub">Konsultasi gratis via WhatsApp</div>
         </div>
-        <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20buat%20website%20villa%20saya"
+        <a href="https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20tertarik%20buat%20website%20villa%20saya"
             class="sticky-wa-btn" target="_blank" rel="noopener"
             onclick="fbq('track','Lead',{content_name:'Sticky WA Mobile'})">
             <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.627.616l4.584-1.198A11.953 11.953 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.239 0-4.313-.726-5.993-1.957l-.42-.313-2.717.71.724-2.647-.343-.546A9.935 9.935 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -2298,7 +2392,7 @@
                 `📦 Paket: ${pkg}\n\n` +
                 `Mohon info lebih lanjut, terima kasih!`;
 
-            const waUrl = `https://wa.me/6285161507114?text=${encodeURIComponent(msg)}`;
+            const waUrl = `https://wa.me/6285188574908?text=${encodeURIComponent(msg)}`;
 
             // Track Meta Pixel
             if (typeof fbq !== 'undefined') {
@@ -2393,6 +2487,23 @@
             }, { threshold: 0.3 });
             pricingObserver.observe(pricingSection);
         }
+
+        // Countdown timer — end of April 2026
+        function updateCountdown() {
+            const end = new Date('2026-04-30T23:59:59+07:00');
+            const now = new Date();
+            const diff = end - now;
+            if (diff <= 0) {
+                document.getElementById('countdown-timer').textContent = 'BERAKHIR!';
+                return;
+            }
+            const d = Math.floor(diff / (1000*60*60*24));
+            const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+            const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+            document.getElementById('countdown-timer').textContent = d + ' hari ' + h + ' jam ' + m + ' menit';
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 60000);
     </script>
 
 </body>
