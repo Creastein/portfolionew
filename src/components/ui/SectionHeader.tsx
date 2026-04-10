@@ -67,22 +67,25 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, classNam
             });
         }
 
-        // Animate subtitle
-        gsap.fromTo('.header-subtitle',
-            { opacity: 0, y: 20 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.8,
-                delay: 1.5,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    start: 'top 85%',
-                    toggleActions: 'play none none reverse'
+        // Animate subtitle (scoped to this container)
+        const subtitleEl = containerRef.current?.querySelector('.header-subtitle');
+        if (subtitleEl) {
+            gsap.fromTo(subtitleEl,
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: 1.5,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: containerRef.current,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    }
                 }
-            }
-        );
+            );
+        }
 
     }, [title]);
 

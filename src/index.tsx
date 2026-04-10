@@ -14,11 +14,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   </React.StrictMode>
 );
 
-// PWA service worker registration
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js', { scope: '/' })
-      .then(reg => console.log('SW registered:', reg))
-      .catch(err => console.log('SW error:', err));
-  });
-}
+// PWA service worker registration - disabled (no sw.js in public/)
+// If you need a service worker, use vite-plugin-pwa to generate one.

@@ -55,117 +55,88 @@ const ContactSection: React.FC = () => {
         }
     }, [t]);
 
-    // GSAP Animations
+    // GSAP Animations - all selectors scoped to containerRef
     const containerRef = useGSAP<HTMLElement>(() => {
-        // Text Scramble Animation
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
-        const scrambleChars = document.querySelectorAll('.scramble-char');
-        const finalText = t('contact.title');
+        const el = containerRef.current;
+        if (!el) return;
 
-        scrambleChars.forEach((char, index) => {
-            const finalChar = finalText[index];
-            let iterations = 0;
-            const maxIterations = 15;
+        // Animate LET'S TALK heading characters
+        const charEls = el.querySelectorAll('.char');
+        if (charEls.length > 0) {
+            gsap.to(charEls, {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                stagger: 0.05,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: titleRef.current,
+                    start: 'top 85%',
+                    toggleActions: 'play none none reverse'
+                }
+            });
+        }
 
-            gsap.fromTo(char,
-                {
-                    opacity: 0,
-                    rotateX: 90,
-                    y: 50,
-                    scale: 0.5
-                },
+        // Animate contact info cards
+        const infoCards = el.querySelectorAll('.contact-info-card');
+        const infoContainer = el.querySelector('.contact-info-container');
+        if (infoCards.length > 0 && infoContainer) {
+            gsap.fromTo(infoCards,
+                { opacity: 0, x: -30 },
                 {
                     opacity: 1,
-                    rotateX: 0,
-                    y: 0,
-                    scale: 1,
-                    duration: 0.8,
-                    delay: index * 0.1,
-                    ease: 'back.out(1.7)',
+                    x: 0,
+                    duration: 0.6,
+                    stagger: 0.15,
+                    ease: 'power3.out',
                     scrollTrigger: {
-                        trigger: '.scramble-text',
-                        start: 'top 85%',
-                        toggleActions: 'play none none reverse',
-                        onEnter: () => {
-                            // Scramble effect
-                            const interval = setInterval(() => {
-                                if (iterations >= maxIterations) {
-                                    char.textContent = finalChar;
-                                    clearInterval(interval);
-                                    return;
-                                }
-                                char.textContent = chars[Math.floor(Math.random() * chars.length)];
-                                iterations++;
-                            }, 50);
-                        }
+                        trigger: infoContainer,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
                     }
                 }
             );
-        });
-
-        // Animate LET'S TALK heading characters
-        gsap.to('.char', {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            stagger: 0.05,
-            ease: 'power3.out',
-            scrollTrigger: {
-                trigger: titleRef.current,
-                start: 'top 85%',
-                toggleActions: 'play none none reverse'
-            }
-        });
-
-        // Animate contact info cards
-        gsap.fromTo('.contact-info-card',
-            { opacity: 0, x: -30 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 0.6,
-                stagger: 0.15,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.contact-info-container',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
-                }
-            }
-        );
+        }
 
         // Animate form container
-        gsap.fromTo('.contact-form-container',
-            { opacity: 0, x: 30 },
-            {
-                opacity: 1,
-                x: 0,
-                duration: 0.8,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.contact-form-container',
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse'
+        const formContainer = el.querySelector('.contact-form-container');
+        if (formContainer) {
+            gsap.fromTo(formContainer,
+                { opacity: 0, x: 30 },
+                {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: formContainer,
+                        start: 'top 80%',
+                        toggleActions: 'play none none reverse'
+                    }
                 }
-            }
-        );
+            );
+        }
 
         // Animate footer elements
-        gsap.fromTo('.footer-element',
-            { opacity: 0, y: 20 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 0.5,
-                stagger: 0.1,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: '.footer-container',
-                    start: 'top 90%',
-                    toggleActions: 'play none none reverse'
+        const footerContainer = el.querySelector('.footer-container');
+        const footerElements = el.querySelectorAll('.footer-element');
+        if (footerContainer && footerElements.length > 0) {
+            gsap.fromTo(footerElements,
+                { opacity: 0, y: 20 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.5,
+                    stagger: 0.1,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: footerContainer,
+                        start: 'top 90%',
+                        toggleActions: 'play none none reverse'
+                    }
                 }
-            }
-        );
+            );
+        }
     }, []);
 
     const validateForm = (): boolean => {
