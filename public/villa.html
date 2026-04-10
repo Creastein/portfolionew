@@ -7,31 +7,44 @@
     <title>WelliBuilds — Website Villa yang Langsung Dapat Tamu</title>
     <meta name="description"
         content="Spesialis website villa & hotel Indonesia. Tamu booking langsung ke WhatsApp Anda — tanpa OTA, tanpa potongan komisi.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="WelliBuilds — Website Villa yang Langsung Dapat Tamu">
+    <meta property="og:description" content="Spesialis website villa & hotel Indonesia. Tamu booking langsung ke WhatsApp Anda — tanpa OTA, tanpa potongan komisi.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://welli.my.id/villa">
+
+    <!-- Fonts: Match main site -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Mohave:wght@300;400;500;600;700&family=Rock+Salt&display=swap" rel="stylesheet">
+
     <style>
-        *,
-        *::before,
-        *::after {
+        /* ============================================
+           RESET & BASE — Matching welli.my.id
+           ============================================ */
+        *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
         :root {
-            --cream: #F5F0E8;
-            --warm-white: #FDFAF5;
-            --deep-green: #1A2E1E;
-            --forest: #2D4A32;
-            --sage: #5A7A5F;
-            --gold: #C9A84C;
-            --gold-light: #E8D5A0;
-            --text-dark: #1A1A18;
-            --text-mid: #4A4A42;
-            --text-light: #8A8A7A;
-            --border: rgba(26, 46, 30, 0.12);
+            --primary: #135bec;
+            --primary-light: #4a83f5;
+            --primary-dark: #0e47bf;
+            --background: #050505;
+            --surface: #101622;
+            --surface-light: #1c2536;
+            --white: #ffffff;
+            --text-primary: #ffffff;
+            --text-secondary: #92a4c9;
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --border: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(255, 255, 255, 0.2);
+            --green: #22c55e;
+            --red: #FF3300;
+            --gold: #fbbf24;
         }
 
         html {
@@ -39,119 +52,240 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--warm-white);
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
             font-size: 16px;
             line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* NAV */
-        nav {
+        ::selection {
+            background: var(--primary);
+            color: white;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ============================================
+           NAVIGATION — Floating glassmorphism pill
+           ============================================ */
+        .nav-container {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 1.25rem 2rem;
+            padding: 1.5rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(253, 250, 245, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 0.5px solid var(--border);
+            pointer-events: none;
         }
 
         .nav-brand {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.4rem;
+            font-family: 'Mohave', sans-serif;
+            font-size: 1.25rem;
             font-weight: 600;
-            color: var(--deep-green);
-            letter-spacing: 0.02em;
+            color: #e0e0e0;
+            letter-spacing: -0.02em;
+            pointer-events: auto;
+            mix-blend-mode: difference;
+        }
+
+        .nav-pill {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.65rem 1.5rem;
+            pointer-events: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #e0e0e0;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         .nav-cta {
-            background: var(--deep-green);
-            color: var(--cream);
-            padding: 0.6rem 1.4rem;
-            border-radius: 2px;
-            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.55rem 1.25rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
             font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.04em;
-            transition: background 0.2s;
+            letter-spacing: 0.02em;
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            border: none;
+            cursor: pointer;
         }
 
         .nav-cta:hover {
-            background: var(--forest);
+            background: var(--primary-light);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px rgba(19, 91, 236, 0.4);
         }
 
-        /* HERO */
-        .hero {
-            min-height: 100vh;
-            background: var(--deep-green);
-            display: flex;
-            align-items: center;
+        /* ============================================
+           SECTION HEADER — Massive text scramble style
+           ============================================ */
+        .section-header {
             position: relative;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 3rem 0;
             overflow: hidden;
-            padding: 8rem 2rem 4rem;
+            text-align: center;
         }
 
-        .hero-texture {
+        .section-header-bg {
             position: absolute;
             inset: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(90, 122, 95, 0.15) 0%, transparent 40%);
+            opacity: 0.15;
+            pointer-events: none;
+            background-image: radial-gradient(circle at 1px 1px, rgba(19, 91, 236, 0.3) 1px, transparent 0);
+            background-size: 40px 40px;
+        }
+
+        .section-header h2 {
+            font-family: 'Mohave', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header .subtitle {
+            font-family: 'Rock Salt', cursive;
+            font-size: clamp(0.7rem, 1.5vw, 0.9rem);
+            color: var(--primary);
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ============================================
+           HERO
+           ============================================ */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 1.5rem 4rem;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            pointer-events: none;
+        }
+
+        .hero-glow-1 {
+            top: -20%;
+            right: -10%;
+            background: rgba(19, 91, 236, 0.08);
+        }
+
+        .hero-glow-2 {
+            bottom: -20%;
+            left: -10%;
+            background: rgba(19, 91, 236, 0.05);
         }
 
         .hero-inner {
-            max-width: 1100px;
+            max-width: 1400px;
             margin: 0 auto;
             width: 100%;
             position: relative;
-            z-index: 1;
+            z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
-            align-items: center;
+            align-items: end;
         }
 
         .hero-tag {
-            display: inline-block;
-            color: var(--gold);
-            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-size: 0.7rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            border: 0.5px solid rgba(201, 168, 76, 0.4);
+            border: 1px solid rgba(19, 91, 236, 0.3);
             padding: 0.4rem 1rem;
-            border-radius: 2px;
+            border-radius: 999px;
             margin-bottom: 1.5rem;
+            background: rgba(19, 91, 236, 0.05);
         }
 
         .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.8rem, 5vw, 4.2rem);
-            font-weight: 500;
-            line-height: 1.1;
-            color: var(--cream);
+            font-family: 'Mohave', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 600;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+            color: var(--text-primary);
             margin-bottom: 1.25rem;
         }
 
-        .hero h1 em {
-            font-style: italic;
-            color: var(--gold);
+        .hero h1 .accent {
+            color: var(--primary);
         }
 
         .hero-sub {
-            color: rgba(245, 240, 232, 0.65);
+            color: var(--text-secondary);
             font-size: 1.05rem;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.8;
             margin-bottom: 2.5rem;
-            max-width: 440px;
+            max-width: 480px;
         }
 
         .hero-actions {
@@ -160,85 +294,116 @@
             flex-wrap: wrap;
         }
 
+        /* Buttons */
         .btn-primary {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: var(--gold);
-            color: var(--deep-green);
-            padding: 0.85rem 2rem;
-            border-radius: 2px;
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem 2rem;
+            border-radius: 0.75rem;
             font-size: 0.9rem;
             font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.03em;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: white;
+            transform: translateX(-100%);
+            transition: transform 0.3s;
+        }
+
+        .btn-primary:hover::before {
+            transform: translateX(0);
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-1px);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(19, 91, 236, 0.35);
         }
 
         .btn-secondary {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            color: var(--cream);
-            padding: 0.85rem 2rem;
-            border-radius: 2px;
-            border: 0.5px solid rgba(245, 240, 232, 0.3);
+            color: var(--text-primary);
+            padding: 0.9rem 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
             font-size: 0.9rem;
             font-weight: 400;
-            text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.3s;
+            background: rgba(255, 255, 255, 0.03);
         }
 
         .btn-secondary:hover {
-            border-color: rgba(245, 240, 232, 0.6);
+            border-color: var(--primary);
+            color: var(--primary);
+            background: rgba(19, 91, 236, 0.05);
         }
 
         .hero-stats {
             display: flex;
-            gap: 2.5rem;
+            gap: 3rem;
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 0.5px solid rgba(245, 240, 232, 0.12);
+            border-top: 1px solid var(--border);
         }
 
         .hero-stat-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 500;
-            color: var(--gold);
+            font-family: 'Mohave', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
             line-height: 1;
+            letter-spacing: -0.02em;
         }
 
         .hero-stat-label {
-            font-size: 0.78rem;
-            color: rgba(245, 240, 232, 0.5);
-            margin-top: 0.25rem;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
             letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
         .hero-right {
             position: relative;
         }
 
+        /* Hero Card — Portfolio preview */
         .hero-card {
-            background: rgba(245, 240, 232, 0.06);
-            border: 0.5px solid rgba(245, 240, 232, 0.15);
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .hero-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-4px);
         }
 
         .hero-card-img {
             width: 100%;
-            aspect-ratio: 4/3;
-            background: linear-gradient(135deg, #2D4A32 0%, #1A2E1E 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            aspect-ratio: 16/10;
+            background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%);
             position: relative;
             overflow: hidden;
         }
@@ -247,123 +412,166 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80') center/cover;
-            opacity: 0.7;
+            background: url('/images/karimunjawa.png') center/cover;
+            opacity: 0.5;
+            transition: transform 0.5s;
+        }
+
+        .hero-card:hover .hero-card-img::before {
+            transform: scale(1.05);
         }
 
         .hero-card-badge {
             position: absolute;
             top: 1rem;
             left: 1rem;
-            background: rgba(26, 46, 30, 0.85);
-            color: var(--gold);
-            font-size: 0.72rem;
-            letter-spacing: 0.1em;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            color: var(--green);
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
             padding: 0.35rem 0.8rem;
-            border-radius: 2px;
-            backdrop-filter: blur(4px);
+            border-radius: 999px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .hero-card-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
         }
 
         .hero-card-body {
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem;
         }
 
         .hero-card-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-family: 'Mohave', sans-serif;
+            font-size: 1.4rem;
             font-weight: 500;
-            color: var(--cream);
-            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
         }
 
         .hero-card-meta {
             font-size: 0.8rem;
-            color: rgba(245, 240, 232, 0.5);
+            color: var(--text-muted);
         }
 
         .hero-card-stats {
             display: flex;
             gap: 1.5rem;
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 0.5px solid rgba(245, 240, 232, 0.1);
+            margin-top: 1.25rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
         }
 
         .hero-card-stat {
             text-align: center;
+            flex: 1;
         }
 
         .hero-card-stat-num {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--cream);
+            font-family: 'Mohave', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .hero-card-stat-lbl {
-            font-size: 0.7rem;
-            color: rgba(245, 240, 232, 0.4);
+            font-size: 0.65rem;
+            color: var(--text-muted);
             margin-top: 0.15rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .floating-badge {
             position: absolute;
-            bottom: -1rem;
-            right: -1rem;
-            background: var(--gold);
-            color: var(--deep-green);
+            bottom: -0.75rem;
+            right: -0.75rem;
+            background: var(--primary);
+            color: white;
             padding: 0.75rem 1.25rem;
-            border-radius: 4px;
-            font-size: 0.78rem;
+            border-radius: 0.75rem;
+            font-size: 0.75rem;
             font-weight: 500;
-            line-height: 1.3;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+            line-height: 1.4;
+            box-shadow: 0 8px 32px rgba(19, 91, 236, 0.4);
+            z-index: 5;
         }
 
-        /* SECTIONS */
+        /* ============================================
+           COMMON SECTION
+           ============================================ */
         section {
-            padding: 6rem 2rem;
+            padding: 6rem 1.5rem;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 0.5rem;
+        }
+
+        .section-intro {
+            max-width: 600px;
+            margin-bottom: 4rem;
         }
 
         .section-tag {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             font-weight: 500;
             letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--sage);
+            color: var(--primary);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-tag::before {
+            content: '';
+            width: 2rem;
+            height: 1px;
+            background: var(--primary);
         }
 
         .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            font-weight: 500;
-            line-height: 1.15;
-            color: var(--deep-green);
+            font-family: 'Mohave', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
             margin-bottom: 1rem;
         }
 
-        .section-title em {
-            font-style: italic;
-            color: var(--sage);
+        .section-title .accent {
+            color: var(--primary);
         }
 
         .section-body {
             font-size: 1.05rem;
             font-weight: 300;
-            color: var(--text-mid);
+            color: var(--text-secondary);
             line-height: 1.8;
             max-width: 580px;
         }
 
-        /* PROBLEM */
+        /* ============================================
+           PROBLEM SECTION
+           ============================================ */
         .problem {
-            background: var(--cream);
+            background: var(--background);
         }
 
         .problem-grid {
@@ -383,19 +591,25 @@
             gap: 1rem;
             align-items: flex-start;
             padding: 1.25rem 0;
-            border-bottom: 0.5px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s;
         }
 
         .problem-list li:first-child {
-            border-top: 0.5px solid var(--border);
+            border-top: 1px solid var(--border);
+        }
+
+        .problem-list li:hover {
+            padding-left: 0.5rem;
         }
 
         .problem-icon {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             flex-shrink: 0;
-            background: rgba(26, 46, 30, 0.07);
-            border-radius: 2px;
+            background: rgba(19, 91, 236, 0.08);
+            border: 1px solid rgba(19, 91, 236, 0.15);
+            border-radius: 0.6rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -405,139 +619,142 @@
         .problem-text strong {
             display: block;
             font-weight: 500;
-            color: var(--text-dark);
-            margin-bottom: 0.2rem;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
         }
 
         .problem-text span {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 300;
         }
 
         .problem-highlight {
-            background: var(--deep-green);
-            border-radius: 4px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             padding: 2.5rem;
-            color: var(--cream);
         }
 
         .problem-highlight-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 4rem;
-            font-weight: 500;
-            color: var(--gold);
+            font-family: 'Mohave', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 600;
+            color: var(--primary);
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.04em;
         }
 
         .problem-highlight-text {
             font-size: 1rem;
             font-weight: 300;
-            color: rgba(245, 240, 232, 0.7);
+            color: var(--text-secondary);
             line-height: 1.7;
         }
 
         .problem-highlight-detail {
             margin-top: 1.5rem;
             padding-top: 1.5rem;
-            border-top: 0.5px solid rgba(245, 240, 232, 0.15);
-            font-size: 0.85rem;
-            color: rgba(245, 240, 232, 0.5);
+            border-top: 1px solid var(--border);
+            font-size: 0.8rem;
+            color: var(--text-muted);
             font-style: italic;
         }
 
-        /* SOLUTION */
+        /* ============================================
+           SOLUTION SECTION
+           ============================================ */
+        .solution-section {
+            background: #080a0f;
+        }
+
         .solution-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
             margin-top: 4rem;
         }
 
         .solution-card {
-            background: var(--warm-white);
-            border: 0.5px solid var(--border);
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             padding: 2rem;
             position: relative;
             overflow: hidden;
-            transition: border-color 0.2s, transform 0.2s;
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .solution-card:hover {
-            border-color: var(--sage);
-            transform: translateY(-2px);
-        }
-
-        .solution-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: var(--gold);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        .solution-card:hover::before {
-            opacity: 1;
+            border-color: rgba(19, 91, 236, 0.4);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(19, 91, 236, 0.08);
+            background: rgba(19, 91, 236, 0.03);
         }
 
         .solution-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            color: rgba(26, 46, 30, 0.08);
+            font-family: 'Mohave', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: rgba(19, 91, 236, 0.12);
             line-height: 1;
             margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+        }
+
+        .solution-card:hover .solution-num {
+            color: rgba(19, 91, 236, 0.3);
         }
 
         .solution-card h3 {
+            font-family: 'Inter', sans-serif;
             font-size: 1.05rem;
-            font-weight: 500;
-            color: var(--deep-green);
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 0.6rem;
         }
 
         .solution-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
             line-height: 1.7;
+            font-weight: 300;
         }
 
-        /* PORTFOLIO */
-        .portfolio {
-            background: var(--cream);
+        /* ============================================
+           PORTFOLIO SECTION
+           ============================================ */
+        .portfolio-section {
+            background: var(--background);
         }
 
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
             margin-top: 4rem;
         }
 
         .portfolio-card {
-            background: var(--warm-white);
-            border: 0.5px solid var(--border);
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             overflow: hidden;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
             display: block;
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .portfolio-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(26, 46, 30, 0.1);
+            transform: translateY(-4px);
+            border-color: rgba(19, 91, 236, 0.3);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
         }
 
         .portfolio-img {
             aspect-ratio: 16/9;
-            background: var(--forest);
+            background: var(--surface);
             position: relative;
             overflow: hidden;
         }
@@ -546,11 +763,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.4s;
+            transition: transform 0.5s;
         }
 
         .portfolio-card:hover .portfolio-img img {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
         .portfolio-img-placeholder {
@@ -559,113 +776,144 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Mohave', sans-serif;
             font-size: 1.5rem;
-            color: rgba(245, 240, 232, 0.4);
+            font-weight: 300;
+            color: var(--text-muted);
         }
 
         .portfolio-body {
-            padding: 1.5rem;
+            padding: 1.75rem;
         }
 
         .portfolio-tag {
-            font-size: 0.7rem;
+            font-size: 0.68rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--sage);
+            color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
         .portfolio-name {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Mohave', sans-serif;
             font-size: 1.5rem;
             font-weight: 500;
-            color: var(--deep-green);
-            margin-bottom: 0.4rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
         }
 
         .portfolio-desc {
             font-size: 0.88rem;
-            color: var(--text-light);
-            line-height: 1.6;
+            color: var(--text-secondary);
+            line-height: 1.7;
             margin-bottom: 1.25rem;
+            font-weight: 300;
         }
 
         .portfolio-metrics {
             display: flex;
-            gap: 1.5rem;
-            padding-top: 1rem;
-            border-top: 0.5px solid var(--border);
+            gap: 2rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border);
         }
 
         .portfolio-metric-num {
+            font-family: 'Mohave', sans-serif;
             font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--deep-green);
+            font-weight: 600;
+            color: var(--text-primary);
         }
 
         .portfolio-metric-lbl {
-            font-size: 0.72rem;
-            color: var(--text-light);
+            font-size: 0.68rem;
+            color: var(--text-muted);
             margin-top: 0.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .result-highlight {
-            background: var(--deep-green);
-            border-radius: 4px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             padding: 2rem 2.5rem;
             display: flex;
             align-items: center;
             gap: 2rem;
             grid-column: 1 / -1;
+            transition: border-color 0.3s;
+        }
+
+        .result-highlight:hover {
+            border-color: rgba(19, 91, 236, 0.3);
         }
 
         .result-icon {
             font-size: 2.5rem;
             flex-shrink: 0;
+            color: var(--primary);
         }
 
         .result-text strong {
             display: block;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-family: 'Mohave', sans-serif;
+            font-size: 1.5rem;
             font-weight: 500;
-            color: var(--gold);
+            color: var(--text-primary);
             margin-bottom: 0.25rem;
+            letter-spacing: -0.01em;
         }
 
         .result-text span {
-            font-size: 0.9rem;
-            color: rgba(245, 240, 232, 0.6);
+            font-size: 0.88rem;
+            color: var(--text-secondary);
             font-weight: 300;
         }
 
-        /* TESTIMONI */
+        /* ============================================
+           TESTIMONI
+           ============================================ */
+        .testimoni-section {
+            background: #080a0f;
+        }
+
         .testimoni-card {
-            background: var(--deep-green);
-            border-radius: 4px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             padding: 3rem;
             max-width: 760px;
             margin: 3rem auto 0;
             position: relative;
+            overflow: hidden;
+        }
+
+        .testimoni-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
         }
 
         .quote-mark {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Mohave', sans-serif;
             font-size: 6rem;
             line-height: 0.5;
-            color: var(--gold);
+            color: var(--primary);
             opacity: 0.3;
             margin-bottom: 1rem;
         }
 
         .testimoni-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
-            font-weight: 400;
+            font-size: 1.25rem;
+            font-weight: 300;
             font-style: italic;
-            color: var(--cream);
-            line-height: 1.6;
+            color: var(--text-secondary);
+            line-height: 1.8;
             margin-bottom: 2rem;
         }
 
@@ -676,121 +924,120 @@
         }
 
         .author-avatar {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--sage);
+            width: 48px;
+            height: 48px;
+            border-radius: 0.75rem;
+            background: rgba(19, 91, 236, 0.15);
+            border: 1px solid rgba(19, 91, 236, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 500;
-            color: var(--cream);
-            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.85rem;
             flex-shrink: 0;
         }
 
         .author-name {
             font-weight: 500;
-            color: var(--cream);
+            color: var(--text-primary);
             font-size: 0.95rem;
         }
 
         .author-villa {
             font-size: 0.8rem;
-            color: rgba(245, 240, 232, 0.5);
-            margin-top: 0.1rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
         }
 
-        /* PRICING */
-        .pricing {
-            background: var(--cream);
+        /* ============================================
+           PRICING
+           ============================================ */
+        .pricing-section {
+            background: var(--background);
         }
 
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
+            gap: 1.25rem;
             margin-top: 4rem;
             align-items: start;
         }
 
         .pricing-card {
-            background: var(--warm-white);
-            border: 0.5px solid var(--border);
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
             padding: 2rem;
-            transition: transform 0.2s;
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
 
         .pricing-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            border-color: var(--border-hover);
         }
 
         .pricing-card.featured {
-            background: var(--deep-green);
-            border-color: transparent;
+            background: var(--surface);
+            border-color: rgba(19, 91, 236, 0.3);
             position: relative;
+            box-shadow: 0 0 60px rgba(19, 91, 236, 0.08);
+        }
+
+        .pricing-card.featured:hover {
+            border-color: var(--primary);
+            box-shadow: 0 0 60px rgba(19, 91, 236, 0.15);
         }
 
         .featured-badge {
             position: absolute;
-            top: -0.85rem;
+            top: -0.75rem;
             left: 50%;
             transform: translateX(-50%);
-            background: var(--gold);
-            color: var(--deep-green);
-            font-size: 0.7rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             padding: 0.3rem 1rem;
-            border-radius: 2px;
+            border-radius: 999px;
             white-space: nowrap;
         }
 
         .pricing-name {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: var(--sage);
+            color: var(--text-secondary);
             margin-bottom: 1rem;
         }
 
         .pricing-card.featured .pricing-name {
-            color: var(--gold-light);
+            color: var(--primary-light);
         }
 
         .pricing-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.4rem;
-            font-weight: 500;
-            color: var(--deep-green);
+            font-family: 'Mohave', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
             line-height: 1;
             margin-bottom: 0.25rem;
-        }
-
-        .pricing-card.featured .pricing-price {
-            color: var(--cream);
+            letter-spacing: -0.03em;
         }
 
         .pricing-period {
             font-size: 0.8rem;
-            color: var(--text-light);
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
         }
 
-        .pricing-card.featured .pricing-period {
-            color: rgba(245, 240, 232, 0.4);
-        }
-
         .pricing-divider {
-            height: 0.5px;
+            height: 1px;
             background: var(--border);
             margin: 1.25rem 0;
-        }
-
-        .pricing-card.featured .pricing-divider {
-            background: rgba(245, 240, 232, 0.12);
         }
 
         .pricing-features {
@@ -799,132 +1046,165 @@
 
         .pricing-features li {
             display: flex;
-            gap: 0.7rem;
+            gap: 0.75rem;
             align-items: flex-start;
             font-size: 0.88rem;
-            color: var(--text-mid);
+            color: var(--text-secondary);
             padding: 0.4rem 0;
-        }
-
-        .pricing-card.featured .pricing-features li {
-            color: rgba(245, 240, 232, 0.7);
+            font-weight: 300;
         }
 
         .check {
-            color: var(--sage);
-            font-weight: 500;
+            color: var(--primary);
+            font-weight: 600;
             flex-shrink: 0;
-        }
-
-        .pricing-card.featured .check {
-            color: var(--gold);
+            font-size: 0.9rem;
         }
 
         .pricing-cta {
             display: block;
             text-align: center;
-            text-decoration: none;
             margin-top: 1.75rem;
-            padding: 0.8rem;
-            border-radius: 2px;
+            padding: 0.85rem;
+            border-radius: 0.75rem;
             font-size: 0.88rem;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: all 0.3s;
         }
 
         .pricing-cta-outline {
-            border: 0.5px solid var(--deep-green);
-            color: var(--deep-green);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            background: transparent;
         }
 
         .pricing-cta-outline:hover {
-            background: var(--deep-green);
-            color: var(--cream);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-secondary);
         }
 
         .pricing-cta-solid {
-            background: var(--gold);
-            color: var(--deep-green);
+            background: var(--primary);
+            color: white;
+            border: 1px solid var(--primary);
         }
 
         .pricing-cta-solid:hover {
-            background: var(--gold-light);
+            background: var(--primary-light);
+            box-shadow: 0 4px 20px rgba(19, 91, 236, 0.35);
+            transform: translateY(-1px);
         }
 
-        /* FAQ */
+        /* ============================================
+           FAQ
+           ============================================ */
+        .faq-section {
+            background: #080a0f;
+        }
+
         .faq-list {
             max-width: 720px;
             margin: 3rem auto 0;
         }
 
         .faq-item {
-            border-bottom: 0.5px solid var(--border);
+            border-bottom: 1px solid var(--border);
             padding: 1.5rem 0;
         }
 
         .faq-q {
             font-size: 1rem;
             font-weight: 500;
-            color: var(--deep-green);
+            color: var(--text-primary);
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 1rem;
             user-select: none;
+            transition: color 0.3s;
         }
 
-        .faq-q::after {
-            content: '+';
-            font-size: 1.4rem;
+        .faq-q:hover {
+            color: var(--primary);
+        }
+
+        .faq-toggle {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
             font-weight: 300;
-            color: var(--sage);
+            color: var(--text-muted);
             flex-shrink: 0;
-            transition: transform 0.2s;
+            transition: all 0.3s;
         }
 
-        .faq-item.open .faq-q::after {
+        .faq-item.open .faq-toggle {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
             transform: rotate(45deg);
         }
 
         .faq-a {
             font-size: 0.92rem;
-            color: var(--text-mid);
+            color: var(--text-secondary);
             line-height: 1.75;
             margin-top: 0;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, margin-top 0.2s;
+            transition: max-height 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), margin-top 0.3s;
+            font-weight: 300;
         }
 
         .faq-item.open .faq-a {
             max-height: 200px;
-            margin-top: 0.75rem;
+            margin-top: 1rem;
         }
 
-        /* FINAL CTA */
+        /* ============================================
+           FINAL CTA
+           ============================================ */
         .final-cta {
-            background: var(--deep-green);
+            background: var(--background);
             text-align: center;
-            padding: 8rem 2rem;
+            padding: 8rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(19, 91, 236, 0.08);
+            border-radius: 50%;
+            filter: blur(120px);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
         }
 
         .final-cta .section-tag {
-            color: var(--gold-light);
+            justify-content: center;
+        }
+
+        .final-cta .section-tag::before {
+            display: none;
         }
 
         .final-cta .section-title {
-            color: var(--cream);
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto 1rem;
         }
 
-        .final-cta .section-title em {
-            color: var(--gold);
-        }
-
         .final-cta .section-body {
-            color: rgba(245, 240, 232, 0.55);
             margin: 0 auto 2.5rem;
         }
 
@@ -933,61 +1213,87 @@
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
-        /* FOOTER */
+        /* ============================================
+           FOOTER
+           ============================================ */
         footer {
-            background: #0F1A12;
-            padding: 2rem;
+            background: var(--background);
+            border-top: 1px solid var(--border);
+            padding: 2rem 1.5rem;
             text-align: center;
+        }
+
+        footer p {
             font-size: 0.8rem;
-            color: rgba(245, 240, 232, 0.25);
+            color: var(--text-muted);
         }
 
         footer a {
-            color: rgba(245, 240, 232, 0.4);
-            text-decoration: none;
+            color: var(--text-secondary);
+            transition: color 0.3s;
         }
 
-        /* ANIMATE */
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* ============================================
+           ANIMATIONS & SCROLL REVEAL
+           ============================================ */
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(24px);
+                transform: translateY(40px);
+                filter: blur(10px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
+                filter: blur(0);
             }
         }
 
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            filter: blur(8px);
+            transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0);
+        }
+
         .fade-up {
-            animation: fadeUp 0.7s ease forwards;
+            animation: fadeUp 0.8s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
         }
 
-        .delay-1 {
-            animation-delay: 0.1s;
-            opacity: 0;
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.25s; opacity: 0; }
+        .delay-3 { animation-delay: 0.4s; opacity: 0; }
+        .delay-4 { animation-delay: 0.55s; opacity: 0; }
+        .delay-5 { animation-delay: 0.7s; opacity: 0; }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 1024px) {
+            .solution-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .delay-2 {
-            animation-delay: 0.25s;
-            opacity: 0;
-        }
-
-        .delay-3 {
-            animation-delay: 0.4s;
-            opacity: 0;
-        }
-
-        .delay-4 {
-            animation-delay: 0.55s;
-            opacity: 0;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 768px) {
+            .nav-status span:not(.status-dot) {
+                display: none;
+            }
 
             .hero-inner,
             .problem-grid,
@@ -1001,10 +1307,54 @@
                 display: none;
             }
 
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
             .result-highlight {
                 grid-column: 1;
                 flex-direction: column;
                 text-align: center;
+            }
+
+            section {
+                padding: 4rem 1.25rem;
+            }
+
+            .section-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .nav-container {
+                padding: 1rem;
+            }
+
+            .nav-pill {
+                gap: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .pricing-grid {
+                gap: 1rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem;
+            }
+
+            .final-cta {
+                padding: 5rem 1.25rem;
             }
         }
     </style>
@@ -1012,27 +1362,38 @@
 
 <body>
 
-    <nav>
-        <div class="nav-brand">WelliBuilds</div>
-        <a href="https://wa.me/6281234567890?text=Halo%20Welli%2C%20saya%20tertarik%20dengan%20website%20villa"
-            class="nav-cta" target="_blank">Konsultasi Gratis →</a>
+    <!-- NAVIGATION -->
+    <nav class="nav-container">
+        <div class="nav-brand">WELLI</div>
+        <div class="nav-pill">
+            <div class="nav-status">
+                <span class="status-dot"></span>
+                <span>Tersedia untuk proyek</span>
+            </div>
+            <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20dengan%20website%20villa"
+                class="nav-cta" target="_blank" rel="noopener">Konsultasi Gratis ↗</a>
+        </div>
     </nav>
 
     <!-- HERO -->
-    <section class="hero">
-        <div class="hero-texture"></div>
+    <section class="hero" id="home">
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
         <div class="hero-inner">
             <div>
-                <div class="hero-tag fade-up">Spesialis Website Villa & Hotel Indonesia</div>
-                <h1 class="fade-up delay-1">Website Villa yang Langsung <em>Dapat Tamu</em></h1>
+                <div class="hero-tag fade-up">
+                    <span class="status-dot"></span>
+                    Spesialis Website Villa & Hotel Indonesia
+                </div>
+                <h1 class="fade-up delay-1">Website Villa yang Langsung <span class="accent">Dapat Tamu</span></h1>
                 <p class="hero-sub fade-up delay-2">
                     Tamu booking langsung ke WhatsApp Anda — tanpa OTA, tanpa potongan komisi. Website yang bekerja 24
                     jam mendatangkan tamu dari seluruh dunia.
                 </p>
                 <div class="hero-actions fade-up delay-3">
-                    <a href="https://wa.me/6281234567890?text=Halo%20Welli%2C%20saya%20tertarik%20buat%20website%20villa"
-                        class="btn-primary" target="_blank">
-                        Konsultasi Gratis via WhatsApp
+                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20buat%20website%20villa"
+                        class="btn-primary" target="_blank" rel="noopener">
+                        <span>Konsultasi Gratis via WhatsApp ↗</span>
                     </a>
                     <a href="#portfolio" class="btn-secondary">Lihat Portofolio</a>
                 </div>
@@ -1082,22 +1443,29 @@
         </div>
     </section>
 
-    <!-- PROBLEM -->
+    <!-- SECTION: MASALAH -->
+    <div class="section-header reveal">
+        <div class="section-header-bg"></div>
+        <h2>MASALAH</h2>
+        <div class="subtitle">yang sering dialami owner villa</div>
+    </div>
+
     <section class="problem" id="masalah">
         <div class="container">
-            <div class="section-tag">Masalah yang sering terjadi</div>
-            <h2 class="section-title">Apakah villa Anda masih <em>bergantung pada OTA?</em></h2>
-            <p class="section-body">Booking.com, Airbnb, dan OTA lainnya memotong komisi besar dari setiap booking —
-                uang yang seharusnya masuk ke kantong Anda.</p>
+            <div class="section-intro reveal">
+                <div class="section-tag">Masalah yang sering terjadi</div>
+                <h2 class="section-title">Apakah villa Anda masih <span class="accent">bergantung pada OTA?</span></h2>
+                <p class="section-body">Booking.com, Airbnb, dan OTA lainnya memotong komisi besar dari setiap booking —
+                    uang yang seharusnya masuk ke kantong Anda.</p>
+            </div>
 
             <div class="problem-grid">
-                <ul class="problem-list">
+                <ul class="problem-list reveal">
                     <li>
                         <div class="problem-icon">✂</div>
                         <div class="problem-text">
                             <strong>Komisi 15–25% terpotong setiap booking</strong>
-                            <span>Setiap tamu yang datang lewat OTA, sebagian besar uangnya ke mereka, bukan ke
-                                Anda.</span>
+                            <span>Setiap tamu yang datang lewat OTA, sebagian besar uangnya ke mereka, bukan ke Anda.</span>
                         </div>
                     </li>
                     <li>
@@ -1123,7 +1491,7 @@
                     </li>
                 </ul>
 
-                <div class="problem-highlight">
+                <div class="problem-highlight reveal">
                     <div class="problem-highlight-num">20%</div>
                     <div class="problem-highlight-text">
                         Rata-rata komisi yang dipotong OTA dari setiap booking villa di Indonesia. Dari Rp 2 juta per
@@ -1137,46 +1505,54 @@
         </div>
     </section>
 
-    <!-- SOLUTION -->
-    <section id="solusi">
+    <!-- SECTION: SOLUSI -->
+    <div class="section-header reveal">
+        <div class="section-header-bg"></div>
+        <h2>SOLUSI</h2>
+        <div class="subtitle">yang kami tawarkan untuk Anda</div>
+    </div>
+
+    <section class="solution-section" id="solusi">
         <div class="container">
-            <div class="section-tag">Solusi WelliBuilds</div>
-            <h2 class="section-title">Website yang <em>bekerja sendiri</em> mendatangkan tamu</h2>
-            <p class="section-body">Bukan sekadar website cantik — tapi sistem digital yang mengubah pengunjung menjadi
-                tamu yang booking langsung ke Anda.</p>
+            <div class="section-intro reveal">
+                <div class="section-tag">Solusi WelliBuilds</div>
+                <h2 class="section-title">Website yang <span class="accent">bekerja sendiri</span> mendatangkan tamu</h2>
+                <p class="section-body">Bukan sekadar website cantik — tapi sistem digital yang mengubah pengunjung menjadi
+                    tamu yang booking langsung ke Anda.</p>
+            </div>
 
             <div class="solution-grid">
-                <div class="solution-card">
+                <div class="solution-card reveal">
                     <div class="solution-num">01</div>
                     <h3>Tamu Booking Langsung via WhatsApp</h3>
                     <p>Form booking otomatis yang mengirimkan detail langsung ke WhatsApp Anda. Tidak ada perantara,
                         tidak ada potongan komisi.</p>
                 </div>
-                <div class="solution-card">
+                <div class="solution-card reveal">
                     <div class="solution-num">02</div>
                     <h3>Muncul di Google Tanpa Iklan</h3>
                     <p>SEO teknis yang benar dari awal — sitemap, schema markup, meta tag — supaya villa Anda ditemukan
                         tamu internasional secara organik.</p>
                 </div>
-                <div class="solution-card">
+                <div class="solution-card reveal">
                     <div class="solution-num">03</div>
                     <h3>Tampilan Profesional, Loading Cepat</h3>
                     <p>Desain premium berbasis foto villa asli Anda. PageSpeed 90+ di desktop untuk pengalaman tamu yang
                         mulus di semua perangkat.</p>
                 </div>
-                <div class="solution-card">
+                <div class="solution-card reveal">
                     <div class="solution-num">04</div>
                     <h3>Multilingual untuk Tamu Internasional</h3>
                     <p>Tersedia dalam 2–4 bahasa: Indonesia, Inggris, Spanyol, Prancis. Jangkau tamu dari Eropa dan
                         mancanegara dengan lebih efektif.</p>
                 </div>
-                <div class="solution-card">
+                <div class="solution-card reveal">
                     <div class="solution-num">05</div>
                     <h3>Analitik Pengunjung Real-Time</h3>
                     <p>Google Analytics terpasang sejak hari pertama — pantau dari negara mana tamu menemukan villa
                         Anda, halaman mana yang paling menarik perhatian.</p>
                 </div>
-                <div class="solution-card">
+                <div class="solution-card reveal">
                     <div class="solution-num">06</div>
                     <h3>Selesai dalam 10 Hari Kerja</h3>
                     <p>Proses terstruktur dan komunikasi yang jelas. Dari onboarding hingga website live — tanpa drama,
@@ -1186,16 +1562,24 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO -->
-    <section class="portfolio" id="portfolio">
+    <!-- SECTION: PORTOFOLIO -->
+    <div class="section-header reveal">
+        <div class="section-header-bg"></div>
+        <h2>PORTOFOLIO</h2>
+        <div class="subtitle">hasil nyata, bukan sekadar janji</div>
+    </div>
+
+    <section class="portfolio-section" id="portfolio">
         <div class="container">
-            <div class="section-tag">Hasil nyata</div>
-            <h2 class="section-title">Villa yang sudah <em>kami bangun</em></h2>
-            <p class="section-body">Bukan mockup, bukan demo — website live dengan traffic nyata dan booking yang
-                benar-benar terjadi.</p>
+            <div class="section-intro reveal">
+                <div class="section-tag">Hasil nyata</div>
+                <h2 class="section-title">Villa yang sudah <span class="accent">kami bangun</span></h2>
+                <p class="section-body">Bukan mockup, bukan demo — website live dengan traffic nyata dan booking yang
+                    benar-benar terjadi.</p>
+            </div>
 
             <div class="portfolio-grid">
-                <a class="portfolio-card" href="https://thesecretkarimunjawa.com" target="_blank">
+                <a class="portfolio-card reveal" href="https://thesecretkarimunjawa.com" target="_blank" rel="noopener">
                     <div class="portfolio-img">
                         <div class="portfolio-img-placeholder">The Secret Karimunjawa</div>
                     </div>
@@ -1221,8 +1605,8 @@
                     </div>
                 </a>
 
-                <div class="portfolio-card" style="cursor: default;">
-                    <div class="portfolio-img" style="background: #2D4A32;">
+                <div class="portfolio-card reveal" style="cursor: default;">
+                    <div class="portfolio-img" style="background: var(--surface-light);">
                         <div class="portfolio-img-placeholder">Floating Paradise</div>
                     </div>
                     <div class="portfolio-body">
@@ -1247,7 +1631,7 @@
                     </div>
                 </div>
 
-                <div class="result-highlight">
+                <div class="result-highlight reveal">
                     <div class="result-icon">✦</div>
                     <div class="result-text">
                         <strong>"Booking pertama dari Jerman dalam minggu pertama website live"</strong>
@@ -1258,22 +1642,32 @@
         </div>
     </section>
 
-    <!-- TESTIMONI -->
-    <section id="testimoni">
-        <div class="container" style="text-align: center;">
-            <div class="section-tag">Apa kata klien</div>
-            <h2 class="section-title" style="margin: 0 auto;">Kepercayaan yang <em>paling berharga</em></h2>
+    <!-- SECTION: TESTIMONI -->
+    <div class="section-header reveal">
+        <div class="section-header-bg"></div>
+        <h2>TESTIMONI</h2>
+        <div class="subtitle">apa kata klien kami</div>
+    </div>
 
-            <div class="testimoni-card">
+    <section class="testimoni-section" id="testimoni">
+        <div class="container" style="text-align: center;">
+            <div class="section-intro reveal" style="margin: 0 auto 0;">
+                <div class="section-tag" style="justify-content:center;">
+                    <span style="display:none;"></span>Apa kata klien
+                </div>
+                <h2 class="section-title" style="text-align:center;">Kepercayaan yang <span class="accent">paling berharga</span></h2>
+            </div>
+
+            <div class="testimoni-card reveal">
                 <div class="quote-mark">"</div>
                 <p class="testimoni-text">
                     Kerjasama dengan Welli luar biasa. Service-nya lancar, tidak ada kendala sama sekali, sangat jelas.
                     Saya sudah rekomendasikan ke beberapa teman — dan terbukti, sudah ada yang kerja sama juga. Terima
                     kasih sudah bantu villa saya.
                 </p>
-                <div class="testimoni-author">
+                <div class="testimoni-author" style="justify-content:center;">
                     <div class="author-avatar">CP</div>
-                    <div>
+                    <div style="text-align:left;">
                         <div class="author-name">Kak Patricia Dorn</div>
                         <div class="author-villa">Owner · The Secret Karimunjawa</div>
                     </div>
@@ -1282,16 +1676,24 @@
         </div>
     </section>
 
-    <!-- PRICING -->
-    <section class="pricing" id="harga">
+    <!-- SECTION: PRICING -->
+    <div class="section-header reveal">
+        <div class="section-header-bg"></div>
+        <h2>HARGA</h2>
+        <div class="subtitle">investasi untuk villa Anda</div>
+    </div>
+
+    <section class="pricing-section" id="harga">
         <div class="container">
-            <div class="section-tag">Investasi</div>
-            <h2 class="section-title">Pilih paket yang <em>sesuai kebutuhan</em></h2>
-            <p class="section-body">Semua paket sudah termasuk domain .com 1 tahun, hosting gratis selamanya, dan
-                support teknis 30 hari.</p>
+            <div class="section-intro reveal">
+                <div class="section-tag">Investasi</div>
+                <h2 class="section-title">Pilih paket yang <span class="accent">sesuai kebutuhan</span></h2>
+                <p class="section-body">Semua paket sudah termasuk domain .com 1 tahun, hosting gratis selamanya, dan
+                    support teknis 30 hari.</p>
+            </div>
 
             <div class="pricing-grid">
-                <div class="pricing-card">
+                <div class="pricing-card reveal">
                     <div class="pricing-name">Standard</div>
                     <div class="pricing-price">Rp 2,5 Jt</div>
                     <div class="pricing-period">sekali bayar</div>
@@ -1305,11 +1707,11 @@
                         <li><span class="check">✓</span> SEO dasar</li>
                         <li><span class="check">✓</span> Support 30 hari</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Standard"
-                        class="pricing-cta pricing-cta-outline" target="_blank">Pilih Standard</a>
+                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Standard"
+                        class="pricing-cta pricing-cta-outline" target="_blank" rel="noopener">Pilih Standard</a>
                 </div>
 
-                <div class="pricing-card featured">
+                <div class="pricing-card featured reveal">
                     <div class="featured-badge">Paling Populer</div>
                     <div class="pricing-name">Pro Booking</div>
                     <div class="pricing-price">Rp 3,5 Jt</div>
@@ -1325,11 +1727,11 @@
                         <li><span class="check">✓</span> SEO dasar + sitemap</li>
                         <li><span class="check">✓</span> Support 30 hari</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Pro"
-                        class="pricing-cta pricing-cta-solid" target="_blank">Pilih Pro Booking</a>
+                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Pro"
+                        class="pricing-cta pricing-cta-solid" target="_blank" rel="noopener">Pilih Pro Booking</a>
                 </div>
 
-                <div class="pricing-card">
+                <div class="pricing-card reveal">
                     <div class="pricing-name">Premium</div>
                     <div class="pricing-price">Rp 5 Jt</div>
                     <div class="pricing-period">sekali bayar</div>
@@ -1343,49 +1745,68 @@
                         <li><span class="check">✓</span> Google Search Console setup</li>
                         <li><span class="check">✓</span> Support 30 hari prioritas</li>
                     </ul>
-                    <a href="https://wa.me/6281234567890?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Premium"
-                        class="pricing-cta pricing-cta-outline" target="_blank">Pilih Premium</a>
+                    <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20tertarik%20paket%20Premium"
+                        class="pricing-cta pricing-cta-outline" target="_blank" rel="noopener">Pilih Premium</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
+    <!-- SECTION: FAQ -->
+    <div class="section-header reveal">
+        <div class="section-header-bg"></div>
+        <h2>FAQ</h2>
+        <div class="subtitle">pertanyaan yang sering diajukan</div>
+    </div>
+
+    <section class="faq-section" id="faq">
         <div class="container">
-            <div class="section-tag" style="text-align: center;">Pertanyaan umum</div>
-            <h2 class="section-title" style="text-align: center; margin: 0 auto 0.5rem;">Yang sering <em>ditanyakan</em>
-            </h2>
+            <div class="section-intro reveal" style="text-align:center; margin: 0 auto 0; max-width: 720px;">
+                <div class="section-tag" style="justify-content:center;">
+                    <span style="display:none;"></span>Pertanyaan umum
+                </div>
+                <h2 class="section-title" style="text-align:center;">Yang sering <span class="accent">ditanyakan</span></h2>
+            </div>
 
             <div class="faq-list">
-                <div class="faq-item open">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Berapa lama proses
-                        pengerjaannya?</div>
+                <div class="faq-item open reveal">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        Berapa lama proses pengerjaannya?
+                        <div class="faq-toggle">+</div>
+                    </div>
                     <div class="faq-a">Rata-rata 10 hari kerja sejak aset dan konten diterima. Proses dimulai setelah DP
                         50% masuk dan Anda sudah mengirimkan foto villa, teks, dan informasi yang dibutuhkan.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Apakah domain dan hosting
-                        sudah termasuk?</div>
+                <div class="faq-item reveal">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        Apakah domain dan hosting sudah termasuk?
+                        <div class="faq-toggle">+</div>
+                    </div>
                     <div class="faq-a">Ya — semua paket sudah termasuk domain .com 1 tahun dan hosting gratis selamanya
                         di Vercel. Tahun berikutnya hanya perpanjangan domain sekitar Rp 200.000/tahun.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Bisa revisi berapa kali?
+                <div class="faq-item reveal">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        Bisa revisi berapa kali?
+                        <div class="faq-toggle">+</div>
                     </div>
                     <div class="faq-a">3x revisi sudah termasuk dalam paket. Revisi minor seperti ganti teks, update
                         harga, atau ubah nomor kontak bisa dilakukan selama 30 hari support tanpa biaya tambahan.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Setelah selesai, siapa yang
-                        kelola website-nya?</div>
+                <div class="faq-item reveal">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        Setelah selesai, siapa yang kelola website-nya?
+                        <div class="faq-toggle">+</div>
+                    </div>
                     <div class="faq-a">Anda punya full ownership — semua akses (hosting, domain, analytics) diserahkan
                         ke Anda saat serah terima. Untuk paket Premium dengan CMS, Anda bisa update konten sendiri tanpa
                         perlu developer.</div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Sistem pembayarannya
-                        bagaimana?</div>
+                <div class="faq-item reveal">
+                    <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
+                        Sistem pembayarannya bagaimana?
+                        <div class="faq-toggle">+</div>
+                    </div>
                     <div class="faq-a">DP 50% dibayar di awal untuk memulai pengerjaan. Pelunasan 50% setelah website
                         selesai dan Anda sudah approve — baru website diluncurkan ke publik.</div>
                 </div>
@@ -1395,30 +1816,82 @@
 
     <!-- FINAL CTA -->
     <section class="final-cta">
-        <div class="container">
+        <div class="final-cta-glow"></div>
+        <div class="container reveal">
             <div class="section-tag">Mulai sekarang</div>
-            <h2 class="section-title">Siap dapat tamu dari <em>website sendiri?</em></h2>
+            <h2 class="section-title">Siap dapat tamu dari <span class="accent">website sendiri?</span></h2>
             <p class="section-body">Konsultasi gratis — ceritakan villa Anda, kami bantu tentukan solusi yang paling
                 tepat.</p>
             <div class="final-cta-actions">
-                <a href="https://wa.me/6281234567890?text=Halo%20Welli%2C%20saya%20ingin%20konsultasi%20website%20villa%20saya"
-                    class="btn-primary" target="_blank">
-                    Chat WhatsApp Sekarang
+                <a href="https://wa.me/6285161507114?text=Halo%20Welli%2C%20saya%20ingin%20konsultasi%20website%20villa%20saya"
+                    class="btn-primary" target="_blank" rel="noopener">
+                    <span>Chat WhatsApp Sekarang ↗</span>
                 </a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2026 WelliBuilds · <a href="https://welli.my.id">welli.my.id</a> · Spesialis Website Villa & Hotel
+        <p>© 2026 WELLI · <a href="https://welli.my.id">welli.my.id</a> · Spesialis Website Villa & Hotel
             Indonesia</p>
     </footer>
 
+    <!-- SCRIPTS -->
     <script>
+        // FAQ Toggle
         document.querySelectorAll('.faq-q').forEach(q => {
             q.addEventListener('click', () => {
                 q.parentElement.classList.toggle('open');
             });
+        });
+
+        // Scroll Reveal (IntersectionObserver)
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    // Stagger effect
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 80);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Smooth Scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        const navPill = document.querySelector('.nav-pill');
+        let lastScrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            if (currentScrollY > 100) {
+                navPill.style.background = 'rgba(0, 0, 0, 0.6)';
+                navPill.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+            } else {
+                navPill.style.background = 'rgba(0, 0, 0, 0.2)';
+                navPill.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+            }
+            lastScrollY = currentScrollY;
         });
     </script>
 
