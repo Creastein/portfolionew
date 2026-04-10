@@ -41,9 +41,6 @@ const ServicesSection: React.FC = () => {
       className="relative z-40 bg-[#080a0f] pb-24 md:pb-32 pt-0 border-none overflow-hidden text-white"
       aria-labelledby="services-heading"
       aria-describedby="services-description"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
     >
       {/* Background Elements managed by SectionHeader mostly, but keeping clean Section wrapper */}
 
