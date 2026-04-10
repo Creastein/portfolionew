@@ -1,0 +1,12 @@
+{
+  "src/index.tsx": {
+    "file": "index.mjs",
+    "name": "index",
+    "src": "src/index.tsx",
+    "isEntry": true
+  },
+  "style.css": {
+    "file": "assets/style-wJOL7_vm.css",
+    "src": "style.css"
+  }
+}

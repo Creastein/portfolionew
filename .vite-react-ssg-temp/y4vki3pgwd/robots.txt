@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://welli.my.id/sitemap.xml
