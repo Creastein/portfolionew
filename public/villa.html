@@ -2316,7 +2316,7 @@
                     </div>
                     <div>
                         <label for="leadVilla">Nama Villa / Properti</label>
-                        <input type="text" id="leadVilla" name="villa" placeholder="Contoh: Villa Sunset Bali">
+                        <input type="text" id="leadVilla" name="villa" placeholder="Contoh: Villa Sunset Bali" required>
                     </div>
                     <div>
                         <label for="leadPackage">Paket yang diminati</label>
@@ -2324,7 +2324,7 @@
                             <option value="Belum tahu">Belum tahu — konsultasi dulu</option>
                             <option value="Standard (Rp 2.5 Jt)">Standard — Rp 2,5 Jt</option>
                             <option value="Pro Booking (Rp 3.5 Jt)">Pro Booking — Rp 3,5 Jt</option>
-                            <option value="Premium (Rp 5 Jt)">Premium — Rp 5 Jt</option>
+                            <option value="Premium (Rp 6,5 Jt)">Premium — Rp 6,5 Jt</option>
                         </select>
                     </div>
                     <button type="submit" class="lead-submit">
@@ -2389,10 +2389,16 @@
         // Lead Form Handler → auto WhatsApp redirect
         function handleLeadForm(e) {
             e.preventDefault();
-            const name = document.getElementById('leadName').value;
-            const phone = document.getElementById('leadPhone').value;
-            const villa = document.getElementById('leadVilla').value || 'Belum ada nama';
+            const name = document.getElementById('leadName').value.trim();
+            const phone = document.getElementById('leadPhone').value.trim();
+            const villa = document.getElementById('leadVilla').value.trim();
             const pkg = document.getElementById('leadPackage').value;
+
+            // Validasi semua field tidak kosong
+            if (!name || !phone || !villa) {
+                alert('Mohon lengkapi semua data sebelum mengirim.');
+                return false;
+            }
 
             const msg = `Halo Welli, saya tertarik buat website villa.\n\n` +
                 `👤 Nama: ${name}\n` +
@@ -2499,17 +2505,19 @@
 
         // Countdown timer — end of April 2026
         function updateCountdown() {
-            const end = new Date('2026-04-30T23:59:59+07:00');
-            const now = new Date();
-            const diff = end - now;
+            var el = document.getElementById('countdown-timer');
+            if (!el) return;
+            var end = new Date('2026-04-30T23:59:59+07:00').getTime();
+            var now = new Date().getTime();
+            var diff = end - now;
             if (diff <= 0) {
-                document.getElementById('countdown-timer').textContent = 'BERAKHIR!';
+                el.textContent = 'BERAKHIR!';
                 return;
             }
-            const d = Math.floor(diff / (1000*60*60*24));
-            const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
-            const m = Math.floor((diff % (1000*60*60)) / (1000*60));
-            document.getElementById('countdown-timer').textContent = d + ' hari ' + h + ' jam ' + m + ' menit';
+            var d = Math.floor(diff / (1000*60*60*24));
+            var h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+            var m = Math.floor((diff % (1000*60*60)) / (1000*60));
+            el.textContent = d + ' hari ' + h + ' jam ' + m + ' menit';
         }
         updateCountdown();
         setInterval(updateCountdown, 60000);
