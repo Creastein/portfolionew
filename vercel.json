@@ -1,15 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/villa",
-      "destination": "/villa.html"
-    },
-    {
-      "source": "/villa/",
-      "destination": "/villa.html"
-    },
-    {
-      "source": "/((?!assets|villa\\.html|villa$|favicon\\.svg|robots\\.txt|sitemap\\.xml|google1cdb79d06a6d2faa\\.html|icons|images).*)",
+      "source": "/((?!assets|favicon\\.svg|robots\\.txt|sitemap\\.xml|google1cdb79d06a6d2faa\\.html|icons|images).*)",
       "destination": "/index.html"
     }
   ]
