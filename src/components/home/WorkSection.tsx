@@ -89,7 +89,7 @@ const WorkSection: React.FC = () => {
             </div >
 
             {/* Split Screen Layout */}
-            < div className="flex flex-col lg:grid lg:grid-cols-2 min-h-screen lg:h-screen lg:overflow-hidden" >
+            < div className="flex flex-col lg:grid lg:grid-cols-2 lg:h-screen lg:overflow-hidden" >
                 {/* Left Panel - Project Details (Fixed) */}
                 < div className="relative bg-background lg:border-r border-white/5 lg:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" >
                     <div className="lg:h-full flex flex-col justify-between p-6 md:p-8 lg:p-12 xl:p-16">
@@ -166,14 +166,24 @@ const WorkSection: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Mobile: View Project Link */}
+                            <a
+                                href={topPickProjects[activeProject]?.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="lg:hidden flex items-center gap-2 text-primary hover:gap-3 transition-all duration-300 text-sm font-medium mt-4"
+                            >
+                                {t('work.viewProject')} <ArrowUpRight className="w-4 h-4" />
+                            </a>
                         </div>
                     </div>
                 </div >
 
-                {/* Right Panel - Full Screen Project Mockups (Scroll Snap) */}
+                {/* Right Panel - Full Screen Project Mockups (Scroll Snap) — Desktop Only */}
                 < div
                     ref={scrollContainerRef}
-                    className="relative bg-surface h-screen overflow-y-scroll snap-y snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                    className="hidden lg:block relative bg-surface h-screen overflow-y-scroll snap-y snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                     {
                         topPickProjects.map((project, index) => (
