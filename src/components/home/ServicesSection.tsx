@@ -4,15 +4,12 @@ import ServiceCard from './ServiceCard';
 import ServiceCardSkeleton from './ServiceCardSkeleton';
 import ServiceCardErrorBoundary from './ServiceCardErrorBoundary';
 import { servicesData } from '@/constants/services';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { useTranslation } from 'react-i18next';
 
 const ServicesSection: React.FC = () => {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLElement>(null);
-
-  const prefersReducedMotion = useReducedMotion();
 
   // Preload service images for faster loading
   useEffect(() => {
@@ -60,7 +57,7 @@ const ServicesSection: React.FC = () => {
                     service={service}
                     index={index}
                     isInView={true}
-                    prefersReducedMotion={prefersReducedMotion}
+                    prefersReducedMotion={false}
                   />
                 </Suspense>
               </ServiceCardErrorBoundary>

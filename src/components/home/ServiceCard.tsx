@@ -45,33 +45,9 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   const cardId = `service-card-${service.id}`;
   const titleId = `service-title-${service.id}`;
   const descId = `service-desc-${service.id}`;
-  const shouldAnimate = !prefersReducedMotion;
   const shouldHover = !prefersReducedMotion;
 
-  // Memoized animation variants for better performance
-  const cardVariants = useMemo<Variants>(() => ({
-    hidden: { 
-      y: 40, 
-      opacity: 0,
-    },
-    visible: { 
-      y: 0, 
-      opacity: 1,
-      transition: {
-        duration: prefersReducedMotion ? 0 : 0.6,
-        delay: index * 0.15,
-        ease: [0.25, 0.46, 0.45, 0.94],
-      }
-    },
-    hover: {
-      y: -8,
-      transition: {
-        duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    }
-  }), [index, prefersReducedMotion]);
-
+  // Hover-only variants (no scroll-based entrance animations)
   const imageVariants = useMemo<Variants>(() => ({
     rest: { 
       scale: 1
@@ -95,7 +71,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       scale: 1.1,
       transition: {
         duration: 0.4,
-        ease: [0.68, -0.55, 0.265, 1.55], // Bouncy ease
+        ease: [0.68, -0.55, 0.265, 1.55],
         type: "spring",
         stiffness: 300,
         damping: 15
@@ -137,12 +113,9 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
     <motion.article
       ref={cardRef}
       id={cardId}
-      className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-1 cursor-pointer"
-      initial={shouldAnimate ? "hidden" : false}
-      whileInView={shouldAnimate ? "visible" : undefined}
-      viewport={{ once: true, amount: 0.05 }}
-      whileHover={shouldHover ? "hover" : undefined}
-      variants={shouldAnimate ? cardVariants : undefined}
+      className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-1 cursor-pointer transition-transform duration-300"
+      whileHover={shouldHover ? { y: -8 } : undefined}
+      transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
       onMouseEnter={() => shouldHover && setIsHovered(true)}
       onMouseLeave={() => shouldHover && setIsHovered(false)}
       onFocus={handleFocus}
@@ -224,13 +197,12 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
             </motion.div>
             
             {/* Title with hover effect */}
-            <motion.h3 
+            <h3 
               id={titleId}
               className="text-2xl font-bold text-white group-hover:text-primary group-focus-within:text-primary transition-colors duration-300 font-display"
-              style={{ willChange: 'color' }}
             >
               {t(`services.items.${service.id}.title`, { defaultValue: service.title })}
-            </motion.h3>
+            </h3>
             
             {/* Description */}
             <p 
