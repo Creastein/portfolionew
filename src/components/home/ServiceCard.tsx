@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, KeyboardEvent, useMemo } from 'react';
-import { motion, Variants, useInView } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { ServiceCardProps } from '@/types/components/service-card';
 import { useLazyImage } from '@/hooks/useLazyImage';
 import { useTranslation } from 'react-i18next';
@@ -18,9 +18,6 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
     rootMargin: '100px',
     threshold: 0.1
   });
-
-  // Use the card's own ref for viewport detection
-  const cardInView = useInView(cardRef, { once: true, amount: 0.05, margin: "200px 0px 0px 0px" });
 
   const handleImageLoad = useCallback(() => {
     handleLoad();
@@ -142,7 +139,8 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       id={cardId}
       className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-1 cursor-pointer"
       initial={shouldAnimate ? "hidden" : false}
-      animate={shouldAnimate ? (cardInView ? "visible" : "hidden") : undefined}
+      whileInView={shouldAnimate ? "visible" : undefined}
+      viewport={{ once: true, amount: 0.05 }}
       whileHover={shouldHover ? "hover" : undefined}
       variants={shouldAnimate ? cardVariants : undefined}
       onMouseEnter={() => shouldHover && setIsHovered(true)}
