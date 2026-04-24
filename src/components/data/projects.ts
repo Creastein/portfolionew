@@ -13,40 +13,40 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-        id: 'the-secret-karimunjawa',
-        title: 'The Secret Karimunjawa',
-        category: 'Villa & Resort Website',
-        year: '2026',
-        description: 'Website promosi villa premium di Karimunjawa milik owner Jerman. Dirancang untuk menarik tamu lokal dan mancanegara dengan tampilan elegan sesuai brand Instagram klien.',
-        timeline: '3 minggu',
-        services: ['Web Design', 'Web Development', 'SEO', 'Multilingual', 'Google Analytics'],
-        image: '/images/karimunjawa.png',
-        link: 'https://thesecretkarimunjawa.com',
-        featured: true
-    },
-    {
         id: 'floating-paradise',
         title: 'Floating Paradise',
-        category: 'Premium Eco-Resort Experience',
+        category: 'Villa & Resort Website',
         year: '2026',
-        description: 'Transformasi digital dari platform legacy WordPress ke infrastruktur modern menggunakan Next.js dan Sanity CMS. Proyek ini berfokus pada meningkatkan performa website, memberikan kontrol konten penuh kepada klien, dan mengoptimalkan visibilitas di mesin pencari untuk pasar hospitality internasional.',
+        description: 'Villa & resort website. Stack: Next.js, React.js, Supabase, Tailwind CSS',
         timeline: '2 weeks',
-        services: ['Next.js', 'Sanity CMS', 'SEO', 'Hospitality'],
+        services: ['Next.js', 'React.js', 'Supabase', 'Tailwind CSS'],
         image: '/images/floatingparadise.webp',
         link: 'https://floatingparadise.id',
         featured: true
     },
     {
-        id: 'portfolio',
-        title: 'Portfolio',
-        category: 'Web Portfolio · Frontend Development',
-        year: '2025',
-        description: 'Building a confident digital presence for showcasing work and expertise',
-        timeline: '4 Weeks',
-        services: ['Website', 'Branding', 'UI/UX'],
+        id: 'the-secret-karimunjawa',
+        title: 'The Secret Karimunjawa',
+        category: 'Hospitality Website',
+        year: '2026',
+        description: 'Hospitality website. Stack: Next.js, React.js, Tailwind CSS',
+        timeline: '3 minggu',
+        services: ['Next.js', 'React.js', 'Tailwind CSS'],
+        image: '/images/karimunjawa.png',
+        link: 'https://thesecretkarimunjawa.com',
+        featured: true
+    },
+    {
+        id: 'wellibuilds',
+        title: 'WelliBuilds',
+        category: 'Web Development Service',
+        year: '2024',
+        description: 'Web development service for hospitality and villa/resort clients in Indonesia.',
+        timeline: 'Ongoing',
+        services: ['Next.js', 'React.js', 'Supabase', 'Vercel'],
         image: '/images/portofolio.png',
         link: 'https://welli.my.id',
-        featured: false
+        featured: true
     },
     {
         id: 'idx-trading-assistant',
@@ -58,7 +58,19 @@ export const projects: Project[] = [
         services: ['Web App Development', 'AI Integration', 'FinTech'],
         image: '/images/IDX-Trading-Assistant.png',
         link: 'https://idx-trading-assistant.vercel.app/',
-        featured: true
+        featured: false
+    },
+    {
+        id: 'portfolio',
+        title: 'Portfolio',
+        category: 'Web Portfolio · Full Stack Development',
+        year: '2025',
+        description: 'Building a confident digital presence for showcasing work and expertise',
+        timeline: '4 Weeks',
+        services: ['Website', 'Branding', 'UI/UX'],
+        image: '/images/portofolio.png',
+        link: 'https://welli.my.id',
+        featured: false
     },
     {
         id: 'villa-utamaro',
@@ -82,7 +94,7 @@ export const projects: Project[] = [
         services: ['UI/UX Design', 'Frontend Dev', 'Lead Generation Strategy'],
         image: '/images/pt-bkn.png',
         link: 'https://pt-bkn.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'best1trans',
@@ -94,7 +106,7 @@ export const projects: Project[] = [
         services: ['Platform Architecture', 'Interactive UI/UX', 'Frontend Development', 'Conversion Rate Optimization (CRO)'],
         image: '/images/lux-drive.png',
         link: 'https://best1-trans.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'dancing-mountain-villa',
@@ -142,7 +154,7 @@ export const projects: Project[] = [
         services: ['Premium Brand Identity', 'UX/UI Design', 'Booking System Integration', 'Mobile-First Development'],
         image: '/images/Salon-Spa.png',
         link: 'https://la-beaut-luxury-spa.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'luxury-villa-website',
@@ -200,4 +212,3 @@ export const projects: Project[] = [
         link: 'https://clip-flow-ai-personal.vercel.app/'
     }
 ];
-

@@ -1,4 +1,4 @@
-import React, { useRef, Suspense, useMemo, useEffect } from 'react';
+import React, { useRef, Suspense, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ServiceCard from './ServiceCard';
 import ServiceCardSkeleton from './ServiceCardSkeleton';
@@ -11,7 +11,6 @@ import { useTranslation } from 'react-i18next';
 const ServicesSection: React.FC = () => {
   const { t } = useTranslation();
   const containerRef = useRef<HTMLElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
 
   const prefersReducedMotion = useReducedMotion();
 
@@ -23,17 +22,6 @@ const ServicesSection: React.FC = () => {
     });
   }, []);
 
-  const containerVariants = useMemo(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2
-      }
-    }
-  }), []);
-
   return (
     <motion.section
       ref={containerRef}
@@ -42,8 +30,6 @@ const ServicesSection: React.FC = () => {
       aria-labelledby="services-heading"
       aria-describedby="services-description"
     >
-      {/* Background Elements managed by SectionHeader mostly, but keeping clean Section wrapper */}
-
       {/* Skip Link for Keyboard Navigation */}
       <a
         href="#services-grid"
@@ -57,17 +43,12 @@ const ServicesSection: React.FC = () => {
 
       <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 relative">
 
-        {/* Services Grid with Stagger Animation */}
-        <motion.div
-          ref={gridRef}
+        {/* Services Grid — each card animates independently via whileInView */}
+        <div
           id="services-grid"
           className="services-grid grid grid-cols-1 gap-6"
           role="feed"
           aria-label="Services list. Use Tab to navigate between services."
-          variants={prefersReducedMotion ? undefined : containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
         >
           {servicesData.map((service, index) => (
             <React.Fragment key={service.id}>
@@ -85,7 +66,7 @@ const ServicesSection: React.FC = () => {
               </ServiceCardErrorBoundary>
             </React.Fragment>
           ))}
-        </motion.div>
+        </div>
 
         {/* Live region for dynamic announcements */}
         <div

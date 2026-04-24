@@ -124,7 +124,7 @@ const AboutSection: React.FC = () => {
                     >
                         <p
                             ref={descRef}
-                            className="about-desc text-lg sm:text-xl md:text-2xl text-secondary leading-relaxed font-light break-words lg:max-w-[600px]"
+                            className="about-desc text-lg sm:text-xl md:text-2xl text-secondary leading-relaxed font-light break-words lg:max-w-[600px] text-justify"
                         >
                             {t('about.description')}
                         </p>

@@ -257,7 +257,7 @@ const Navbar: React.FC = () => {
                             <div className="px-8 py-6 md:px-12 border-t border-white/10 bg-black">
                                 <div className="flex flex-col gap-1 text-xs text-white/30 text-center md:text-left">
                                     <p>© 2025 WELLI. All rights reserved.</p>
-                                    <p>Designed & Developed in Jakarta.</p>
+                                    <p>Designed & Developed in Tangerang.</p>
                                 </div>
                             </div>
                         </motion.div>

@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, KeyboardEvent, useMemo } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, useInView } from 'framer-motion';
 import { ServiceCardProps } from '@/types/components/service-card';
 import { useLazyImage } from '@/hooks/useLazyImage';
 import { useTranslation } from 'react-i18next';
@@ -18,6 +18,9 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
     rootMargin: '100px',
     threshold: 0.1
   });
+
+  // Use the card's own ref for viewport detection
+  const cardInView = useInView(cardRef, { once: true, amount: 0.05, margin: "200px 0px 0px 0px" });
 
   const handleImageLoad = useCallback(() => {
     handleLoad();
@@ -45,24 +48,22 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
   const cardId = `service-card-${service.id}`;
   const titleId = `service-title-${service.id}`;
   const descId = `service-desc-${service.id}`;
-  const shouldAnimate = isInView && !prefersReducedMotion;
+  const shouldAnimate = !prefersReducedMotion;
   const shouldHover = !prefersReducedMotion;
 
   // Memoized animation variants for better performance
   const cardVariants = useMemo<Variants>(() => ({
     hidden: { 
-      y: 80, 
+      y: 40, 
       opacity: 0,
-      scale: 0.95
     },
     visible: { 
       y: 0, 
       opacity: 1,
-      scale: 1,
       transition: {
-        duration: prefersReducedMotion ? 0 : 0.8,
+        duration: prefersReducedMotion ? 0 : 0.6,
         delay: index * 0.15,
-        ease: [0.25, 0.46, 0.45, 0.94], // Custom cubic-bezier
+        ease: [0.25, 0.46, 0.45, 0.94],
       }
     },
     hover: {
@@ -131,39 +132,9 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
     }
   }), []);
 
-  const tagContainerVariants = useMemo<Variants>(() => ({
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.08,
-        delayChildren: (index * 0.15) + 0.3
-      }
-    }
-  }), [index]);
-
-  const tagVariants = useMemo<Variants>(() => ({
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      scale: 0.8
-    },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: [0.25, 0.46, 0.45, 0.94]
-      }
-    },
-    hover: {
-      scale: 1.05,
-      transition: {
-        duration: 0.2
-      }
-    }
-  }), []);
+  // Get tags safely
+  const tags = t(`services.items.${service.id}.tags`, { returnObjects: true });
+  const tagList = Array.isArray(tags) ? tags : service.tags;
 
   return (
     <motion.article
@@ -171,7 +142,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       id={cardId}
       className="group relative overflow-hidden rounded-xl bg-surface border border-white/5 p-1 cursor-pointer"
       initial={shouldAnimate ? "hidden" : false}
-      animate={shouldAnimate ? "visible" : undefined}
+      animate={shouldAnimate ? (cardInView ? "visible" : "hidden") : undefined}
       whileHover={shouldHover ? "hover" : undefined}
       variants={shouldAnimate ? cardVariants : undefined}
       onMouseEnter={() => shouldHover && setIsHovered(true)}
@@ -183,9 +154,6 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
       aria-labelledby={titleId}
       aria-describedby={descId}
       tabIndex={0}
-      style={{ 
-        contain: 'layout style paint'
-      }}
     >
       {/* Animated border glow effect */}
       {shouldHover && (
@@ -263,7 +231,7 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               className="text-2xl font-bold text-white group-hover:text-primary group-focus-within:text-primary transition-colors duration-300 font-display"
               style={{ willChange: 'color' }}
             >
-              {t(`services.items.${service.id}.title`)}
+              {t(`services.items.${service.id}.title`, { defaultValue: service.title })}
             </motion.h3>
             
             {/* Description */}
@@ -271,35 +239,27 @@ const ServiceCard: React.FC<ServiceCardProps> = React.memo(({
               id={descId}
               className="text-secondary leading-relaxed"
             >
-              {t(`services.items.${service.id}.description`)}
+              {t(`services.items.${service.id}.description`, { defaultValue: service.description })}
             </p>
           </header>
 
-          {/* Tags with stagger animation */}
+          {/* Tags */}
           <footer className="mt-8">
-            <motion.ul 
+            <ul 
               className="flex flex-wrap gap-2 list-none p-0 m-0"
               role="list"
               aria-label={`Technologies and skills for ${service.title}`}
-              variants={shouldAnimate ? tagContainerVariants : undefined}
-              initial={shouldAnimate ? "hidden" : false}
-              animate={shouldAnimate ? "visible" : undefined}
             >
-              {(t(`services.items.${service.id}.tags`, { returnObjects: true }) as string[]).map((tag) => (
-                <motion.li
-                  key={tag}
-                  variants={shouldHover ? tagVariants : undefined}
-                  whileHover={shouldHover ? { scale: 1.05 } : undefined}
-                >
+              {tagList.map((tag: string) => (
+                <li key={tag}>
                   <span
                     className="inline-block px-3 py-1 rounded-full bg-white/5 text-xs font-medium text-gray-300 border border-white/10 transition-all duration-300 group-hover:bg-white/10 group-hover:border-primary/30 group-hover:text-white group-focus-within:bg-white/10 group-focus-within:border-primary/30 group-focus-within:text-white"
-                    style={{ willChange: 'transform' }}
                   >
                     {tag}
                   </span>
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
+            </ul>
           </footer>
         </motion.div>
       </motion.div>

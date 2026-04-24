@@ -31,7 +31,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
           manifest: {
             name: 'WELLI Portfolio',
             short_name: 'WELLI',
-            description: 'Business Analyst & Web Developer Portfolio - Turning business ideas into simple and useful web experiences.',
+            description: 'AI-Native Full Stack Developer Portfolio - Building modern web experiences with AI-powered workflow.',
             theme_color: '#050505',
             background_color: '#050505',
             display: 'standalone',

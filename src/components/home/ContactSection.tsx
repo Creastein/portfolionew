@@ -216,8 +216,8 @@ const ContactSection: React.FC = () => {
 
     const copyEmail = async () => {
         try {
-            await navigator.clipboard.writeText('contact@welli.my.id');
-            trackEmailCopy('contact@welli.my.id');
+            await navigator.clipboard.writeText('well0711200@gmail.com');
+            trackEmailCopy('well0711200@gmail.com');
             setCopied(true);
             setToast({ message: t('contact.copy.success'), type: 'success' });
             setTimeout(() => setCopied(false), 2000);
@@ -283,7 +283,7 @@ const ContactSection: React.FC = () => {
                                     </div>
                                     <div className="flex-1">
                                         <div className="text-sm text-secondary mb-1">Email</div>
-                                        <div className="text-lg font-medium text-white">contact@welli.my.id</div>
+                                        <div className="text-lg font-medium text-white">well0711200@gmail.com</div>
                                     </div>
                                     <motion.div
                                         initial={false}

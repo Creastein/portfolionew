@@ -18,10 +18,10 @@ const CaseStudy: React.FC = () => {
   return (
     <main className="bg-background min-h-screen text-white pb-32">
       <SEOHead 
-        title="Case Studies — Portfolio Welli | Web & Business Analysis"
-        description="Studi kasus proyek web development dan business analysis yang dikerjakan Welli untuk klien startup dan UMKM Indonesia."
+        title="All Projects — Welli | AI-Native Full Stack Developer"
+        description="Collection of web development projects by Welli — from hospitality websites to full-stack applications, built with AI-native workflow."
         canonical="https://welli.my.id/case-study"
-        keywords="portfolio web developer, case study business analyst, proyek react typescript"
+        keywords="portfolio full stack developer, Next.js projects, React developer portfolio, Supabase projects, hospitality web development"
       />
       {/* Header */}
       <header className="relative w-full pt-32 pb-16 px-6 md:px-12 overflow-hidden">

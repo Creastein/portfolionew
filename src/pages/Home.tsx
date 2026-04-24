@@ -168,10 +168,10 @@ export default function Home({ isLoading }: HomeProps) {
   return (
     <main ref={containerRef} className="relative w-full overflow-x-hidden pb-32 bg-black">
       <SEOHead 
-        title="Welli — Freelance Business Analyst & Web Developer Indonesia"
-        description="Jasa freelance Business Analyst dan Web Developer. Spesialis React, TypeScript untuk startup dan UMKM Indonesia."
+        title="Welli | AI-Native Full Stack Developer"
+        description="Portfolio of Welli — AI-Native Full Stack Developer specializing in Next.js, React, and Supabase"
         canonical="https://welli.my.id"
-        keywords="freelance web developer indonesia, jasa business analyst, react developer freelance, web developer typescript indonesia"
+        keywords="AI-native full stack developer, Next.js developer, React developer, Supabase, WelliBuilds, hospitality web development, villa website, Indonesia"
       />
       
       <script type="application/ld+json">
@@ -179,11 +179,11 @@ export default function Home({ isLoading }: HomeProps) {
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Welli",
-          "jobTitle": "Freelance Business Analyst & Web Developer",
+          "jobTitle": "AI-Native Full Stack Developer",
           "url": "https://welli.my.id",
           "knowsAbout": [
-            "Web Development", "Business Analysis", 
-            "React", "TypeScript", "Vite"
+            "Full Stack Development", "Next.js", "React.js",
+            "Supabase", "AI Workflow", "Hospitality Web Development"
           ]
         })}
       </script>
@@ -237,7 +237,7 @@ export default function Home({ isLoading }: HomeProps) {
             <div className="relative w-full h-full">
               <motion.img
                 src="/images/hero-potrait.png"
-                alt="WELLI - Business Analyst and Web Developer"
+                alt="Welli - AI-Native Full Stack Developer"
                 className="w-full h-full object-cover object-top"
                 loading="eager"
                 decoding="async"

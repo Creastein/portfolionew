@@ -9,15 +9,15 @@
   },
   "hero": {
     "available": "Tersedia untuk proyek",
-    "title1": "Business Analyst",
-    "title2": "Web Developer",
-    "subtitle1": "Saya membantu mewujudkan ide bisnis menjadi",
-    "subtitle2": "pengalaman web yang simpel dan bermanfaat."
+    "title1": "AI-Native",
+    "title2": "Full Stack Developer",
+    "subtitle1": "Membangun pengalaman web modern dengan",
+    "subtitle2": "workflow development berbasis AI."
   },
   "about": {
     "label": "Tentang Saya",
-    "title": "Business Analyst & Web Developer",
-    "description": "Saya seorang Business Analyst dengan latar belakang Sistem Informasi. Fokus saya adalah menerjemahkan kebutuhan bisnis menjadi solusi yang terstruktur. Dengan pengalaman di frontend, saya dapat memvalidasi ide dengan cepat, berkomunikasi secara efektif dengan developer, dan memastikan solusi sejalan dengan tujuan teknis dan bisnis."
+    "title": "AI-Native Full Stack Developer",
+    "description": "Full Stack Developer dengan pendekatan AI-native — setiap fase development, dari planning hingga deployment, dijalankan dengan AI sebagai workflow multiplier. Membangun produk digital untuk klien bisnis dari konsep ke production. Founder WelliBuilds. Stack: Next.js · React.js · Supabase · Tailwind CSS · Vercel"
   },
   "services": {
     "header": {
@@ -25,20 +25,20 @@
       "subtitle": "Apa yang Saya Tawarkan"
     },
     "items": {
-      "business-analysis": {
-        "title": "Analisis Bisnis & Sistem",
-        "description": "Menganalisis proses bisnis, mengidentifikasi masalah, dan menerjemahkan kebutuhan menjadi definisi sistem dan fitur yang jelas.",
-        "tags": ["Analisis Kebutuhan", "Desain Sistem", "Pemetaan Proses"]
+      "fullstack-development": {
+        "title": "Full Stack Web Development",
+        "description": "Membangun aplikasi web lengkap dari frontend hingga backend menggunakan Next.js, React.js, dan Supabase dengan deployment modern di Vercel.",
+        "tags": ["Next.js", "React.js", "Supabase", "Vercel"]
       },
-      "frontend-development": {
-        "title": "Frontend Web Development",
-        "description": "Membangun antarmuka web yang bersih, responsif, dan mudah digunakan menggunakan teknologi frontend modern seperti React dan Next.js.",
-        "tags": ["React", "Next.js", "Tailwind CSS"]
+      "ai-powered-development": {
+        "title": "AI-Powered Development",
+        "description": "Memanfaatkan tools AI di seluruh siklus development — dari planning dan UI generation hingga coding dan deployment — untuk hasil yang lebih cepat dan cerdas.",
+        "tags": ["Claude", "Cursor", "Bolt", "v0", "Antigravity"]
       },
-      "ui-implementation": {
-        "title": "Implementasi UI dari Kebutuhan",
-        "description": "Mengubah kebutuhan bisnis dan pengguna menjadi antarmuka pengguna yang praktis, intuitif, dan fungsional yang sejalan dengan tujuan bisnis.",
-        "tags": ["UI/UX", "Figma ke Code", "Desain Berbasis Pengguna"]
+      "hospitality-web": {
+        "title": "Website Hospitality & Villa",
+        "description": "Spesialisasi web development untuk hotel, villa, dan resort di Indonesia. Website yang indah dan optimal untuk konversi, dibangun khusus untuk industri hospitality.",
+        "tags": ["WelliBuilds", "Hospitality", "Villa/Resort", "SEO"]
       }
     }
   },
@@ -53,8 +53,8 @@
     "viewProject": "Lihat Proyek"
   },
   "skills": {
-    "title": "KEAHLIAN",
-    "subtitle": "Tech Stack Saya"
+    "title": "TECH STACK",
+    "subtitle": "Tools & Teknologi Saya"
   },
   "contact": {
     "title": "KONTAK",
@@ -63,7 +63,7 @@
     "description": "Punya proyek atau ingin berkolaborasi? Saya senang mendengarnya dari Anda.",
     "info": {
       "location": "Lokasi",
-      "jakarta": "Jakarta, Indonesia",
+      "jakarta": "Tangerang, Banten",
       "availability": "Ketersediaan",
       "open": "Terbuka untuk peluang",
       "followMe": "Ikuti Saya"
@@ -95,13 +95,13 @@
     "footer": {
       "rights": "© 2025 WELLI. Hak cipta dilindungi.",
       "madeWith": "Dibuat dengan",
-      "in": "di Jakarta"
+      "in": "di Tangerang"
     }
   },
   "caseStudy": {
     "backHome": "Kembali ke Beranda",
     "title": "Semua Proyek",
-    "description": "Koleksi proyek pengembangan web mulai dari analisis bisnis hingga aplikasi full-stack.",
+    "description": "Koleksi proyek pengembangan web — dari website hospitality hingga aplikasi full-stack, semuanya dibangun dengan workflow AI-native.",
     "allProjectsTab": "Semua Proyek",
     "featuredTab": "Unggulan",
     "featuredBadge": "Unggulan",

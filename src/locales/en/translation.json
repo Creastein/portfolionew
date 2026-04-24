@@ -9,15 +9,15 @@
   },
   "hero": {
     "available": "Available for project",
-    "title1": "Business Analyst",
-    "title2": "Web Developer",
-    "subtitle1": "I help turn business ideas into",
-    "subtitle2": "simple and useful web experiences."
+    "title1": "AI-Native",
+    "title2": "Full Stack Developer",
+    "subtitle1": "Building modern web experiences with",
+    "subtitle2": "AI-powered development workflow."
   },
   "about": {
     "label": "About Me",
-    "title": "Business Analyst & Web Developer",
-    "description": "I'm a Business Analyst with a background in Information Systems. I focus on translating business needs into clear, structured solutions. With hands-on frontend experience, I'm able to validate ideas quickly, communicate effectively with developers, and ensure solutions stay aligned with user and business goals."
+    "title": "AI-Native Full Stack Developer",
+    "description": "Full Stack Developer with an AI-native approach — every phase of development, from planning to deployment, is executed with AI as a workflow multiplier. Building digital products for business clients from concept to production. Founder of WelliBuilds. Stack: Next.js · React.js · Supabase · Tailwind CSS · Vercel"
   },
   "services": {
     "header": {
@@ -25,20 +25,20 @@
       "subtitle": "What I Offer"
     },
     "items": {
-      "business-analysis": {
-        "title": "Business & System Analysis",
-        "description": "Analyze business processes, identify problems, and translate requirements into clear system and feature definitions.",
-        "tags": ["Requirements Analysis", "System Design", "Process Mapping"]
+      "fullstack-development": {
+        "title": "Full Stack Web Development",
+        "description": "Build complete web applications from frontend to backend using Next.js, React.js, and Supabase with modern deployment on Vercel.",
+        "tags": ["Next.js", "React.js", "Supabase", "Vercel"]
       },
-      "frontend-development": {
-        "title": "Frontend Web Development",
-        "description": "Build clean, responsive, and user-friendly web interfaces using modern frontend technologies like React and Next.js.",
-        "tags": ["React", "Next.js", "Tailwind CSS"]
+      "ai-powered-development": {
+        "title": "AI-Powered Development",
+        "description": "Leverage AI tools across the entire development lifecycle — from planning and UI generation to coding and deployment — for faster, smarter results.",
+        "tags": ["Claude", "Cursor", "Bolt", "v0", "Antigravity"]
       },
-      "ui-implementation": {
-        "title": "UI Implementation from Requirements",
-        "description": "Turn business and user requirements into practical, intuitive, and functional user interfaces that align with real business goals.",
-        "tags": ["UI/UX", "Figma to Code", "User-Centered Design"]
+      "hospitality-web": {
+        "title": "Hospitality & Villa Websites",
+        "description": "Specialized web development for hotels, villas, and resorts in Indonesia. Beautiful, conversion-optimized websites built for the hospitality industry.",
+        "tags": ["WelliBuilds", "Hospitality", "Villa/Resort", "SEO"]
       }
     }
   },
@@ -53,8 +53,8 @@
     "viewProject": "View Project"
   },
   "skills": {
-    "title": "SKILLS",
-    "subtitle": "My Tech Stack"
+    "title": "TECH STACK",
+    "subtitle": "My Tools & Technologies"
   },
   "contact": {
     "title": "CONTACT",
@@ -63,7 +63,7 @@
     "description": "Have a project in mind or want to collaborate? I'd love to hear from you.",
     "info": {
       "location": "Location",
-      "jakarta": "Jakarta, Indonesia",
+      "jakarta": "Tangerang, Banten",
       "availability": "Availability",
       "open": "Open for opportunities",
       "followMe": "Follow Me"
@@ -95,13 +95,13 @@
     "footer": {
       "rights": "© 2025 WELLI. All rights reserved.",
       "madeWith": "Made with",
-      "in": "in Jakarta"
+      "in": "in Tangerang"
     }
   },
   "caseStudy": {
     "backHome": "Back to Home",
     "title": "All Projects",
-    "description": "A collection of web development projects ranging from business analysis to full-stack applications.",
+    "description": "A collection of web development projects — from hospitality websites to full-stack applications, all built with AI-native workflow.",
     "allProjectsTab": "All Projects",
     "featuredTab": "Featured",
     "featuredBadge": "Featured",
