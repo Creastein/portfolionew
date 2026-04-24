@@ -91,7 +91,7 @@ const WorkSection: React.FC = () => {
             {/* Split Screen Layout */}
             < div className="flex flex-col lg:grid lg:grid-cols-2 min-h-screen lg:h-screen lg:overflow-hidden" >
                 {/* Left Panel - Project Details (Fixed) */}
-                < div className="relative bg-background lg:border-r border-white/5" >
+                < div className="relative bg-background lg:border-r border-white/5 lg:overflow-y-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" >
                     <div className="lg:h-full flex flex-col justify-between p-6 md:p-8 lg:p-12 xl:p-16">
                         {/* Header */}
                         <div className="space-y-8">
