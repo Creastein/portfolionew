@@ -49,6 +49,42 @@ export const projects: Project[] = [
         featured: true
     },
     {
+        id: 'pasline',
+        title: 'PASLINE',
+        category: 'Government SaaS · Digital Communication',
+        year: '2026',
+        description: 'Sistem komunikasi digital untuk UPT/Lapas/Rutan di Indonesia — aman, tercatat real-time, dan terkelola. Dilengkapi QR verification, one-way call system, dan monitoring dashboard.',
+        timeline: '6 weeks',
+        services: ['Next.js', 'React.js', 'Supabase', 'PWA'],
+        image: '/images/pasline.png',
+        link: 'https://pasline.vercel.app',
+        featured: true
+    },
+    {
+        id: 'wellibuilds-crm',
+        title: 'WelliBuilds CRM',
+        category: 'CRM Dashboard · Freelance Management',
+        year: '2026',
+        description: 'Freelance dashboard dengan Mission Control, KPI metrics, database prospek, dan tracking revenue real-time untuk mengelola pipeline klien secara efisien.',
+        timeline: '4 weeks',
+        services: ['React.js', 'TypeScript', 'Supabase', 'PWA'],
+        image: '/images/wellibuilds-crm.png',
+        link: 'https://welli-builds.vercel.app/',
+        featured: true
+    },
+    {
+        id: 'adam-tour-lombok',
+        title: 'Adam Tour Lombok',
+        category: 'Tourism · Booking Website',
+        year: '2026',
+        description: 'Website tour guide lokal terpercaya di Lombok dengan paket wisata ke Gunung Rinjani, Gili Islands, Pink Beach, dan destinasi terbaik Lombok. SEO-optimized dengan Schema.org.',
+        timeline: '3 weeks',
+        services: ['React.js', 'TypeScript', 'Tailwind CSS', 'SEO'],
+        image: '/images/adamtour-lombok.png',
+        link: 'https://adamtour2.vercel.app/',
+        featured: true
+    },
+    {
         id: 'idx-trading-assistant',
         title: 'IDX Trading Assistant',
         category: 'AI Financial Terminal',
