@@ -49,7 +49,7 @@ export const websitePackages: WebsitePackage[] = [
   {
     id: 'website-premium',
     title: 'Website Premium',
-    price: 'Rp 4.000.000',
+    price: 'Rp 4.500.000',
     duration: '10–14 hari kerja',
     target: ['Villa butik', 'Resort kecil', 'Spa', 'Tour operator premium'],
     features: [
@@ -63,7 +63,7 @@ export const websitePackages: WebsitePackage[] = [
     ],
     icon: '⭐',
     popular: false,
-    whatsappMessage: 'Halo Welli, saya tertarik dengan paket *Website Premium* (Rp 4.000.000). Bisa konsultasi lebih lanjut?',
+    whatsappMessage: 'Halo Welli, saya tertarik dengan paket *Website Premium* (Rp 4.500.000). Bisa konsultasi lebih lanjut?',
   },
   {
     id: 'website-villa-pro',

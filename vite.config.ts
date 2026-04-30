@@ -8,6 +8,9 @@ import Sitemap from 'vite-plugin-sitemap';
 export default defineConfig(({ mode, isSsrBuild }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      build: {
+        target: 'es2015',
+      },
       server: {
         port: 3000,
         host: '0.0.0.0',
@@ -18,7 +21,8 @@ export default defineConfig(({ mode, isSsrBuild }) => {
           hostname: 'https://welli.my.id',
           dynamicRoutes: [
             '/work',
-            '/projects'
+            '/projects',
+            '/website'
           ],
           changefreq: 'monthly',
           priority: 0.7
@@ -147,7 +151,7 @@ export default defineConfig(({ mode, isSsrBuild }) => {
       ssgOptions: {
         formatting: 'prettify',
         includedRoutes() {
-          return ['/', '/work', '/projects'];
+          return ['/', '/work', '/projects', '/website'];
         }
       }
     };
