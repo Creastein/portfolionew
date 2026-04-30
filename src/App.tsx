@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Navbar from '@/components/Navbar';
 import Home from '@/pages/Home';
 import CaseStudy from '@/pages/CaseStudy';
+import Website from '@/pages/Website';
 import LoadingScreen from '@/components/LoadingScreen';
 import { AnimatePresence } from 'framer-motion';
 import { useTheme, useAnalytics } from '@/hooks';
@@ -86,10 +87,17 @@ const AppContent: React.FC = () => {
         }`}
       >
         <ScrollToTop />
-        <div className="transition-colors duration-300">
-          <Navbar />
-          <AnimatedRoutes isLoading={isLoading} />
-        </div>
+        <Routes>
+          {/* Website service page — has its own layout/navbar */}
+          <Route path="/website" element={<Website />} />
+          {/* All other routes use the default portfolio layout */}
+          <Route path="*" element={
+            <div className="transition-colors duration-300">
+              <Navbar />
+              <AnimatedRoutes isLoading={isLoading} />
+            </div>
+          } />
+        </Routes>
       </div>
     </>
   );
