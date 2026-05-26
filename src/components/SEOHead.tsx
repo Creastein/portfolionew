@@ -14,7 +14,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
   canonical,
-  ogImage = 'https://welli.my.id/og-image.jpg',
+  ogImage = 'https://welli.my.id/images/og-image.png',
   keywords,
   lang = 'id'
 }) => {
