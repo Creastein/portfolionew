@@ -65,10 +65,10 @@ const BentoTile: React.FC<TileProps> = ({ children, className = "", index = 0, a
       className={`group relative rounded-[1.75rem] p-1.5 transition-all duration-500 cursor-default ${className}`}
       style={{
         background: accent
-          ? "linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.01) 100%)"
+          ? "linear-gradient(135deg, rgba(19,91,236,0.18) 0%, rgba(255,255,255,0.04) 50%, rgba(255,255,255,0.01) 100%)"
           : "linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)",
         boxShadow: accent
-          ? "0 0 60px -25px rgba(16,185,129,0.15), inset 0 1px 0 0 rgba(255,255,255,0.1)"
+          ? "0 0 60px -25px rgba(19,91,236,0.18), inset 0 1px 0 0 rgba(255,255,255,0.1)"
           : "inset 0 1px 0 0 rgba(255,255,255,0.06)",
       }}
     >
@@ -84,7 +84,7 @@ const BentoTile: React.FC<TileProps> = ({ children, className = "", index = 0, a
       >
         {/* Subtle Ambient Radial Lighting for Accent Tile */}
         {accent && (
-          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-500/[0.07] blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-70" />
+          <div className="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-primary/[0.08] blur-3xl pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-70" />
         )}
 
         <div className="relative z-10 h-full">
@@ -108,7 +108,7 @@ const AboutSection: React.FC = () => {
       className="relative z-30 w-full py-28 md:py-36 overflow-hidden"
       style={{
         background: `
-          radial-gradient(ellipse 70% 50% at 20% -10%, rgba(16,185,129,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse 70% 50% at 20% -10%, rgba(19,91,236,0.06) 0%, transparent 50%),
           radial-gradient(ellipse 50% 40% at 90% 110%, rgba(99,102,241,0.04) 0%, transparent 50%),
           #050505
         `,
@@ -131,7 +131,7 @@ const AboutSection: React.FC = () => {
         {/* --- SECTION HEADER (CENTERED) --- */}
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20 flex flex-col items-center">
           <div className="flex items-center justify-center gap-2.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[11px] font-mono tracking-[0.2em] text-zinc-500 uppercase font-medium">
               {t("about.label")}
             </span>
@@ -150,15 +150,15 @@ const AboutSection: React.FC = () => {
             <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-between h-full min-h-[320px] lg:min-h-[380px]">
               <div>
                 {/* Studio badge */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-8">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                  <span className="text-[10px] font-mono tracking-[0.18em] text-emerald-400 uppercase font-semibold">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-8">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                  <span className="text-[10px] font-mono tracking-[0.18em] text-blue-400 uppercase font-semibold">
                     WL-STUDIO
                   </span>
                 </div>
 
-                {/* Justified editorial paragraph */}
-                <p className="text-lg sm:text-xl lg:text-[1.35rem] text-zinc-200 leading-relaxed font-light text-justify text-pretty">
+                {/* Editorial paragraph */}
+                <p className="text-lg sm:text-xl lg:text-[1.35rem] text-zinc-200 leading-relaxed font-light text-pretty">
                   {t("about.manifesto")}
                 </p>
               </div>
@@ -170,8 +170,8 @@ const AboutSection: React.FC = () => {
                   className="group/btn inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] hover:border-white/[0.16] text-xs font-mono tracking-wider uppercase text-zinc-300 hover:text-white transition-all duration-300"
                 >
                   <span>{t("about.cta")}</span>
-                  <div className="w-5 h-5 rounded-full bg-white/[0.08] flex items-center justify-center transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:bg-emerald-500/20">
-                    <ArrowRight className="w-3 h-3 text-emerald-400" strokeWidth={2} />
+                  <div className="w-5 h-5 rounded-full bg-white/[0.08] flex items-center justify-center transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:bg-primary/20">
+                    <ArrowRight className="w-3 h-3 text-blue-400" strokeWidth={2} />
                   </div>
                 </button>
 
@@ -206,8 +206,8 @@ const AboutSection: React.FC = () => {
                         variants={listItemVariants}
                         className="flex items-start gap-3.5"
                       >
-                        <div className="flex-shrink-0 mt-1 w-5 h-5 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                          <Check className="w-3 h-3 text-emerald-400" strokeWidth={2.5} />
+                        <div className="flex-shrink-0 mt-1 w-5 h-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+                          <Check className="w-3 h-3 text-blue-400" strokeWidth={2.5} />
                         </div>
                         <span className="text-sm text-zinc-300 leading-relaxed font-light text-left">
                           {item}
@@ -224,7 +224,7 @@ const AboutSection: React.FC = () => {
               <div className="p-7 sm:p-8 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-5">
                   <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/[0.03] border border-white/[0.06] flex items-center justify-center">
-                    <Clock className="w-5 h-5 text-emerald-400/80" strokeWidth={1.5} />
+                    <Clock className="w-5 h-5 text-blue-400" strokeWidth={1.5} />
                   </div>
                   <div>
                     {/* Masked reveal container for metric */}
@@ -251,12 +251,12 @@ const AboutSection: React.FC = () => {
                 </div>
 
                 {/* Live queue status pill */}
-                <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/8 border border-emerald-500/20">
+                <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20">
                   <span className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
                   </span>
-                  <span className="text-[10px] font-mono uppercase tracking-wider text-emerald-400/90 font-medium">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-blue-400 font-medium">
                     {t("about.metric.status")}
                   </span>
                 </div>

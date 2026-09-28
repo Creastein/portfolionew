@@ -46,12 +46,12 @@ const BespokeDesignVisual: React.FC = () => (
       {/* Floating Badge */}
       <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between">
         <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-black/70 backdrop-blur-md border border-white/15">
-          <Sparkles className="w-3 h-3 text-emerald-400" />
+          <Sparkles className="w-3 h-3 text-blue-400" />
           <span className="text-[10px] font-mono text-zinc-200 uppercase tracking-wider font-medium">
             100% Bespoke · No Template
           </span>
         </div>
-        <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded">
+        <span className="text-[10px] font-mono text-blue-400 bg-primary/10 border border-primary/20 px-2 py-0.5 rounded">
           4K Visual
         </span>
       </div>
@@ -61,25 +61,23 @@ const BespokeDesignVisual: React.FC = () => (
 
 // ─── VISUAL 2: WhatsApp Official Direct Booking Simulation ───
 const DirectBookingVisual: React.FC = () => (
-  <div className="relative w-full h-[215px] sm:h-[235px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#0b1f16] via-[#091510] to-[#070d0a] border border-emerald-500/25 p-3 flex flex-col justify-between mb-6 shadow-inner">
+  <div className="relative w-full h-[215px] sm:h-[235px] rounded-2xl overflow-hidden bg-gradient-to-b from-[#0b1224] via-[#090e1a] to-[#070910] border border-primary/30 p-3 flex flex-col justify-between mb-6 shadow-inner">
     {/* Official WhatsApp Header */}
-    <div className="flex items-center justify-between pb-2 border-b border-emerald-500/20 bg-emerald-950/40 -mx-3 -mt-3 px-3.5 pt-2.5">
+    <div className="flex items-center justify-between pb-2 border-b border-primary/20 bg-blue-950/40 -mx-3 -mt-3 px-3.5 pt-2.5">
       <div className="flex items-center gap-2">
         {/* Official WhatsApp Brand Icon */}
-        <div className="w-5 h-5 rounded-full bg-[#25D366] flex items-center justify-center shadow-sm flex-shrink-0">
-          <svg className="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
-            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.664-.698c.969.585 1.961.947 3.023.947 3.178 0 5.767-2.587 5.767-5.766.001-3.187-2.575-5.77-5.994-5.774zm3.393 8.163c-.144.405-.837.774-1.17.824-.312.045-.694.073-2.128-.521-1.615-.672-2.618-2.316-2.699-2.424-.079-.108-.646-.86-.646-1.639 0-.779.408-1.162.553-1.32.144-.158.314-.198.42-.198.106 0 .211.002.304.007.098.005.23-.038.358.272.134.323.456 1.111.496 1.192.04.081.066.176.013.283-.053.108-.079.176-.158.27-.079.095-.167.211-.238.283-.079.081-.162.17-.07.327.092.158.409.675.877 1.092.602.536 1.11.703 1.268.783.158.079.251.069.344-.04.093-.108.396-.462.502-.62.106-.158.211-.132.356-.079.145.053.921.434 1.079.513.158.079.264.118.304.184.04.066.04.382-.104.787z"/>
-          </svg>
+        <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center shadow-sm flex-shrink-0">
+          <MessageCircle className="w-3.5 h-3.5 text-white" />
         </div>
         <div className="leading-tight">
           <div className="text-[10px] font-sans font-semibold text-white flex items-center gap-1">
-            WhatsApp Direct Booking
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Direct Booking Engine
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
           </div>
-          <span className="text-[8px] font-mono text-emerald-400">Official Direct Channel</span>
+          <span className="text-[8px] font-mono text-blue-400">Official Direct Channel</span>
         </div>
       </div>
-      <span className="text-[8.5px] font-mono bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30 font-medium">
+      <span className="text-[8.5px] font-mono bg-primary/20 text-blue-300 px-2 py-0.5 rounded-full border border-primary/30 font-medium">
         0% OTA Fee
       </span>
     </div>
@@ -88,35 +86,35 @@ const DirectBookingVisual: React.FC = () => (
     <div className="space-y-1.5 my-auto">
       {/* Guest message */}
       <div className="flex justify-end">
-        <div className="max-w-[85%] bg-[#005c4b]/80 border border-emerald-400/20 rounded-xl rounded-tr-xs px-2.5 py-1 text-[9.5px] text-zinc-100 shadow-sm flex items-end gap-1.5">
+        <div className="max-w-[85%] bg-[#135bec]/80 border border-blue-400/20 rounded-xl rounded-tr-xs px-2.5 py-1 text-[9.5px] text-zinc-100 shadow-sm flex items-end gap-1.5">
           <span>"Halo, mau reservasi Villa (3 Malam) tgl 12-15 Okt..."</span>
-          <span className="text-[7.5px] text-emerald-200/60 font-mono">14:20</span>
+          <span className="text-[7.5px] text-blue-200/70 font-mono">14:20</span>
         </div>
       </div>
 
       {/* Confirmed System Card */}
       <div className="flex justify-start">
-        <div className="w-full bg-[#1f2c34]/90 border border-emerald-500/30 rounded-xl rounded-tl-xs p-2 shadow-md">
+        <div className="w-full bg-[#101622]/90 border border-primary/30 rounded-xl rounded-tl-xs p-2 shadow-md">
           <div className="flex items-center justify-between mb-1">
-            <span className="text-[9.5px] font-sans font-semibold text-emerald-400 flex items-center gap-1">
-              <Check className="w-3 h-3 text-emerald-400" strokeWidth={3} /> Reservasi Dikonfirmasi
+            <span className="text-[9.5px] font-sans font-semibold text-blue-400 flex items-center gap-1">
+              <Check className="w-3 h-3 text-blue-400" strokeWidth={3} /> Reservasi Dikonfirmasi
             </span>
             <span className="text-[10.5px] font-mono font-bold text-white">
               Rp 15.000.000
             </span>
           </div>
-          <div className="text-[8.5px] font-mono text-emerald-300/90 flex items-center justify-between pt-1 border-t border-white/[0.06]">
+          <div className="text-[8.5px] font-mono text-blue-300/90 flex items-center justify-between pt-1 border-t border-white/[0.06]">
             <span>Komisi Pihak Ketiga: <strong className="text-white">Rp 0</strong></span>
-            <span className="text-[#53bdeb] font-mono text-[8px]">✓✓ 14:20</span>
+            <span className="text-blue-400 font-mono text-[8px]">✓✓ 14:20</span>
           </div>
         </div>
       </div>
     </div>
 
     {/* Footer Callout */}
-    <div className="flex items-center justify-between text-[8.5px] font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">
+    <div className="flex items-center justify-between text-[8.5px] font-mono text-blue-300 bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md">
       <span className="font-medium">100% Margin Masuk ke Rekening Anda</span>
-      <span className="text-emerald-400 font-semibold">Hemat 20%</span>
+      <span className="text-blue-400 font-semibold">Hemat 20%</span>
     </div>
   </div>
 );
@@ -137,7 +135,7 @@ const SpeedGlobalVisual: React.FC = () => (
           villa di karimunjawa
         </span>
       </div>
-      <span className="text-[8.5px] font-mono text-emerald-400 font-semibold bg-emerald-500/15 border border-emerald-500/30 px-1.5 py-0.5 rounded-full flex-shrink-0">
+      <span className="text-[8.5px] font-mono text-blue-400 font-semibold bg-primary/15 border border-primary/30 px-1.5 py-0.5 rounded-full flex-shrink-0">
         Rank #1
       </span>
     </div>
@@ -145,13 +143,13 @@ const SpeedGlobalVisual: React.FC = () => (
     {/* Search Results Container */}
     <div className="space-y-1.5 my-auto">
       {/* 1. The Secret Karimunjawa (Rank 1 - Featured) */}
-      <div className="bg-[#181818] border border-emerald-500/25 rounded-xl p-2 space-y-0.5 shadow-sm">
+      <div className="bg-[#181818] border border-primary/30 rounded-xl p-2 space-y-0.5 shadow-sm">
         <div className="flex items-center gap-1.5">
-          <div className="w-3.5 h-3.5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[7px] font-bold">
+          <div className="w-3.5 h-3.5 rounded-full bg-primary/20 text-blue-400 flex items-center justify-center text-[7px] font-bold">
             ✦
           </div>
           <span className="text-[9px] text-zinc-300 font-medium truncate">thesecretkarimunjawa.com</span>
-          <span className="text-[8px] font-mono text-emerald-400 ml-auto font-medium">#1 Organic</span>
+          <span className="text-[8px] font-mono text-blue-400 ml-auto font-medium">#1 Organic</span>
         </div>
 
         <div className="text-[10px] font-medium text-[#c58af9] truncate leading-tight">
@@ -180,9 +178,9 @@ const SpeedGlobalVisual: React.FC = () => (
     </div>
 
     {/* Footer Proof Badge */}
-    <div className="flex items-center justify-between text-[8.5px] font-mono text-emerald-300 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">
+    <div className="flex items-center justify-between text-[8.5px] font-mono text-blue-300 bg-primary/10 border border-primary/20 px-2 py-0.5 rounded-md">
       <span className="flex items-center gap-1 font-medium">
-        <Check className="w-2.5 h-2.5 text-emerald-400" strokeWidth={3} /> Terbukti Mengalahkan Platform OTA
+        <Check className="w-2.5 h-2.5 text-blue-400" strokeWidth={3} /> Terbukti Mengalahkan Platform OTA
       </span>
       <span className="text-zinc-400 font-normal">PageSpeed 98+</span>
     </div>
@@ -221,7 +219,7 @@ const ServicesSection: React.FC = () => {
       className="relative z-30 w-full py-28 md:py-36 overflow-hidden bg-[#050505] text-white"
       style={{
         background: `
-          radial-gradient(ellipse 70% 40% at 50% 0%, rgba(16,185,129,0.05) 0%, transparent 60%),
+          radial-gradient(ellipse 70% 40% at 50% 0%, rgba(19,91,236,0.05) 0%, transparent 60%),
           #050505
         `,
       }}
@@ -243,7 +241,7 @@ const ServicesSection: React.FC = () => {
         {/* --- SECTION HEADER (CENTERED) --- */}
         <div className="max-w-3xl mx-auto text-center mb-16 md:mb-20 flex flex-col items-center">
           <div className="flex items-center justify-center gap-2.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
             <span className="text-[11px] font-mono tracking-[0.2em] text-zinc-500 uppercase font-medium">
               {t('services.header.label', { defaultValue: 'Layanan Kami' })}
             </span>
@@ -280,10 +278,10 @@ const ServicesSection: React.FC = () => {
                 }`}
                 style={{
                   background: item.isFeatured
-                    ? 'linear-gradient(135deg, rgba(16,185,129,0.2) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.01) 100%)'
+                    ? 'linear-gradient(135deg, rgba(19,91,236,0.2) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.01) 100%)'
                     : 'linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.01) 100%)',
                   boxShadow: item.isFeatured
-                    ? '0 0 60px -25px rgba(16,185,129,0.18), inset 0 1px 0 0 rgba(255,255,255,0.1)'
+                    ? '0 0 60px -25px rgba(19,91,236,0.2), inset 0 1px 0 0 rgba(255,255,255,0.1)'
                     : 'inset 0 1px 0 0 rgba(255,255,255,0.05)',
                 }}
               >
@@ -291,7 +289,7 @@ const ServicesSection: React.FC = () => {
                 <div
                   className={`absolute inset-0 rounded-[1.75rem] border pointer-events-none transition-colors duration-500 ${
                     item.isFeatured
-                      ? 'border-emerald-500/30 group-hover:border-emerald-400/50'
+                      ? 'border-primary/40 group-hover:border-blue-400/60'
                       : 'border-white/[0.06] group-hover:border-white/[0.14]'
                   }`}
                 />
@@ -308,7 +306,7 @@ const ServicesSection: React.FC = () => {
                       <span
                         className={`text-[10px] font-mono tracking-wider uppercase font-semibold px-2.5 py-0.5 rounded-full ${
                           item.isFeatured
-                            ? 'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30'
+                            ? 'bg-primary/15 text-blue-400 border border-primary/30'
                             : 'bg-white/[0.04] text-zinc-400 border border-white/[0.08]'
                         }`}
                       >
@@ -316,12 +314,12 @@ const ServicesSection: React.FC = () => {
                       </span>
                     </div>
 
-                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug font-['Space_Grotesk'] mb-3 group-hover:text-emerald-400/90 transition-colors duration-300">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight leading-snug font-['Space_Grotesk'] mb-3 group-hover:text-blue-400 transition-colors duration-300">
                       {title}
                     </h3>
 
                     {/* Supporting Description */}
-                    <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light text-justify text-pretty mb-6">
+                    <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed font-light text-pretty mb-6">
                       {description}
                     </p>
                   </div>
@@ -335,7 +333,7 @@ const ServicesSection: React.FC = () => {
                             key={tag}
                             className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-white/[0.03] text-[10px] sm:text-[11px] font-mono text-zinc-400 border border-white/[0.06] transition-colors duration-300 group-hover:border-white/[0.12] group-hover:text-zinc-300"
                           >
-                            <Check className="w-2.5 h-2.5 text-emerald-400/80" strokeWidth={2.5} />
+                            <Check className="w-2.5 h-2.5 text-blue-400" strokeWidth={2.5} />
                             {tag}
                           </span>
                         ))}

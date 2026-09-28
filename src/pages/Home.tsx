@@ -5,6 +5,7 @@ import ServicesSection from '@/components/home/ServicesSection';
 import WorkSection from '@/components/home/WorkSection';
 import ProcessSection from '@/components/home/ProcessSection';
 import ContactSection from '@/components/home/ContactSection';
+import Footer from '@/components/Footer';
 import TrustBar from '@/components/home/TrustBar';
 import SEOHead from '@/components/SEOHead';
 import HeroSection from '@/components/ui/glassmorphism-trust-hero';
@@ -18,7 +19,7 @@ export default function Home({ isLoading }: HomeProps) {
   const heroRef = useRef<HTMLElement>(null);
 
   return (
-    <main ref={containerRef} className="relative w-full overflow-x-hidden pb-32 bg-black">
+    <main ref={containerRef} className="relative w-full overflow-x-hidden bg-black">
       <SEOHead 
         title="WL-STUDIO — Premium Web Development for Hospitality & Villas"
         description="Crafting bespoke websites, immersive interfaces, and seamless booking systems for premium villas, resorts, and hospitality brands in Indonesia."
@@ -65,6 +66,7 @@ export default function Home({ isLoading }: HomeProps) {
       <WorkSection />
       <ProcessSection />
       <ContactSection />
+      <Footer />
     </main>
   );
 }

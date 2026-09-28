@@ -16,7 +16,7 @@ const Toast: React.FC<ToastProps> = ({ message, type, onClose }) => {
         return () => clearTimeout(timer);
     }, [onClose]);
 
-    const bgColor = type === 'success' ? 'bg-green-500/90' : 'bg-red-500/90';
+    const bgColor = type === 'success' ? 'bg-primary/95 text-white border border-blue-400/30' : 'bg-red-500/90 text-white border border-red-400/30';
 
     return (
         <motion.div

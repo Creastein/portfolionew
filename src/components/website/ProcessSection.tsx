@@ -31,7 +31,7 @@ const steps = [
     description:
       'Anda review hasilnya dan berikan feedback. Revisi dilakukan sampai Anda puas.',
     image: '/images/process-step-4.png.png',
-    accent: '#10b981',
+    accent: '#06b6d4',
   },
   {
     number: '05',

@@ -15,7 +15,7 @@ export const projects: Project[] = [
     {
         id: 'the-secret-karimunjawa',
         title: 'The Secret Karimunjawa',
-        category: 'Luxury Sea View Villa',
+        category: 'Luxury Sea View Villa · Karimunjawa',
         year: '2026',
         description: 'Website resmi villa eksklusif di Karimunjawa dengan pemandangan laut 120°. Terbukti menduduki Peringkat #1 di Google Search mengalahkan platform OTA raksasa seperti Tiket.com, mengamankan direct booking WhatsApp tanpa potongan komisi.',
         timeline: '3 Minggu',
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     {
         id: 'floating-paradise',
         title: 'Floating Paradise',
-        category: 'Villa & Resort Private Pool',
+        category: 'Villa & Resort Private Pool · Karimunjawa',
         year: '2026',
         description: 'Portal digital sinematik untuk villa & resort tepi air dengan galeri visual 4K, sistem reservasi langsung, dan navigasi mobile-first yang memikat wisatawan mancanegara sejak detik pertama.',
         timeline: '2 Minggu',
@@ -37,13 +37,25 @@ export const projects: Project[] = [
         featured: true
     },
     {
+        id: 'dea-haven-villas',
+        title: 'Dea Haven Villas',
+        category: 'Private Luxury Villa · Legian Bali',
+        year: '2026',
+        description: 'Website direct booking bilingual (ID/EN) untuk private villa 2 kamar di Legian, Bali. Dilengkapi galeri filter kategori, tarif seasonal, WhatsApp direct booking otomatis, desain liquid glass interaktif, dan SEO schema LodgingBusiness. Menghasilkan 47 pengguna aktif & 317 event di 7 hari pertama dari wisatawan domestik & mancanegara.',
+        timeline: '1 Minggu',
+        services: ['Bilingual (ID/EN)', 'Direct WhatsApp Booking', 'Astro 5 & React 19', 'Schema.org SEO'],
+        image: '/images/thesubahuvilla.webp',
+        link: 'https://deahavenvillas.com',
+        featured: true
+    },
+    {
         id: 'homebase-lombok',
         title: 'HomeBase Lombok',
-        category: 'Property Management & Villa Sync',
+        category: 'Property Management & Villa Sync · Lombok',
         year: '2026',
-        description: 'Sistem kustom sinkronisasi kalender ketersediaan real-time untuk 3 villa aktif di Lombok. Mengintegrasikan jadwal otomatis anti-bentrok langsung dari Airbnb ke website mandiri, mempermudah tamu memilih tanggal dan reservasi instan via WhatsApp tanpa biaya perantara.',
+        description: 'Sistem sinkronisasi kalender ketersediaan otomatis real-time (Airbnb iCal) untuk 3 villa di Lombok 1 tahun ke depan anti-bentrok. Dilengkapi tombol "Cek Promo via WhatsApp", admin dashboard edit data kamar, perbaikan lightbox galeri, dan migrasi hosting berkecepatan tinggi.',
         timeline: '2 Minggu',
-        services: ['Sinkronisasi Kalender Real-Time', 'Anti-Bentrok Jadwal', 'Direct WhatsApp Booking', '0% Komisi OTA'],
+        services: ['Airbnb iCal Sync 1 Tahun', 'Admin Dashboard', 'Direct WhatsApp Booking', '0% Double Booking'],
         image: '/images/homebaselombok.webp',
         link: 'https://homebaselombok.com',
         featured: true
@@ -59,6 +71,42 @@ export const projects: Project[] = [
         image: '/images/thesubahuvilla.webp',
         link: 'https://www.thesubahuvilla.com/',
         featured: true
+    },
+    {
+        id: 'green-paddy-hostel-ubud',
+        title: 'Green Paddy Hostel Ubud',
+        category: 'Hostel & Villa · Speed & SEO Optimization · Ubud Bali',
+        year: '2026',
+        description: 'Optimasi performa ekstrim dan SEO untuk website hostel di Ubud, Bali. Berhasil meningkatkan PageSpeed Mobile dari 47 ke 93 dan Desktop ke 100/100 melalui konfigurasi LiteSpeed Cache, defer third-party scripts, optimasi Google Fonts Oxygen Builder, WebP conversion, dan Rank Math SEO.',
+        timeline: '1 Minggu',
+        services: ['PageSpeed Mobile 47→93', 'Desktop 100/100', 'LiteSpeed Optimization', 'Rank Math SEO'],
+        image: '/images/danuhouseubudtour.webp',
+        link: 'https://greenpaddyhostelubud.com',
+        featured: false
+    },
+    {
+        id: 'surfjumbo',
+        title: 'Jumbo Surf Lessons',
+        category: 'Surf School & Adventure · Gerupuk Lombok',
+        year: '2026',
+        description: 'Landing page responsif mobile-first berbahasa Inggris untuk sekolah selancar lokal di Gerupuk, Lombok. Menampilkan 5 paket lesson selancar beserta harga, review, FAQ, peta lokasi, verifikasi Google Business Profile, dan booking langsung via WhatsApp tanpa komisi.',
+        timeline: '1 Minggu',
+        services: ['Next.js & Tailwind', 'Direct WhatsApp Booking', 'Google Business Setup', '0% Komisi OTA'],
+        image: '/images/floatingparadise.webp',
+        link: 'https://surfjumbo.com',
+        featured: false
+    },
+    {
+        id: 'grha-vege-jawi',
+        title: 'Grha Vege Jawi Syariah',
+        category: 'Syariah Guest House · Bantul Yogyakarta',
+        year: '2026',
+        description: 'Website direct booking untuk penginapan syariah 6 kamar di Bantul, Yogyakarta. Mengubah ketergantungan OTA menjadi kanal booking mandiri dengan katalog kamar, tarif harian & bulanan, FAQ, peta lokasi, integrasi WhatsApp, dan Schema.org JSON-LD.',
+        timeline: '1 Minggu',
+        services: ['Astro & TypeScript', 'Katalog Kamar Syariah', 'Direct WhatsApp Booking', 'Schema.org JSON-LD'],
+        image: '/images/datoyahouse.webp',
+        link: 'https://grhavegejawi.com',
+        featured: false
     },
     {
         id: 'homyhome-bali-tour',
@@ -82,7 +130,7 @@ export const projects: Project[] = [
         services: ['Sub-Second Astro Speed', 'GEO Local SEO', 'Direct WhatsApp Booking', 'Mobile-First'],
         image: '/images/danuhouseubudtour.webp',
         link: 'https://www.danuhouseubudtour.com/',
-        featured: true
+        featured: false
     },
     {
         id: 'datoya-house',
@@ -94,7 +142,7 @@ export const projects: Project[] = [
         services: ['Sewa 1 Rumah Utuh', 'Direct WhatsApp Booking', 'Informasi Transparan', 'Mobile-First'],
         image: '/images/datoyahouse.webp',
         link: 'https://www.datoyahouse.com/',
-        featured: true
+        featured: false
     },
     {
         id: 'dancing-mountain-villa',

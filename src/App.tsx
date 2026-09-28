@@ -42,8 +42,6 @@ const AnimatedRoutes: React.FC<AnimatedRoutesProps> = ({ isLoading }) => {
   );
 };
 
-let hasShownLoadingScreen = false;
-
 const AppContent: React.FC = () => {
   const { mounted } = useTheme();
   const [isLoading, setIsLoading] = useState(() => {
@@ -52,11 +50,7 @@ const AppContent: React.FC = () => {
     if (isSnap) {
       return false;
     }
-    const shouldShow = !hasShownLoadingScreen;
-    if (shouldShow) {
-      hasShownLoadingScreen = true;
-    }
-    return shouldShow;
+    return true;
   });
   const isSSR = import.meta.env.SSR;
 
@@ -73,14 +67,14 @@ const AppContent: React.FC = () => {
       {!isSSR && isLoading && (
         <LoadingScreen
           onLoadingComplete={handleLoadingComplete}
-          minimumLoadTime={2800}
+          minimumLoadTime={2000}
         />
       )}
 
-      {/* Main Content - Always visible on server, revealed by curtain on client */}
+      {/* Main Content - Always mounted, physically unveiled by the lifting curtain */}
       <div
-        className={`min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white transition-opacity duration-300 ${
-          !isSSR && isLoading ? 'opacity-0 pointer-events-none' : 'opacity-100'
+        className={`min-h-screen bg-background text-foreground font-sans selection:bg-primary selection:text-white ${
+          !isSSR && isLoading ? 'pointer-events-none' : 'pointer-events-auto'
         }`}
       >
         <ScrollToTop />

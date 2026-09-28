@@ -112,6 +112,6 @@ export const testimonials: Testimonial[] = [
     company: 'Floating Paradise Karimunjawa',
     text: 'Ya, tentu saja saya akan merekomendasikan. Saya sangat puas dengan semuanya, dikerjakan dengan jelas dan penuh tanggung jawab 🙏',
     initials: 'FP',
-    accentColor: '#10b981',
+    accentColor: '#135bec',
   },
 ];

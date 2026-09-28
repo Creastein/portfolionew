@@ -203,5 +203,59 @@
     "featuredBadge": "Unggulan",
     "viewLive": "Lihat Proyek Langsung",
     "noProjects": "Tidak ada proyek ditemukan."
+  },
+  "footer": {
+    "cta": {
+      "badge": "Konsultasi Hospitality Eksklusif",
+      "title": "Siap Mengubah Website Villa Menjadi Mesin Direct Booking?",
+      "subtitle": "Hilangkan potongan komisi 15–20% dari OTA. Hadirkan pengalaman booking langsung ke WhatsApp & kalender anti-bentrok dalam 14 hari kerja.",
+      "button": "Konsultasi via WhatsApp",
+      "copyEmail": "Salin Email Studio",
+      "copied": "Email berhasil disalin!",
+      "available": "Tersedia untuk 2 properti baru bulan ini",
+      "features": [
+        "0% Potongan Komisi OTA",
+        "Booking Langsung WhatsApp",
+        "Garansi Selesai 14 Hari Kerja"
+      ]
+    },
+    "brand": {
+      "desc": "Studio web architecture eksklusif untuk villa, resort, dan hospitality luxury di Bali, Lombok, & Indonesia. Mengutamakan konversi direct booking, estetika visual 4K, dan integrasi iCal otomatis.",
+      "status": "Status Studio: Menerima Proyek Baru",
+      "badges": {
+        "noTemplate": "100% No-Template",
+        "ical": "iCal Airbnb Sync",
+        "speed": "Sub-Detik Speed"
+      }
+    },
+    "nav": {
+      "title": "Navigasi",
+      "work": "Karya Unggulan (Top 6)",
+      "services": "Layanan & Spesifikasi",
+      "process": "Alur Kerja 14 Hari",
+      "about": "Tentang WL-STUDIO",
+      "websiteService": "Paket Web Bisnis",
+      "allProjects": "Semua Studi Kasus"
+    },
+    "solutions": {
+      "title": "Solusi Hospitality",
+      "directBooking": "WhatsApp Direct Booking",
+      "calendarSync": "Sync Kalender OTA (Anti-Bentrok)",
+      "customDesign": "Desain Liquid 4K Bespoke",
+      "seo": "Google Search Rank #1 & SEO",
+      "speed": "Performa Sub-Detik (< 0.7s)"
+    },
+    "contact": {
+      "title": "Hubungi Studio",
+      "location": "Tangerang & Jakarta, Indonesia",
+      "whatsapp": "Hotline WhatsApp",
+      "email": "Kirim Email Langsung"
+    },
+    "bottom": {
+      "rights": "© 2026 WL-STUDIO. Seluruh hak cipta dilindungi.",
+      "timezone": "WIB (GMT+7) • Jakarta & Bali",
+      "craftedWith": "Dibuat dengan AI Workflow Generasi Baru di Indonesia",
+      "backToTop": "Kembali ke Atas"
+    }
   }
 }

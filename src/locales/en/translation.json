@@ -203,5 +203,59 @@
     "featuredBadge": "Featured",
     "viewLive": "View Live Project",
     "noProjects": "No projects found."
+  },
+  "footer": {
+    "cta": {
+      "badge": "Exclusive Hospitality Consultation",
+      "title": "Ready to Turn Your Villa Website into a Direct Booking Engine?",
+      "subtitle": "Eliminate 15–20% OTA commissions. Deliver direct WhatsApp reservations and real-time iCal calendar sync within 14 working days.",
+      "button": "Consult via WhatsApp",
+      "copyEmail": "Copy Studio Email",
+      "copied": "Email copied to clipboard!",
+      "available": "Available for 2 new properties this month",
+      "features": [
+        "0% Commission Fees",
+        "WhatsApp Direct Booking Flow",
+        "14-Day Turnaround Guarantee"
+      ]
+    },
+    "brand": {
+      "desc": "Bespoke digital architecture studio for luxury villas, resorts, and boutique hospitality in Bali, Lombok, & Indonesia. Focused on direct conversion, 4K visual storytelling, and automated iCal sync.",
+      "status": "Studio Status: Open for Inquiries",
+      "badges": {
+        "noTemplate": "100% Bespoke Craft",
+        "ical": "iCal Airbnb Sync",
+        "speed": "Sub-Second Speed"
+      }
+    },
+    "nav": {
+      "title": "Navigation",
+      "work": "Featured Works (Top 6)",
+      "services": "Services & Solutions",
+      "process": "14-Day Workflow",
+      "about": "About WL-STUDIO",
+      "websiteService": "Business Web Packages",
+      "allProjects": "All Case Studies"
+    },
+    "solutions": {
+      "title": "Hospitality Solutions",
+      "directBooking": "WhatsApp Direct Booking",
+      "calendarSync": "OTA Calendar Sync (Zero Overbooking)",
+      "customDesign": "Bespoke Liquid 4K Design",
+      "seo": "Google Rank #1 & Local SEO",
+      "speed": "Sub-Second Global Performance (< 0.7s)"
+    },
+    "contact": {
+      "title": "Contact Studio",
+      "location": "Jakarta & Bali, Indonesia",
+      "whatsapp": "Official WhatsApp",
+      "email": "Direct Studio Email"
+    },
+    "bottom": {
+      "rights": "© 2026 WL-STUDIO. All rights reserved.",
+      "timezone": "WIB (GMT+7) • Jakarta & Bali",
+      "craftedWith": "Crafted with Next-Gen AI Workflow in Indonesia",
+      "backToTop": "Back to Top"
+    }
   }
 }

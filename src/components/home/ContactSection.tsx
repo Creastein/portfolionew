@@ -12,6 +12,7 @@ import Toast from '../ui/Toast';
 import FloatingInput from '../ui/FloatingInput';
 import SocialLink from '../ui/SocialLink';
 import { useTranslation } from 'react-i18next';
+import { CONTACT_INFO } from '@/constants/contact';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -116,27 +117,6 @@ const ContactSection: React.FC = () => {
                 }
             );
         }
-
-        // Animate footer elements
-        const footerContainer = el.querySelector('.footer-container');
-        const footerElements = el.querySelectorAll('.footer-element');
-        if (footerContainer && footerElements.length > 0) {
-            gsap.fromTo(footerElements,
-                { opacity: 0, y: 20 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.5,
-                    stagger: 0.1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: footerContainer,
-                        start: 'top 90%',
-                        toggleActions: 'play none none reverse'
-                    }
-                }
-            );
-        }
     }, []);
 
     const validateForm = (): boolean => {
@@ -189,7 +169,7 @@ const ContactSection: React.FC = () => {
                 from_email: formData.email,
                 subject: formData.subject,
                 message: formData.message,
-                to_email: 'well0711200@gmail.com',
+                to_email: CONTACT_INFO.email,
             };
 
             await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
@@ -216,8 +196,8 @@ const ContactSection: React.FC = () => {
 
     const copyEmail = async () => {
         try {
-            await navigator.clipboard.writeText('well0711200@gmail.com');
-            trackEmailCopy('well0711200@gmail.com');
+            await navigator.clipboard.writeText(CONTACT_INFO.email);
+            trackEmailCopy(CONTACT_INFO.email);
             setCopied(true);
             setToast({ message: t('contact.copy.success'), type: 'success' });
             setTimeout(() => setCopied(false), 2000);
@@ -227,19 +207,19 @@ const ContactSection: React.FC = () => {
     };
 
     const socialLinks = [
-        { href: 'https://www.linkedin.com/in/welli-', label: 'LinkedIn' },
-        { href: 'https://www.instagram.com/_well07/', label: 'Instagram' },
-        { href: 'https://github.com/Creastein', label: 'GitHub' },
-        { href: 'https://www.tiktok.com/@wellibuilds', label: 'TikTok' }
+        { href: CONTACT_INFO.socials.linkedin, label: 'LinkedIn' },
+        { href: CONTACT_INFO.socials.instagram, label: 'Instagram' },
+        { href: CONTACT_INFO.socials.github, label: 'GitHub' },
+        { href: CONTACT_INFO.socials.tiktok, label: 'TikTok' }
     ];
 
     return (
         <>
-            <footer
+            <section
                 key={i18n.language}
                 ref={sectionRef}
                 id="contact"
-                className="relative z-40 bg-black pt-16 md:pt-24"
+                className="relative z-40 bg-black pt-16 md:pt-24 pb-8"
             >
                 {/* Animated Background */}
                 <div className="absolute inset-0 overflow-hidden">
@@ -283,14 +263,14 @@ const ContactSection: React.FC = () => {
                                     </div>
                                     <div className="flex-1">
                                         <div className="text-sm text-secondary mb-1">Email</div>
-                                        <div className="text-lg font-medium text-white">well0711200@gmail.com</div>
+                                        <div className="text-lg font-medium text-white">{CONTACT_INFO.email}</div>
                                     </div>
                                     <motion.div
                                         initial={false}
                                         animate={{ scale: copied ? [1, 1.2, 1] : 1 }}
                                     >
                                         {copied ? (
-                                            <Check className="w-5 h-5 text-green-400" />
+                                            <Check className="w-5 h-5 text-blue-400" />
                                         ) : (
                                             <Copy className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
                                         )}
@@ -426,29 +406,7 @@ const ContactSection: React.FC = () => {
                         </motion.div>
                     </div>
                 </div>
-
-                {/* Footer Bottom */}
-                <div className="footer-container border-t border-white/10">
-                    <div className="container mx-auto max-w-[1400px] px-6 sm:px-12 py-8">
-                        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                            <p className="footer-element text-sm text-white/40">
-                                {t('contact.footer.rights')}
-                            </p>
-                            <div className="footer-element flex items-center gap-2 text-sm text-white/40">
-                                <span>{t('contact.footer.madeWith')}</span>
-                                <motion.span
-                                    animate={{ scale: [1, 1.2, 1] }}
-                                    transition={{ repeat: Infinity, duration: 1.5 }}
-                                    className="text-red-400"
-                                >
-                                    
-                                </motion.span>
-                                <span>{t('contact.footer.in')}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            </section>
 
             {/* Toast Notification */}
             {toast && (

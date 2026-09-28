@@ -13,7 +13,7 @@ export const CONTACT_INFO = {
   developerWhatsapp: '6285161507114',
   
   // Official Studio Email
-  email: 'well0711200@gmail.com',
+  email: 'wellibuilds@gmail.com',
   
   // Location
   location: 'Tangerang, Banten, Indonesia',
@@ -21,11 +21,11 @@ export const CONTACT_INFO = {
   
   // Social Media Links
   socials: {
-    instagram: 'https://www.instagram.com/_well07/',
-    instagramStudio: 'https://www.instagram.com/wlstudio.co/',
+    instagram: 'https://www.instagram.com/wlstudi0/',
+    instagramStudio: 'https://www.instagram.com/wlstudi0/',
     linkedin: 'https://www.linkedin.com/in/welli-',
     github: 'https://github.com/Creastein',
-    tiktok: 'https://www.tiktok.com/@wellibuilds',
+    tiktok: 'https://www.tiktok.com/@wlstudi0?lang=id-ID',
   },
 } as const;
 

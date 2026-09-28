@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowUpRight, Calendar, Clock } from 'lucide-react';
 import { projects } from '@/components/data/projects';
 import { useTranslation } from 'react-i18next';
 import SEOHead from '@/components/SEOHead';
+import Footer from '@/components/Footer';
 
 const CaseStudy: React.FC = () => {
   const { t } = useTranslation();
@@ -16,7 +17,7 @@ const CaseStudy: React.FC = () => {
     : projects.filter(p => p.featured);
 
   return (
-    <main className="bg-background min-h-screen text-white pb-32">
+    <main className="bg-background min-h-screen text-white">
       <SEOHead 
         title="All Projects — WL-STUDIO | AI-Native Digital Studio"
         description="Collection of premium web development projects by WL-STUDIO — from hospitality websites to full-stack applications, built with an AI-native workflow."
@@ -239,6 +240,9 @@ const CaseStudy: React.FC = () => {
           )}
         </div>
       </section>
+
+      {/* High-End Studio Footer */}
+      <Footer showCta={true} />
     </main>
   );
 };

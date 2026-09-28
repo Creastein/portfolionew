@@ -5,10 +5,14 @@ import { useTranslation } from "react-i18next";
 // Replace `logo` with actual logo paths when available (e.g., "/images/logos/floating-paradise.svg")
 // For now, using text wordmarks as placeholders
 const CLIENTS = [
+  { name: "Dea Haven Villas", logo: null },
   { name: "Floating Paradise", logo: null },
   { name: "The Secret Karimunjawa", logo: null },
   { name: "HomeBase Lombok", logo: null },
   { name: "The Subahu Villa", logo: null },
+  { name: "Green Paddy Hostel Ubud", logo: null },
+  { name: "Jumbo Surf Lessons", logo: null },
+  { name: "Grha Vege Jawi", logo: null },
   { name: "Danu House Ubud", logo: null },
   { name: "Datoya Guest House", logo: null },
   { name: "HomyHome Bali Tour", logo: null },
