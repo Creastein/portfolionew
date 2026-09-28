@@ -13,40 +13,112 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        id: 'the-secret-karimunjawa',
+        title: 'The Secret Karimunjawa',
+        category: 'Luxury Sea View Villa',
+        year: '2026',
+        description: 'Website resmi villa eksklusif di Karimunjawa dengan pemandangan laut 120°. Terbukti menduduki Peringkat #1 di Google Search mengalahkan platform OTA raksasa seperti Tiket.com, mengamankan direct booking WhatsApp tanpa potongan komisi.',
+        timeline: '3 Minggu',
+        services: ['Google Rank #1', 'Direct WhatsApp Booking', '0% Potongan Komisi', 'Akses Cepat Global'],
+        image: '/images/karimunjawa.webp',
+        link: 'https://thesecretkarimunjawa.com',
+        featured: true
+    },
+    {
         id: 'floating-paradise',
         title: 'Floating Paradise',
-        category: 'Villa & Resort Website',
+        category: 'Villa & Resort Private Pool',
         year: '2026',
-        description: 'Villa & resort website. Stack: Next.js, React.js, Supabase, Tailwind CSS',
-        timeline: '2 weeks',
-        services: ['Next.js', 'React.js', 'Supabase', 'Tailwind CSS'],
+        description: 'Portal digital sinematik untuk villa & resort tepi air dengan galeri visual 4K, sistem reservasi langsung, dan navigasi mobile-first yang memikat wisatawan mancanegara sejak detik pertama.',
+        timeline: '2 Minggu',
+        services: ['Visual 4K Sinematik', 'Direct Booking Engine', 'Mobile-First Design', 'Buka Instan < 1s'],
         image: '/images/floatingparadise.webp',
         link: 'https://floatingparadise.id',
         featured: true
     },
     {
-        id: 'the-secret-karimunjawa',
-        title: 'The Secret Karimunjawa',
-        category: 'Hospitality Website',
+        id: 'homebase-lombok',
+        title: 'HomeBase Lombok',
+        category: 'Property Management & Villa Sync',
         year: '2026',
-        description: 'Hospitality website. Stack: Next.js, React.js, Tailwind CSS',
-        timeline: '3 minggu',
-        services: ['Next.js', 'React.js', 'Tailwind CSS'],
-        image: '/images/karimunjawa.png',
-        link: 'https://thesecretkarimunjawa.com',
+        description: 'Sistem kustom sinkronisasi kalender ketersediaan real-time untuk 3 villa aktif di Lombok. Mengintegrasikan jadwal otomatis anti-bentrok langsung dari Airbnb ke website mandiri, mempermudah tamu memilih tanggal dan reservasi instan via WhatsApp tanpa biaya perantara.',
+        timeline: '2 Minggu',
+        services: ['Sinkronisasi Kalender Real-Time', 'Anti-Bentrok Jadwal', 'Direct WhatsApp Booking', '0% Komisi OTA'],
+        image: '/images/homebaselombok.webp',
+        link: 'https://homebaselombok.com',
         featured: true
     },
     {
-        id: 'wellibuilds',
-        title: 'WelliBuilds',
-        category: 'Web Development Service',
-        year: '2024',
-        description: 'Web development service for hospitality and villa/resort clients in Indonesia.',
-        timeline: 'Ongoing',
-        services: ['Next.js', 'React.js', 'Supabase', 'Vercel'],
-        image: '/images/portofolio.png',
-        link: 'https://welli.my.id',
+        id: 'the-subahu-villa',
+        title: 'The Subahu Villa',
+        category: 'Riverside Luxury Villa · Sanur Bali',
+        year: '2026',
+        description: 'Website villa riverside 3 kamar tidur mewah di tepi Sungai Ayung dekat Sanur, Bali. Menghadirkan visual sinematik alam, spesifikasi interaktif lengkap, dan sistem reservasi direct booking tanpa perantara.',
+        timeline: '2 Minggu',
+        services: ['Riverside Sanctuary', 'Direct Booking', 'Galeri 4K Sinematik', 'Mobile-First'],
+        image: '/images/thesubahuvilla.webp',
+        link: 'https://www.thesubahuvilla.com/',
         featured: true
+    },
+    {
+        id: 'homyhome-bali-tour',
+        title: 'HomyHome Bali Tour',
+        category: 'Bali Tour & Experiential Travel',
+        year: '2026',
+        description: 'Website paket wisata privat dan tour guide lokal Bali dengan pengalaman navigasi instan, katalog destinasi interaktif, multi-bahasa (ID/EN), dan konversi pemesanan langsung via WhatsApp.',
+        timeline: '2 Minggu',
+        services: ['Katalog Wisata Interaktif', 'Direct WhatsApp Booking', 'Multi-Language (ID/EN)', 'SEO Wisata Bali'],
+        image: '/images/homyhomebalitour.webp',
+        link: 'https://www.homyhomebalitour.com/',
+        featured: true
+    },
+    {
+        id: 'danu-house-ubud-tour',
+        title: 'Danu House Ubud Tour',
+        category: 'Ubud Private Tour & Transport',
+        year: '2026',
+        description: 'Website layanan tour privat Ubud dan rental transportasi lokal Bali dengan performa sub-detik (Astro), optimasi GEO & Local SEO di pencarian Google, serta alur reservasi cepat.',
+        timeline: '2 Minggu',
+        services: ['Sub-Second Astro Speed', 'GEO Local SEO', 'Direct WhatsApp Booking', 'Mobile-First'],
+        image: '/images/danuhouseubudtour.webp',
+        link: 'https://www.danuhouseubudtour.com/',
+        featured: true
+    },
+    {
+        id: 'datoya-house',
+        title: 'Datoya Guest House',
+        category: 'Whole-House Rental · Semarang',
+        year: '2026',
+        description: 'Website sewa 1 rumah utuh (Whole-House Rental) kapasitas 6–12 tamu di Banyumanik, Semarang. Menampilkan virtual tour fasilitas, transparansi harga, dan integrasi reservasi instan via WhatsApp.',
+        timeline: '2 Minggu',
+        services: ['Sewa 1 Rumah Utuh', 'Direct WhatsApp Booking', 'Informasi Transparan', 'Mobile-First'],
+        image: '/images/datoyahouse.webp',
+        link: 'https://www.datoyahouse.com/',
+        featured: true
+    },
+    {
+        id: 'dancing-mountain-villa',
+        title: 'Dancing Mountain Villa',
+        category: 'Highland Luxury Eco-Resort',
+        year: '2026',
+        description: 'Website resort pegunungan berkonsep alam mewah dengan storytelling visual imersif, showcase fasilitas panorama pegunungan, dan jalur komunikasi reservasi cepat.',
+        timeline: '2 Minggu',
+        services: ['Storytelling Visual', 'Katalog Villa Interaktif', 'WhatsApp Instant Reservasi', 'Desain Khusus'],
+        image: '/images/dancingmountainvilla.png',
+        link: 'https://dancing-mountain-villa.vercel.app/',
+        featured: false
+    },
+    {
+        id: 'la-beaute-luxury-spa',
+        title: 'La Beauté Luxury Spa',
+        category: 'Luxury Hospitality & Wellness',
+        year: '2026',
+        description: 'Platform reservasi digital concierge 24/7 untuk spa & relaksasi premium, menghadirkan kemudahan booking layanan perawatan mewah tanpa jeda antrean.',
+        timeline: '3 Minggu',
+        services: ['Digital Concierge 24/7', 'Sistem Reservasi Otomatis', 'Branding Mewah', 'Checkout Praktis'],
+        image: '/images/Salon-Spa.png',
+        link: 'https://la-beaut-luxury-spa.vercel.app/',
+        featured: false
     },
     {
         id: 'pasline',
@@ -58,11 +130,11 @@ export const projects: Project[] = [
         services: ['Next.js', 'React.js', 'Supabase', 'PWA'],
         image: '/images/pasline.png',
         link: 'https://pasline.vercel.app',
-        featured: true
+        featured: false
     },
     {
-        id: 'wellibuilds-crm',
-        title: 'WelliBuilds CRM',
+        id: 'wl-studio-crm',
+        title: 'WL-STUDIO CRM',
         category: 'CRM Dashboard · Freelance Management',
         year: '2026',
         description: 'Freelance dashboard dengan Mission Control, KPI metrics, database prospek, dan tracking revenue real-time untuk mengelola pipeline klien secara efisien.',
@@ -70,7 +142,7 @@ export const projects: Project[] = [
         services: ['React.js', 'TypeScript', 'Supabase', 'PWA'],
         image: '/images/wellibuilds-crm.png',
         link: 'https://welli-builds.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'adam-tour-lombok',
@@ -82,7 +154,7 @@ export const projects: Project[] = [
         services: ['React.js', 'TypeScript', 'Tailwind CSS', 'SEO'],
         image: '/images/adamtour-lombok.png',
         link: 'https://adamtour2.vercel.app/',
-        featured: true
+        featured: false
     },
     {
         id: 'idx-trading-assistant',
@@ -106,18 +178,6 @@ export const projects: Project[] = [
         services: ['Website', 'Branding', 'UI/UX'],
         image: '/images/portofolio.png',
         link: 'https://welli.my.id',
-        featured: false
-    },
-    {
-        id: 'villa-utamaro',
-        title: 'Villa Utamaro',
-        category: 'Premium Hospitality Website',
-        year: '2026',
-        description: 'A premium hospitality landing page with robust internationalization (i18n) support, tailored for the global luxury villa market.',
-        timeline: '2 weeks',
-        services: ['Website', 'Branding', 'i18n'],
-        image: '/images/VillaUtamaro.png',
-        link: 'https://villa-utamaro-next.vercel.app/id',
         featured: false
     },
     {
@@ -145,18 +205,6 @@ export const projects: Project[] = [
         featured: false
     },
     {
-        id: 'dancing-mountain-villa',
-        title: 'Dancing Mountain Villa',
-        category: 'Resort Website',
-        year: '2026',
-        description: 'An immersive, visual-heavy resort website focusing on premium brand storytelling and fluid motion design.',
-        timeline: '2 weeks',
-        services: ['Website Branding', 'UI/UX', 'Motion Design'],
-        image: '/images/dancingmountainvilla.png',
-        link: 'https://dancing-mountain-villa.vercel.app/',
-        featured: false
-    },
-    {
         id: 'website-builder',
         title: 'Website Builder',
         category: 'SaaS · Fullstack Engineering',
@@ -178,18 +226,6 @@ export const projects: Project[] = [
         services: ['Data Aggregation Architecture', 'API Integration & Web Scraping', 'Real-time Search Engine', 'High-Performance UI/UX'],
         image: '/images/hargaCheck.png',
         link: 'https://harga-check.vercel.app/',
-        featured: false
-    },
-    {
-        id: 'la-beaute-luxury-spa',
-        title: 'La Beauté Luxury Spa',
-        category: 'Luxury Wellness · Booking Platform',
-        year: '2026',
-        description: 'A luxury digital wellness platform designed to mirror the tranquility and premium service of a high-end spa. Functions as a 24/7 digital concierge with an integrated reservation system.',
-        timeline: '4 Weeks',
-        services: ['Premium Brand Identity', 'UX/UI Design', 'Booking System Integration', 'Mobile-First Development'],
-        image: '/images/Salon-Spa.png',
-        link: 'https://la-beaut-luxury-spa.vercel.app/',
         featured: false
     },
     {

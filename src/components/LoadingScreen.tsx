@@ -147,7 +147,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({
               textShadow: '0 0 60px rgba(0, 49, 82, 0.4)'
             }}
           >
-            WELLI
+            WL-STUDIO
           </h1>
 
           <p

@@ -15,6 +15,7 @@ interface SectionHeaderProps {
 const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, className = '' }) => {
     // useGSAP creates the ref and handles cleanup
     const containerRef = useGSAP<HTMLDivElement>(() => {
+        const activeIntervals: ReturnType<typeof setInterval>[] = [];
         // Text Scramble Animation
         const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
         // Scope selection to the container
@@ -50,7 +51,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, classNam
                             start: 'top 85%',
                             toggleActions: 'play none none reverse',
                             onEnter: () => {
-                                // Scramble effect
+                                // Scramble effect with interval tracking
                                 const interval = setInterval(() => {
                                     if (iterations >= maxIterations) {
                                         char.textContent = finalChar;
@@ -60,6 +61,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, classNam
                                     char.textContent = chars[Math.floor(Math.random() * chars.length)];
                                     iterations++;
                                 }, 50);
+                                activeIntervals.push(interval);
                             }
                         }
                     }
@@ -87,6 +89,9 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, classNam
             );
         }
 
+        return () => {
+            activeIntervals.forEach(clearInterval);
+        };
     }, [title]);
 
     return (

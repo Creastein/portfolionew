@@ -26,7 +26,7 @@ export const websitePackages: WebsitePackage[] = [
     ],
     icon: '📄',
     popular: false,
-    whatsappMessage: 'Halo Welli, saya tertarik dengan paket *Landing Page Simple* (Rp 1.500.000). Bisa konsultasi lebih lanjut?',
+    whatsappMessage: 'Halo WL-STUDIO, saya tertarik dengan paket *Landing Page Simple* (Rp 1.500.000). Bisa konsultasi lebih lanjut?',
   },
   {
     id: 'website-katalog',
@@ -44,7 +44,7 @@ export const websitePackages: WebsitePackage[] = [
     ],
     icon: '🛍️',
     popular: true,
-    whatsappMessage: 'Halo Welli, saya tertarik dengan paket *Website Katalog* (Rp 2.500.000). Bisa konsultasi lebih lanjut?',
+    whatsappMessage: 'Halo WL-STUDIO, saya tertarik dengan paket *Website Katalog* (Rp 2.500.000). Bisa konsultasi lebih lanjut?',
   },
   {
     id: 'website-premium',
@@ -63,7 +63,7 @@ export const websitePackages: WebsitePackage[] = [
     ],
     icon: '⭐',
     popular: false,
-    whatsappMessage: 'Halo Welli, saya tertarik dengan paket *Website Premium* (Rp 4.500.000). Bisa konsultasi lebih lanjut?',
+    whatsappMessage: 'Halo WL-STUDIO, saya tertarik dengan paket *Website Premium* (Rp 4.500.000). Bisa konsultasi lebih lanjut?',
   },
   {
     id: 'website-villa-pro',
@@ -82,6 +82,6 @@ export const websitePackages: WebsitePackage[] = [
     ],
     icon: '🏨',
     popular: false,
-    whatsappMessage: 'Halo Welli, saya tertarik dengan paket *Website Villa Pro* (Rp 6.500.000+). Bisa konsultasi lebih lanjut?',
+    whatsappMessage: 'Halo WL-STUDIO, saya tertarik dengan paket *Website Villa Pro* (Rp 6.500.000+). Bisa konsultasi lebih lanjut?',
   },
 ];

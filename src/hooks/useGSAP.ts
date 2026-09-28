@@ -10,7 +10,7 @@ if (typeof window !== 'undefined') {
 export const useGSAP = <T extends HTMLElement = HTMLDivElement>(
     callback: (ctx: gsap.Context) => void,
     deps: DependencyList = []
-): MutableRefObject<T | null> => {
+) => {
     const ref = useRef<T>(null);
 
     useEffect(() => {

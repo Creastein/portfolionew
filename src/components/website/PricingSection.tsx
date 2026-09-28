@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { websitePackages } from '@/components/data/websitePackages';
-
-const WHATSAPP_BASE = 'https://wa.me/6285188574908?text=';
+import { getWhatsAppLink } from '@/constants/contact';
 
 const PricingSection: React.FC = () => {
   return (
@@ -116,7 +115,7 @@ const PricingSection: React.FC = () => {
 
                   {/* CTA */}
                   <a
-                    href={`${WHATSAPP_BASE}${encodeURIComponent(pkg.whatsappMessage)}`}
+                    href={getWhatsAppLink(pkg.whatsappMessage)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-center justify-center gap-2 w-full py-3.5 rounded-xl font-semibold text-sm transition-all duration-300 ${

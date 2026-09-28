@@ -101,7 +101,7 @@ export const testimonials: Testimonial[] = [
     name: 'Kak Patricia Dorn',
     role: 'Owner',
     company: 'The Secret Karimunjawa',
-    text: 'Kerjasama dengan Welli luar biasa. Service-nya lancar, tidak ada kendala sama sekali, sangat jelas. Saya sudah rekomendasikan ke beberapa teman — dan terbukti, sudah ada yang kerja sama juga. Terima kasih sudah bantu villa saya.',
+    text: 'Kerjasama dengan WL-STUDIO luar biasa. Service-nya lancar, tidak ada kendala sama sekali, sangat jelas. Saya sudah rekomendasikan ke beberapa teman — dan terbukti, sudah ada yang kerja sama juga. Terima kasih sudah bantu villa saya.',
     initials: 'CP',
     accentColor: '#135bec',
   },

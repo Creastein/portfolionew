@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence, Variants } from 'fram
 import { X, Instagram, Github, Linkedin, MessageCircle } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { useTranslation } from 'react-i18next';
+import { CONTACT_INFO, getWhatsAppLink } from '@/constants/contact';
 
 // Custom TikTok Icon since it might not be in the lucide version used
 const TikTokIcon = ({ size = 24, className = "" }: { size?: number, className?: string }) => (
@@ -65,18 +66,17 @@ const Navbar: React.FC = () => {
     const navItems = [
         { id: 'home', label: t('nav.home') },
         { id: 'about', label: t('nav.about') },
-        { id: 'skills', label: 'SKILLS' },
         { id: 'services', label: t('nav.services') },
         { id: 'work', label: t('nav.work') },
         { id: 'contact', label: t('nav.contact') },
     ];
 
     const socialLinks = [
-        { label: 'TikTok', icon: <TikTokIcon size={20} />, href: 'https://www.tiktok.com/@wellibuilds?is_from_webapp=1&sender_device=pc' },
-        { label: 'Instagram', icon: <Instagram size={20} />, href: 'https://www.instagram.com/_well07/' },
-        { label: 'WhatsApp', icon: <MessageCircle size={20} />, href: 'https://wa.me/6285161507114' },
-        { label: 'GitHub', icon: <Github size={20} />, href: 'https://github.com/Creastein' },
-        { label: 'LinkedIn', icon: <Linkedin size={20} />, href: 'https://www.linkedin.com/in/welli-' },
+        { label: 'TikTok', icon: <TikTokIcon size={20} />, href: CONTACT_INFO.socials.tiktok },
+        { label: 'Instagram', icon: <Instagram size={20} />, href: CONTACT_INFO.socials.instagram },
+        { label: 'WhatsApp', icon: <MessageCircle size={20} />, href: getWhatsAppLink('Halo WL-STUDIO, saya ingin konsultasi proyek website.') },
+        { label: 'GitHub', icon: <Github size={20} />, href: CONTACT_INFO.socials.github },
+        { label: 'LinkedIn', icon: <Linkedin size={20} />, href: CONTACT_INFO.socials.linkedin },
     ];
 
     const menuVariants: Variants = {
@@ -256,7 +256,7 @@ const Navbar: React.FC = () => {
                             {/* FOOTER METADATA */}
                             <div className="px-8 py-6 md:px-12 border-t border-white/10 bg-black">
                                 <div className="flex flex-col gap-1 text-xs text-white/30 text-center md:text-left">
-                                    <p>© 2025 WELLI. All rights reserved.</p>
+                                    <p>© 2025 WL-STUDIO. All rights reserved.</p>
                                     <p>Designed & Developed in Tangerang.</p>
                                 </div>
                             </div>

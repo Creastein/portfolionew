@@ -8,69 +8,165 @@
     "language": "ID"
   },
   "hero": {
-    "available": "Tersedia untuk proyek",
-    "title1": "AI-Native",
-    "title2": "Full Stack Developer",
-    "subtitle1": "Membangun pengalaman web modern dengan",
-    "subtitle2": "workflow development berbasis AI."
+    "available": "Tersedia untuk Proyek",
+    "eyebrow": "WL-STUDIO",
+    "badgeLeft": "Hospitality Studio",
+    "badgeRight": "Spesialis Villa & Resort",
+    "title1": "Direct Booking.",
+    "title2": "Zero Commission.",
+    "description": "Kami membangun website premium untuk villa & resort yang mengubah pengunjung menjadi pemesanan langsung. Amankan margin Anda, hilangkan komisi OTA.",
+    "ctaPrimary": "Lihat Showcase",
+    "ctaSecondary": "Konsultasi Gratis",
+    "projectsDelivered": "Proyek Selesai",
+    "clientSatisfaction": "Kepuasan Klien",
+    "pagespeed": "PageSpeed",
+    "otaSaved": "Komisi OTA Dihemat",
+    "quality": "Kualitas",
+    "trustedBy": "Dipercaya oleh Pemimpin Industri"
   },
   "about": {
-    "label": "Tentang Saya",
-    "title": "AI-Native Full Stack Developer",
-    "description": "Full Stack Developer dengan pendekatan AI-native — setiap fase development, dari planning hingga deployment, dijalankan dengan AI sebagai workflow multiplier. Membangun produk digital untuk klien bisnis dari konsep ke production. Founder WelliBuilds. Stack: Next.js · React.js · Supabase · Tailwind CSS · Vercel"
+    "label": "Tentang Kami",
+    "title": "Villa Anda Layak Lebih dari Sekadar Website Cantik.",
+    "manifesto": "Kami merekayasa website yang membawa tamu langsung ke Anda — menghilangkan potongan komisi 15–25% dari OTA dan mengamankan 100% margin reservasi. Setiap interaksi dirancang khusus agar properti Anda tampil eksklusif dan terkonversi menjadi pemesanan nyata.",
+    "approach": {
+      "label": "Mengapa Bekerja Sama Dengan Kami",
+      "items": [
+        "Dirancang khusus untuk properti Anda — bukan template daur ulang",
+        "Pemesanan langsung via WhatsApp & checkout instan, seluruh margin tetap milik Anda",
+        "Akses cepat & mulus bagi calon wisatawan domestik maupun mancanegara (Australia, Eropa, dll)"
+      ]
+    },
+    "metric": {
+      "value": "< 14",
+      "unit": "Hari",
+      "label": "Rata-rata Waktu Pengerjaan",
+      "status": "Slot Tersedia"
+    },
+    "cta": "Lihat Hasil Karya"
   },
   "services": {
     "header": {
-      "title": "LAYANAN",
-      "subtitle": "Apa yang Saya Tawarkan"
+      "label": "Layanan Kami",
+      "title": "Tiga Fondasi Utama untuk Memaksimalkan Pemesanan Villa Anda.",
+      "subtitle": "Setiap sistem kami bangun khusus untuk meningkatkan citra eksklusif properti dan mengamankan keuntungan pemesanan langsung."
     },
     "items": {
-      "fullstack-development": {
-        "title": "Full Stack Web Development",
-        "description": "Membangun aplikasi web lengkap dari frontend hingga backend menggunakan Next.js, React.js, dan Supabase dengan deployment modern di Vercel.",
-        "tags": ["Next.js", "React.js", "Supabase", "Vercel"]
+      "bespoke-design": {
+        "badge": "Karakter Properti",
+        "title": "Desain Khusus & Identitas Mewah",
+        "description": "Website dirancang khusus mencerminkan keindahan fisik villa Anda — bukan template pasaran. Foto & video properti tampil memukau serta nyaman dijelajahi di HP maupun laptop.",
+        "tags": ["Bukan Template", "Tampilan Sinematik", "Sempurna di HP", "Identitas Eksklusif"]
       },
-      "ai-powered-development": {
-        "title": "AI-Powered Development",
-        "description": "Memanfaatkan tools AI di seluruh siklus development — dari planning dan UI generation hingga coding dan deployment — untuk hasil yang lebih cepat dan cerdas.",
-        "tags": ["Claude", "Cursor", "Bolt", "v0", "Antigravity"]
+      "direct-booking": {
+        "badge": "0% Potongan Komisi",
+        "title": "Sistem Pemesanan Langsung",
+        "description": "Tamu bisa langsung memesan kamar dan bayar via WhatsApp atau transfer otomatis. Tanpa potongan komisi 15–25% dari aplikasi pihak ketiga, keuntungan 100% masuk ke rekening Anda.",
+        "tags": ["Bebas Komisi OTA", "Booking via WhatsApp", "Pembayaran Otomatis", "Margin Penuh 100%"]
       },
-      "hospitality-web": {
-        "title": "Website Hospitality & Villa",
-        "description": "Spesialisasi web development untuk hotel, villa, dan resort di Indonesia. Website yang indah dan optimal untuk konversi, dibangun khusus untuk industri hospitality.",
-        "tags": ["WelliBuilds", "Hospitality", "Villa/Resort", "SEO"]
+      "search-speed": {
+        "badge": "Jangkauan Dunia",
+        "title": "Akses Cepat & Mudah di Google",
+        "description": "Website terbuka instan tanpa jeda bagi calon tamu mancanegara (Australia, Eropa, Amerika, dll). Dilengkapi optimasi Google agar villa Anda mudah ditemukan saat dicari.",
+        "tags": ["Buka Instan", "Akses Mancanegara", "Mudah di Google", "Online 24/7"]
       }
     }
   },
   "work": {
+    "header": {
+      "label": "Hasil Karya",
+      "title": "Karya Nyata untuk Properti & Villa Mewah.",
+      "subtitle": "Koleksi website kustom yang kami bangun khusus untuk mengubah pengunjung menjadi pemesanan langsung tanpa potongan komisi perantara."
+    },
     "title": "KARYA",
-    "topPick": "Pilihan Teratas",
-    "topPickProjects": "Proyek Pilihan Teratas",
-    "allProjects": "Semua Proyek",
+    "topPick": "Properti Pilihan",
+    "topPickProjects": "Portofolio Villa & Resort Unggulan",
+    "allProjects": "Lihat Semua Proyek",
+    "category": "Kategori Properti",
     "year": "Tahun",
-    "timeline": "Waktu",
-    "servicesLabel": "Layanan",
-    "viewProject": "Lihat Proyek"
+    "timeline": "Pengerjaan",
+    "servicesLabel": "Keunggulan Sistem",
+    "viewProject": "Kunjungi Website Live"
+  },
+  "process": {
+    "header": {
+      "badge": "Alur Pengerjaan Transparan",
+      "title": "Proses Rapi & Terstruktur. Anda Tinggal Terima Jadi.",
+      "subtitle": "Dari konsultasi awal hingga website siap menerima direct booking pertama, seluruh tahapan kami eksekusi dengan standar hospitality internasional dalam 14 hari kerja."
+    },
+    "steps": [
+      {
+        "step": "01",
+        "duration": "Hari 1–3",
+        "badge": "Audit & Discovery",
+        "title": "Sesi Diskusi & Audit Keunikan Properti",
+        "description": "Kami membedah daya tarik utama villa Anda (view alam, private pool, tipe tamu, dan keunggulan eksklusif). Anda cukup mengirimkan foto yang ada atau tautan media sosial / listing OTA.",
+        "deliverables": [
+          "Sitemap & arsitektur website",
+          "Moodboard visual & palet warna mewah",
+          "Strategi alur direct booking WhatsApp"
+        ]
+      },
+      {
+        "step": "02",
+        "duration": "Hari 4–8",
+        "badge": "Bespoke Crafting",
+        "title": "Desain Khusus & Storytelling Sinematik",
+        "description": "Merancang antarmuka kustom tanpa template pasaran. Mengoptimasi visual 4K agar tetap super cepat, menyusun katalog kamar, fasilitas, dan narasi yang memikat wisatawan mancanegara.",
+        "deliverables": [
+          "Desain 100% kustom (no-template)",
+          "Kompresi aset 4K super ringan",
+          "Prototipe interaktif siap review"
+        ]
+      },
+      {
+        "step": "03",
+        "duration": "Hari 9–12",
+        "badge": "Direct Booking Setup",
+        "title": "Integrasi Sistem Direct Booking & Kalender",
+        "description": "Menghubungkan tombol reservasi instan WhatsApp resmi dengan template pesan otomatis, integrasi sinkronisasi kalender anti-bentrok Airbnb/OTA, dan kalkulator harga transparan.",
+        "deliverables": [
+          "Tombol reservasi WhatsApp resmi",
+          "Sinkronisasi kalender otomatis (anti-bentrok)",
+          "Uji coba alur booking langsung ke admin"
+        ]
+      },
+      {
+        "step": "04",
+        "duration": "Hari 13–14",
+        "badge": "Global Launch",
+        "title": "Optimasi Google (SEO) & Peluncuran Global",
+        "description": "Setup Google Search Console & Local SEO agar villa mudah ditemukan wisatawan di Google, uji performa kecepatan sub-detik global (< 1s), penyerahan akses domain, dan panduan praktis.",
+        "deliverables": [
+          "Setup Google Search Console & Local SEO",
+          "Uji kecepatan akses dunia (< 1 detik)",
+          "Website resmi live dengan domain kustom"
+        ]
+      }
+    ],
+    "guarantee": {
+      "text": "Setiap proyek diselesaikan tepat waktu dalam 14 hari kerja dengan jaminan revisi sampai Anda puas.",
+      "cta": "Mulai Konsultasi Properti Anda"
+    }
   },
   "skills": {
     "title": "TECH STACK",
-    "subtitle": "Tools & Teknologi Saya"
+    "subtitle": "Stack & Tools Kami"
   },
   "contact": {
     "title": "KONTAK",
-    "subtitle": "Hubungi Saya",
+    "subtitle": "Hubungi Kami",
     "letsTalk": "MARI BICARA",
-    "description": "Punya proyek atau ingin berkolaborasi? Saya senang mendengarnya dari Anda.",
+    "description": "Siap untuk menghilangkan biaya komisi OTA dan mengamankan pemesanan langsung? Mari bangun sistem kustom Anda.",
     "info": {
       "location": "Lokasi",
       "jakarta": "Tangerang, Banten",
       "availability": "Ketersediaan",
       "open": "Terbuka untuk peluang",
-      "followMe": "Ikuti Saya"
+      "followMe": "Ikuti Kami"
     },
     "form": {
       "title": "Kirim Pesan",
-      "description": "Isi formulir di bawah ini dan saya akan segera membalasnya.",
+      "description": "Isi formulir di bawah ini dan kami akan segera membalasnya.",
       "name": "Nama Anda",
       "email": "Email Anda",
       "subject": "Subjek",
@@ -93,7 +189,7 @@
       "error": "Gagal menyalin email"
     },
     "footer": {
-      "rights": "© 2025 WELLI. Hak cipta dilindungi.",
+      "rights": "© 2026 WL-STUDIO. Hak cipta dilindungi.",
       "madeWith": "Dibuat dengan",
       "in": "di Tangerang"
     }
@@ -101,7 +197,7 @@
   "caseStudy": {
     "backHome": "Kembali ke Beranda",
     "title": "Semua Proyek",
-    "description": "Koleksi proyek pengembangan web — dari website hospitality hingga aplikasi full-stack, semuanya dibangun dengan workflow AI-native.",
+    "description": "Koleksi proyek pengembangan web kami — dari website hospitality premium hingga aplikasi full-stack, semuanya dibangun dengan workflow AI-native.",
     "allProjectsTab": "Semua Proyek",
     "featuredTab": "Unggulan",
     "featuredBadge": "Unggulan",

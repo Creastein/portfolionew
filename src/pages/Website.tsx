@@ -17,7 +17,7 @@ const Website: React.FC = () => {
   return (
     <>
       <Helmet htmlAttributes={{ lang: 'id' }}>
-        <title>WelliBuilds — Jasa Pembuatan Website Profesional untuk UMKM Indonesia</title>
+        <title>WL-STUDIO — Jasa Pembuatan Website Profesional untuk UMKM Indonesia</title>
         <meta
           name="description"
           content="Jasa pembuatan website profesional untuk bisnis lokal Indonesia (UMKM). Landing page, website katalog, company profile, dan website villa/resort. Harga terjangkau mulai Rp 1.5 juta."
@@ -30,14 +30,14 @@ const Website: React.FC = () => {
         {/* Open Graph / Facebook */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://welli.my.id/website" />
-        <meta property="og:title" content="WelliBuilds — Website Profesional untuk Bisnis Lokal Indonesia" />
+        <meta property="og:title" content="WL-STUDIO — Website Profesional untuk Bisnis Lokal Indonesia" />
         <meta property="og:description" content="Tampil di Google. Terima booking via WhatsApp. Tanpa ribet. Mulai dari Rp 1.5 juta." />
         <meta property="og:image" content="https://welli.my.id/images/og-image.png" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://welli.my.id/website" />
-        <meta name="twitter:title" content="WelliBuilds — Website Profesional untuk Bisnis Lokal Indonesia" />
+        <meta name="twitter:title" content="WL-STUDIO — Website Profesional untuk Bisnis Lokal Indonesia" />
         <meta name="twitter:description" content="Tampil di Google. Terima booking via WhatsApp. Tanpa ribet. Mulai dari Rp 1.5 juta." />
         <meta name="twitter:image" content="https://welli.my.id/images/og-image.png" />
         

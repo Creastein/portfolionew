@@ -56,7 +56,7 @@ const ContactSection: React.FC = () => {
     }, [t]);
 
     // GSAP Animations - all selectors scoped to containerRef
-    const containerRef = useGSAP<HTMLElement>(() => {
+    const containerRef = useGSAP<HTMLDivElement>(() => {
         const el = containerRef.current;
         if (!el) return;
 

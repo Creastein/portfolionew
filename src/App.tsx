@@ -6,6 +6,7 @@ import Home from '@/pages/Home';
 import CaseStudy from '@/pages/CaseStudy';
 import Website from '@/pages/Website';
 import LoadingScreen from '@/components/LoadingScreen';
+
 import { AnimatePresence } from 'framer-motion';
 import { useTheme, useAnalytics } from '@/hooks';
 
@@ -46,6 +47,11 @@ let hasShownLoadingScreen = false;
 const AppContent: React.FC = () => {
   const { mounted } = useTheme();
   const [isLoading, setIsLoading] = useState(() => {
+    // Bypass loading screen entirely during static pre-rendering with react-snap
+    const isSnap = typeof navigator !== 'undefined' && /ReactSnap/i.test(navigator.userAgent);
+    if (isSnap) {
+      return false;
+    }
     const shouldShow = !hasShownLoadingScreen;
     if (shouldShow) {
       hasShownLoadingScreen = true;
@@ -60,15 +66,6 @@ const AppContent: React.FC = () => {
   const handleLoadingComplete = useCallback(() => {
     setIsLoading(false);
   }, []);
-
-  // Prevent hydration mismatch - but allow server-side rendering
-  if (!mounted && !isSSR) {
-    return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
 
   return (
     <>
@@ -90,6 +87,7 @@ const AppContent: React.FC = () => {
         <Routes>
           {/* Website service page — has its own layout/navbar */}
           <Route path="/website" element={<Website />} />
+
           {/* All other routes use the default portfolio layout */}
           <Route path="*" element={
             <div className="transition-colors duration-300">

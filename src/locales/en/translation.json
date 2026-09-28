@@ -8,69 +8,165 @@
     "language": "EN"
   },
   "hero": {
-    "available": "Available for project",
-    "title1": "AI-Native",
-    "title2": "Full Stack Developer",
-    "subtitle1": "Building modern web experiences with",
-    "subtitle2": "AI-powered development workflow."
+    "available": "Open for Projects",
+    "eyebrow": "WL-STUDIO",
+    "badgeLeft": "Hospitality Studio",
+    "badgeRight": "Villa & Resort Specialist",
+    "title1": "Direct Booking.",
+    "title2": "Zero Commission.",
+    "description": "We build premium websites for villas & resorts that turn visitors into direct bookings. Secure your margins, eliminate OTA commissions.",
+    "ctaPrimary": "View Showcase",
+    "ctaSecondary": "Free Consultation",
+    "projectsDelivered": "Projects Delivered",
+    "clientSatisfaction": "Client Satisfaction",
+    "pagespeed": "PageSpeed",
+    "otaSaved": "OTA Saved",
+    "quality": "Quality",
+    "trustedBy": "Trusted by Industry Leaders"
   },
   "about": {
-    "label": "About Me",
-    "title": "AI-Native Full Stack Developer",
-    "description": "Full Stack Developer with an AI-native approach — every phase of development, from planning to deployment, is executed with AI as a workflow multiplier. Building digital products for business clients from concept to production. Founder of WelliBuilds. Stack: Next.js · React.js · Supabase · Tailwind CSS · Vercel"
+    "label": "About Us",
+    "title": "Your Villa Deserves More Than a Pretty Website.",
+    "manifesto": "We engineer websites that bring guests directly to you — eliminating third-party OTA commissions and securing 100% of your booking margin. Every interaction is tailored so your property stands out and converts seamlessly.",
+    "approach": {
+      "label": "Why Work With Us",
+      "items": [
+        "Designed exclusively for your property — zero generic templates",
+        "Guests book directly via WhatsApp & direct checkout, keeping your full revenue",
+        "Fast, reliable access for domestic and international travelers (Australia, Europe, US)"
+      ]
+    },
+    "metric": {
+      "value": "< 14",
+      "unit": "Days",
+      "label": "Average Turnaround to Launch",
+      "status": "Available Queue"
+    },
+    "cta": "Explore Showcase"
   },
   "services": {
     "header": {
-      "title": "SERVICES",
-      "subtitle": "What I Offer"
+      "label": "Our Capabilities",
+      "title": "Three Core Pillars to Maximize Your Direct Villa Bookings.",
+      "subtitle": "Custom systems engineered to elevate your property's exclusive presence and secure your direct booking margins."
     },
     "items": {
-      "fullstack-development": {
-        "title": "Full Stack Web Development",
-        "description": "Build complete web applications from frontend to backend using Next.js, React.js, and Supabase with modern deployment on Vercel.",
-        "tags": ["Next.js", "React.js", "Supabase", "Vercel"]
+      "bespoke-design": {
+        "badge": "Unique Character",
+        "title": "Bespoke Design & Visual Identity",
+        "description": "Custom-designed digital portals tailored to your villa's physical elegance — zero cookie-cutter templates. Photos & videos display beautifully across all devices.",
+        "tags": ["Zero Templates", "Cinematic Visuals", "Flawless on Mobile", "Exclusive Brand"]
       },
-      "ai-powered-development": {
-        "title": "AI-Powered Development",
-        "description": "Leverage AI tools across the entire development lifecycle — from planning and UI generation to coding and deployment — for faster, smarter results.",
-        "tags": ["Claude", "Cursor", "Bolt", "v0", "Antigravity"]
+      "direct-booking": {
+        "badge": "0% Commission Fee",
+        "title": "Direct Booking Architecture",
+        "description": "Guests book rooms directly via WhatsApp or instant automated payment. Keep the 15–25% commission typically lost to third-party travel apps straight in your pocket.",
+        "tags": ["0% OTA Fees", "WhatsApp Booking", "Instant Payment", "100% Full Margin"]
       },
-      "hospitality-web": {
-        "title": "Hospitality & Villa Websites",
-        "description": "Specialized web development for hotels, villas, and resorts in Indonesia. Beautiful, conversion-optimized websites built for the hospitality industry.",
-        "tags": ["WelliBuilds", "Hospitality", "Villa/Resort", "SEO"]
+      "search-speed": {
+        "badge": "Global Reach",
+        "title": "Sub-Second Speed & Google SEO",
+        "description": "Your website opens instantly without lag for international travelers worldwide (Australia, Europe, US). Fully optimized for Google so your villa is discovered effortlessly.",
+        "tags": ["Sub-Second Load", "Worldwide Fast", "Rank on Google", "24/7 Available"]
       }
     }
   },
   "work": {
+    "header": {
+      "label": "Selected Works",
+      "title": "Proven Results for Luxury Villas & Resorts.",
+      "subtitle": "A curated collection of bespoke websites engineered to convert global guests into high-margin direct bookings without OTA commissions."
+    },
     "title": "WORKS",
-    "topPick": "Top Pick",
-    "topPickProjects": "Top Pick Projects",
-    "allProjects": "All Projects",
+    "topPick": "Featured Villas",
+    "topPickProjects": "Featured Luxury Hospitality Portfolio",
+    "allProjects": "View All Projects",
+    "category": "Property Type",
     "year": "Year",
     "timeline": "Timeline",
-    "servicesLabel": "Services",
-    "viewProject": "View Project"
+    "servicesLabel": "Key Capabilities",
+    "viewProject": "Visit Live Website"
+  },
+  "process": {
+    "header": {
+      "badge": "Transparent 4-Step Process",
+      "title": "Streamlined & Structured. Zero Effort on Your End.",
+      "subtitle": "From initial discovery to global launch ready for direct bookings, we execute every phase with international hospitality standards within 14 working days."
+    },
+    "steps": [
+      {
+        "step": "01",
+        "duration": "Days 1–3",
+        "badge": "Audit & Discovery",
+        "title": "Property Audit & Visual Concept",
+        "description": "We analyze your property's signature strengths (nature views, private pool, guest demographics, and USP). Simply share your existing photos or social/OTA listing links.",
+        "deliverables": [
+          "Information architecture & sitemap",
+          "Luxury color palette & visual moodboard",
+          "Direct WhatsApp booking conversion flow"
+        ]
+      },
+      {
+        "step": "02",
+        "duration": "Days 4–8",
+        "badge": "Bespoke Crafting",
+        "title": "Bespoke Design & Cinematic Storytelling",
+        "description": "Crafting a 100% custom interface without generic templates. Optimizing 4K visual assets for sub-second speed, structuring room layouts, and immersive hospitality copy.",
+        "deliverables": [
+          "100% bespoke bespoke design (no templates)",
+          "Ultra-lightweight 4K asset compression",
+          "Interactive clickable prototype for review"
+        ]
+      },
+      {
+        "step": "03",
+        "duration": "Days 9–12",
+        "badge": "Direct Booking Setup",
+        "title": "Direct Booking & Calendar Sync Setup",
+        "description": "Integrating official WhatsApp booking triggers with automated message templates, Airbnb/OTA iCal calendar sync (zero double-booking), and transparent price calculators.",
+        "deliverables": [
+          "Official WhatsApp direct booking integration",
+          "Automated real-time calendar synchronization",
+          "End-to-end booking verification to admin"
+        ]
+      },
+      {
+        "step": "04",
+        "duration": "Days 13–14",
+        "badge": "Global Launch",
+        "title": "Google SEO & Worldwide Deployment",
+        "description": "Setting up Google Search Console & Local SEO for organic guest discovery, worldwide sub-second speed testing (< 1s), domain handover, and straightforward owner guidance.",
+        "deliverables": [
+          "Google Search Console & Local SEO setup",
+          "Global access speed benchmark (< 1s)",
+          "Live official website on custom domain"
+        ]
+      }
+    ],
+    "guarantee": {
+      "text": "Every project is delivered on schedule within 14 working days with unlimited revisions until you are 100% satisfied.",
+      "cta": "Consult Your Property Now"
+    }
   },
   "skills": {
     "title": "TECH STACK",
-    "subtitle": "My Tools & Technologies"
+    "subtitle": "Our Stack & Tools"
   },
   "contact": {
     "title": "CONTACT",
-    "subtitle": "Get in Touch",
+    "subtitle": "Work with Us",
     "letsTalk": "LET'S TALK",
-    "description": "Have a project in mind or want to collaborate? I'd love to hear from you.",
+    "description": "Ready to eliminate OTA fees and secure direct bookings? Let's build your custom system.",
     "info": {
       "location": "Location",
       "jakarta": "Tangerang, Banten",
       "availability": "Availability",
       "open": "Open for opportunities",
-      "followMe": "Follow Me"
+      "followMe": "Follow Us"
     },
     "form": {
       "title": "Send a Message",
-      "description": "Fill out the form below and I'll get back to you soon.",
+      "description": "Fill out the form below and we'll get back to you soon.",
       "name": "Your Name",
       "email": "Your Email",
       "subject": "Subject",
@@ -93,7 +189,7 @@
       "error": "Failed to copy email"
     },
     "footer": {
-      "rights": "© 2025 WELLI. All rights reserved.",
+      "rights": "© 2026 WL-STUDIO. All rights reserved.",
       "madeWith": "Made with",
       "in": "in Tangerang"
     }
@@ -101,7 +197,7 @@
   "caseStudy": {
     "backHome": "Back to Home",
     "title": "All Projects",
-    "description": "A collection of web development projects — from hospitality websites to full-stack applications, all built with AI-native workflow.",
+    "description": "A collection of our web development projects — from premium hospitality websites to full-stack applications, all built with an AI-native workflow.",
     "allProjectsTab": "All Projects",
     "featuredTab": "Featured",
     "featuredBadge": "Featured",

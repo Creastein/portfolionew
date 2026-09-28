@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-
-const WHATSAPP_LINK = 'https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20ingin%20konsultasi%20tentang%20pembuatan%20website.';
+import { WEBSITE_CONSULT_WHATSAPP_LINK as WHATSAPP_LINK } from '@/constants/contact';
 
 const StickyWhatsApp: React.FC = () => {
   return (

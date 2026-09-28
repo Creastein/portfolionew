@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-
-const WHATSAPP_LINK = 'https://wa.me/6285188574908?text=Halo%20Welli%2C%20saya%20ingin%20konsultasi%20tentang%20pembuatan%20website.';
+import { WEBSITE_CONSULT_WHATSAPP_LINK as WHATSAPP_LINK } from '@/constants/contact';
 
 const navItems = [
   { label: 'Beranda', href: '#hero' },
@@ -66,7 +65,7 @@ const WebsiteNavbar: React.FC = () => {
                 className="text-lg font-bold tracking-tight text-white group-hover:text-[#3b82f6] transition-colors duration-300"
                 style={{ fontFamily: '"Mohave", sans-serif', fontWeight: 600 }}
               >
-                WelliBuilds
+                WL-STUDIO
               </span>
             </a>
 
